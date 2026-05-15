@@ -1,10 +1,12 @@
 # Oiticica style skills
 
-Modern English Codex skills derived from the first part of Jose Oiticica's `Manual de Estilo`.
+A catalogue of writing skills for Codex, adapted from José Oiticica’s
+*Manual de Estilo*.
 
-Each skill isolates one concept, gives shallow rules, applies English grammar and orthography, and includes positive and negative eval cases drawn from English-classic models or imitations.
-
-Each skill also includes `agents/openai.yaml` for agent UI metadata and `agents/notes.md` naming the public-domain source behind the positive model and the boundary for invented weak examples.
+Oiticica taught style by naming virtues and vices, defining each one sharply,
+then showing good and bad examples. This repository turns that method into
+small agent skills: one concept per skill, with rules, examples, metadata, and
+validation.
 
 <br>
 
@@ -17,72 +19,121 @@ Each skill also includes `agents/openai.yaml` for agent UI metadata and `agents/
 </p>
 
 <p align="center" style="margin: 0 0 1.25rem 0;">
-    <sub>José Oiticica in a 1924 police-archive photograph, after his arrest during the armed São Paulo tenentista uprising; in prison, the anarchist professor began a primer on anarchist doctrine.</sub>
+    <sub>José Oiticica in a 1924 police-archive photograph, after his arrest during the armed São Paulo tenentista uprising.</sub>
 </p>
 
-## Use
+## Why this exists
 
-Run:
+Most writing advice compresses too much. “Be clear” is true, but useless unless
+clarity is broken into inspectable failures: ambiguity, anacoluthon,
+accumulation, weak punctuation, bad rhythm, vague diction.
+
+Oiticica’s method is better suited to agents than a prose summary of style.
+Each skill here isolates one writing operation so an agent can apply, test, and
+revise against it.
+
+The goal is not to make agents “write beautifully” by vibes. The goal is to
+give them a working catalogue of style decisions.
+
+## Quickstart
+
+Link the skills into Codex and Claude:
 
 ```bash
 bash scripts/link_skills.sh
 ```
 
-The script links only skill directories. It does not install `AGENTS.md` or `CLAUDE.md`.
+This creates symlinks under:
 
-## Skills
+```bash
+~/.codex/skills
+~/.claude/skills
+```
 
-- [`oiticica-description`](src/oiticica-description/SKILL.md): Description is a sequence of aspects.
-- [`oiticica-narration`](src/oiticica-narration/SKILL.md): Narration is a sequence of facts or episodes.
-- [`oiticica-dissertation`](src/oiticica-dissertation/SKILL.md): Dissertation is a sequence of opinions.
-- [`oiticica-style-qualities`](src/oiticica-style-qualities/SKILL.md): Style has six essential qualities: correctness, concision, clarity, harmony, originality, and vigor.
-- [`oiticica-correctness`](src/oiticica-correctness/SKILL.md): Correctness observes the grammatical tradition of the language being used.
-- [`oiticica-solecism`](src/oiticica-solecism/SKILL.md): Solecism is an error of syntax.
-- [`oiticica-spelling`](src/oiticica-spelling/SKILL.md): Cacography is an error of writing; in English practice, treat it as spelling and orthographic error.
-- [`oiticica-word-formation`](src/oiticica-word-formation/SKILL.md): Deformation is an error in the form of a word.
-- [`oiticica-confused-words`](src/oiticica-confused-words/SKILL.md): Crossing is the exchange of similar words.
-- [`oiticica-foreignism`](src/oiticica-foreignism/SKILL.md): Barbarism is abusive use of foreign words or constructions.
-- [`oiticica-latinism`](src/oiticica-latinism/SKILL.md): Latinism is foreignness drawn from Latin diction or syntax.
-- [`oiticica-gallicism`](src/oiticica-gallicism/SKILL.md): Gallicism is foreignness drawn from French diction or syntax; in English, treat any imported construction by English idiom.
-- [`oiticica-archaism`](src/oiticica-archaism/SKILL.md): Archaism is use of an old word or construction now out of use.
-- [`oiticica-neologism`](src/oiticica-neologism/SKILL.md): Neologism is a recently created or introduced word or expression.
-- [`oiticica-concision`](src/oiticica-concision/SKILL.md): Concision expresses aspects, facts, or opinions with the fewest words compatible with the other qualities.
-- [`oiticica-clarity`](src/oiticica-clarity/SKILL.md): Clarity transmits thought in the form most easily understood.
-- [`oiticica-ambiguity`](src/oiticica-ambiguity/SKILL.md): Ambiguity is a structure that allows more than one meaning when only one is intended.
-- [`oiticica-anacoluthon`](src/oiticica-anacoluthon/SKILL.md): Anacoluthon is a break in logical order, usually by changing the expected subject or construction.
-- [`oiticica-accumulation`](src/oiticica-accumulation/SKILL.md): Accumulation is excess and crossing of aspects, facts, or opinions in one period.
-- [`oiticica-brachylogy`](src/oiticica-brachylogy/SKILL.md): Brachylogy is the opposite vice of accumulation: too many short, disconnected phrases with forced pauses.
-- [`oiticica-precision`](src/oiticica-precision/SKILL.md): Precision uses the exact word or construction for an idea or emotion.
-- [`oiticica-semicolon`](src/oiticica-semicolon/SKILL.md): The semicolon separates related clauses where a comma is too weak and a period too final.
-- [`oiticica-comma`](src/oiticica-comma/SKILL.md): The comma marks coordination, interpolation, parenthesis, apposition, enumeration, ellipsis, inversion, and similar local relations.
-- [`oiticica-harmony`](src/oiticica-harmony/SKILL.md): Harmony is the euphonic adjustment of words in the phrase and phrases in the period.
-- [`oiticica-cacophony`](src/oiticica-cacophony/SKILL.md): Cacophony is an ugly or inconvenient sound produced by word contact.
-- [`oiticica-assonance`](src/oiticica-assonance/SKILL.md): Assonance is repetition of vowel sounds.
-- [`oiticica-alliteration`](src/oiticica-alliteration/SKILL.md): Alliteration is repetition of consonant sounds.
-- [`oiticica-hiatus`](src/oiticica-hiatus/SKILL.md): Hiatus is collision of vowel sounds in adjacent syllables or words.
-- [`oiticica-meter`](src/oiticica-meter/SKILL.md): Meter is measured language; Oiticica uses scansion to train the ear for rhythm.
-- [`oiticica-prose-rhythm`](src/oiticica-prose-rhythm/SKILL.md): Harmony in prose comes from varied rhythmic groups arranged to fit sense.
-- [`oiticica-originality`](src/oiticica-originality/SKILL.md): Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.
-- [`oiticica-image`](src/oiticica-image/SKILL.md): An image is an aesthetic relation between objects, phenomena, or actions.
-- [`oiticica-vigor`](src/oiticica-vigor/SKILL.md): Vigor is energy of expression in aspects, episodes, or conceptions.
-- [`oiticica-inversion`](src/oiticica-inversion/SKILL.md): Inversion alters logical word order to give relief, rhythm, or emphasis.
-- [`oiticica-antithesis`](src/oiticica-antithesis/SKILL.md): Antithesis is the opposition of two truths that clarify each other.
+The script links only skill directories. It does **not** install `AGENTS.md`,
+`CLAUDE.md`, or project-level instructions.
 
-## Validation
+After linking, start Codex and invoke a skill by name, for example:
 
-Static checks:
+```text
+Use oiticica-concision to tighten this paragraph without losing meaning.
+```
+
+or:
+
+```text
+Use oiticica-ambiguity to find sentences that allow more than one reading.
+```
+
+## What is included
+
+Each skill contains:
+
+- `SKILL.md` — the rule, boundary, examples, and application notes.
+- `agents/openai.yaml` — agent UI metadata.
+- `agents/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
+
+Positive examples are sourced from public-domain English texts, such as
+Shakespeare, the Federalist Papers, and other classic works. Source notes mark
+whether each eval passage is quoted, paraphrased from a source model, or
+invented as a weak contrast.
+
+## Skill catalogue
+
+| Skill                                                               | Use it to check                                                                        |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [`oiticica-description`](src/oiticica-description/SKILL.md)         | Whether a passage presents aspects in a coherent order.                                |
+| [`oiticica-narration`](src/oiticica-narration/SKILL.md)             | Whether episodes or facts move in a clear sequence.                                    |
+| [`oiticica-dissertation`](src/oiticica-dissertation/SKILL.md)       | Whether opinions develop in an ordered argument.                                       |
+| [`oiticica-style-qualities`](src/oiticica-style-qualities/SKILL.md) | The six major qualities: correctness, concision, clarity, harmony, originality, vigor. |
+| [`oiticica-correctness`](src/oiticica-correctness/SKILL.md)         | Grammatical correctness in the language being used.                                    |
+| [`oiticica-concision`](src/oiticica-concision/SKILL.md)             | Unnecessary words, padding, and removable repetition.                                  |
+| [`oiticica-clarity`](src/oiticica-clarity/SKILL.md)                 | Whether the thought is easy to understand.                                             |
+| [`oiticica-ambiguity`](src/oiticica-ambiguity/SKILL.md)             | Structures that allow unintended meanings.                                             |
+| [`oiticica-precision`](src/oiticica-precision/SKILL.md)             | Whether words name the intended idea exactly.                                          |
+| [`oiticica-harmony`](src/oiticica-harmony/SKILL.md)                 | Sound, rhythm, and euphony in prose.                                                   |
+| [`oiticica-originality`](src/oiticica-originality/SKILL.md)         | Dependence on imitation, cliché, or borrowed manner.                                   |
+| [`oiticica-vigor`](src/oiticica-vigor/SKILL.md)                     | Energy, force, and expressive pressure.                                                |
+
+For the full generated list, inspect the generated skill directories under
+[`src/`](src/).
+
+## Development
+
+Validate the generated skills:
 
 ```bash
 python3 -m py_compile scripts/generate_skills.py
 python3 scripts/generate_skills.py --check
 bash -n scripts/link_skills.sh
-direnv exec . bash scripts/validate_skills.sh <skill-relpath>
+direnv exec . bash scripts/validate_skills.sh oiticica-concision
 ```
+
+Use `scripts/validate_skills.sh` with changed skill names so unrelated skill
+evals do not run.
+
+## Contributing
+
+Contributions should preserve the shape of the project:
+
+- one concept per skill;
+- short rules before long explanation;
+- examples before abstraction where possible;
+- clear citation of every public-domain source;
+- explicit labeling for invented weak examples;
+- no unsourced “style advice” pasted into generated skills.
+
+See [`AGENTS.md`](AGENTS.md) for repository-local workflow and validation
+rules.
 
 ## License
 
 Code and original text in this repository are licensed under GPL-3.0-or-later.
 
-Archival images are not covered by the repository software license unless explicitly stated. The José Oiticica DOPS image is reproduced as a historical archival document with source attribution.
+Archival images are not covered by the repository software license unless
+explicitly stated. The José Oiticica DOPS image is reproduced as a historical
+archival document with source attribution.
 
-José Oiticica, police/prontuário photograph, 1924. Source: Arquivo Público do Estado do Rio de Janeiro (APERJ), Prontuário do Departamento de Ordem Política e Social (DOPS), via CeDInCI.
+José Oiticica, police/prontuário photograph, 1924. Source: Arquivo Público do
+Estado do Rio de Janeiro (APERJ), Prontuário do Departamento de Ordem Política
+e Social (DOPS), via CeDInCI.
