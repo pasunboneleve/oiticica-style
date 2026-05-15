@@ -1,0 +1,60 @@
+---
+name: oiticica-originality
+description: Apply Oiticica's originality concept in modern English with concise rules, objective rubrics, and concrete contrast.
+---
+
+# Oiticica Originality
+
+Use this skill when reviewing or rewriting English prose where originality is the controlling issue.
+
+Source concept: Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.
+
+## Rules
+
+- Reject stock phrases, borrowed images, and general aspects.
+- Particularize place, time, object, and action.
+- Use exact vocabulary instead of novelty hunting.
+- Let originality arise from observation and relation, not forced strangeness.
+
+## Review Shape
+
+Use a concrete contrast:
+
+```markdown
+Principle:
+<one sentence naming the concept>
+
+Weak:
+<small passage or paraphrase>
+
+Fault:
+<name the exact broken relation>
+
+Better:
+<corrected version>
+
+Why:
+<explain how the revision restores the relation>
+
+Rubric:
+<pass/fail against the objective checks>
+```
+
+## Objective Rubric
+
+- The passage contains at least one specific observed relation.
+- No stock image carries the main effect.
+- The vocabulary names the subject's own world.
+- The sentence could not be moved unchanged to any subject of the same class.
+
+Pass only when every applicable check passes. If correctness fails, fix or name that failure before judging style.
+
+## English Rule
+
+Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
+
+## Eval Hooks
+
+- Positive model: Austen's exact social observation that could belong only to that character and room.
+- Negative model: The queen of night spread her silver mantle over the sleeping earth.
+- Required labels should be concrete, such as `reject, particularize, use` or a more exact local relation.

@@ -1,0 +1,60 @@
+---
+name: oiticica-hiatus
+description: Apply Oiticica's hiatus concept in modern English with concise rules, objective rubrics, and concrete contrast.
+---
+
+# Oiticica Hiatus
+
+Use this skill when reviewing or rewriting English prose where hiatus is the controlling issue.
+
+Source concept: Hiatus is collision of vowel sounds in adjacent syllables or words.
+
+## Rules
+
+- Check vowel collisions that make English prose stumble.
+- Repair by contraction, reordering, or a more exact word when the collision is distracting.
+- Do not force old prosody rules onto ordinary modern English.
+- Keep hiatus when it is natural or metrically intended.
+
+## Review Shape
+
+Use a concrete contrast:
+
+```markdown
+Principle:
+<one sentence naming the concept>
+
+Weak:
+<small passage or paraphrase>
+
+Fault:
+<name the exact broken relation>
+
+Better:
+<corrected version>
+
+Why:
+<explain how the revision restores the relation>
+
+Rubric:
+<pass/fail against the objective checks>
+```
+
+## Objective Rubric
+
+- The vowel collision can be heard aloud.
+- The correction improves ease of reading.
+- The sentence remains idiomatic.
+- No exact technical term is lost.
+
+Pass only when every applicable check passes. If correctness fails, fix or name that failure before judging style.
+
+## English Rule
+
+Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
+
+## Eval Hooks
+
+- Positive model: Blank verse that uses vowel contact deliberately in its meter.
+- Negative model: We agree entirely on airy aerial areas.
+- Required labels should be concrete, such as `check, repair, do` or a more exact local relation.

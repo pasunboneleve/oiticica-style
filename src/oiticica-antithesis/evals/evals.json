@@ -1,0 +1,27 @@
+{
+  "skill_name": "oiticica-antithesis",
+  "evals": [
+    {
+      "id": "antithesis-positive-classic-model",
+      "name": "antithesis positive classic model",
+      "prompt": "Use the oiticica-antithesis skill. Review this English-classic model: A Johnson antithesis where opposing clauses sharpen the moral judgment. Explain why the passage should be preserved rather than flattened.",
+      "expected_output": "The response preserves a strong classic model and judges it by the skill's objective rubric.",
+      "assertions": [
+        "The output identifies the relevant Oiticica concept.",
+        "The output says the model should be preserved or treated as strong.",
+        "The output applies at least two objective rubric checks instead of generic praise."
+      ]
+    },
+    {
+      "id": "antithesis-negative-classic-contrast",
+      "name": "antithesis negative classic contrast",
+      "prompt": "Use the oiticica-antithesis skill. Review this weak English-classic-style passage: We are not building software; we are creating destiny. Give one concrete contrast with Weak, Fault, Better, Why, and Rubric.",
+      "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
+      "assertions": [
+        "The output includes Weak, Fault, Better, Why, and Rubric sections.",
+        "The output names a concrete broken relation rather than saying only unclear, awkward, or verbose.",
+        "The Better version repairs the fault while preserving the intended meaning."
+      ]
+    }
+  ]
+}

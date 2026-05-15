@@ -1,0 +1,27 @@
+{
+  "skill_name": "oiticica-concision",
+  "evals": [
+    {
+      "id": "concision-positive-classic-model",
+      "name": "concision positive classic model",
+      "prompt": "Use the oiticica-concision skill. Review this English-classic model: Hemingway's early story prose where selected details carry the scene without explanation. Explain why the passage should be preserved rather than flattened.",
+      "expected_output": "The response preserves a strong classic model and judges it by the skill's objective rubric.",
+      "assertions": [
+        "The output identifies the relevant Oiticica concept.",
+        "The output says the model should be preserved or treated as strong.",
+        "The output applies at least two objective rubric checks instead of generic praise."
+      ]
+    },
+    {
+      "id": "concision-negative-classic-contrast",
+      "name": "concision negative classic contrast",
+      "prompt": "Use the oiticica-concision skill. Review this weak English-classic-style passage: The celestial orb of daytime commenced its ascent above the eastern horizon. Give one concrete contrast with Weak, Fault, Better, Why, and Rubric.",
+      "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
+      "assertions": [
+        "The output includes Weak, Fault, Better, Why, and Rubric sections.",
+        "The output names a concrete broken relation rather than saying only unclear, awkward, or verbose.",
+        "The Better version repairs the fault while preserving the intended meaning."
+      ]
+    }
+  ]
+}
