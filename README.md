@@ -6,6 +6,20 @@ Each skill isolates one concept, gives shallow rules, applies English grammar an
 
 Each skill also includes `agents/openai.yaml` for agent UI metadata and `agents/notes.md` naming the public-domain source behind the positive model and the boundary for invented weak examples.
 
+<br>
+
+<p align="center" style="margin: 0.35rem 0 0.35rem 0;">
+  <img
+      src="assets/jose-oiticica-dops.jpg"
+      alt="José Oiticica, DOPS prontuário photograph"
+      style="width:58.5%;"
+      />
+</p>
+
+<p align="center" style="margin: 0 0 1.25rem 0;">
+    <sub>José Oiticica in a 1924 police-archive photograph, after his arrest during the armed São Paulo tenentista uprising; in prison, the anarchist professor began a primer on anarchist doctrine.</sub>
+</p>
+
 ## Use
 
 Run:
@@ -64,3 +78,11 @@ python3 scripts/generate_skills.py --check
 bash -n scripts/link_skills.sh
 direnv exec . bash scripts/validate_skills.sh <skill-relpath>
 ```
+
+## License
+
+Code and original text in this repository are licensed under GPL-3.0-or-later.
+
+Archival images are not covered by the repository software license unless explicitly stated. The José Oiticica DOPS image is reproduced as a historical archival document with source attribution.
+
+José Oiticica, police/prontuário photograph, 1924. Source: Arquivo Público do Estado do Rio de Janeiro (APERJ), Prontuário do Departamento de Ordem Política e Social (DOPS), via CeDInCI.
