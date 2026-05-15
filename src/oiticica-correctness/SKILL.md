@@ -53,8 +53,7 @@ Pass only when every applicable check passes. If correctness fails, fix or name 
 
 Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
 
-## Eval Hooks
+## Source Boundary
 
-- Positive model: A George Eliot sentence whose long structure still keeps agreement and reference intact.
-- Negative model: Between you and I, the committee were unable to decide who they should appoint.
-- Required labels should be concrete, such as `apply, preserve, fix` or a more exact local relation.
+Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
+When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.

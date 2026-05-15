@@ -53,8 +53,7 @@ Pass only when every applicable check passes. If correctness fails, fix or name 
 
 Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
 
-## Eval Hooks
+## Source Boundary
 
-- Positive model: Coleridge using consonant repetition to imitate motion or pressure.
-- Negative model: The platform provides powerful proactive performance possibilities.
-- Required labels should be concrete, such as `keep, cut, avoid` or a more exact local relation.
+Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
+When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.

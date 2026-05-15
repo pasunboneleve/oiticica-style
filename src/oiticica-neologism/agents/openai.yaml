@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Neologism"
+  short_description: "Neologism is a recently created or introduced word or expression"
+  default_prompt: "Use $oiticica-neologism to review English prose with a concrete Weak/Fault/Better/Why contrast."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Antithesis"
+  short_description: "Antithesis is the opposition of two truths that clarify each other"
+  default_prompt: "Use $oiticica-antithesis to review English prose with a concrete Weak/Fault/Better/Why contrast."

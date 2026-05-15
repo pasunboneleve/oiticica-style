@@ -1,18 +1,18 @@
-root: src
-workspace: /tmp/oiticica-style-evals
+root: .
+workspace: /tmp/agent-skills-eval-oiticica-style
 baseline: true
 target: gpt-4o-mini
 judge: gpt-4o-mini
 baseUrl: https://api.openai.com/v1
 apiKeyEnv: OPENAI_API_KEY
-concurrency: 4
+concurrency: 2
 layout: iteration
 strict: false
-report:
-  enabled: false
+report: false
 logging:
-  format: jsonl
-  file: /tmp/oiticica-style-evals.jsonl
+  format: pretty
+  verbose: false
+  color: auto
 targetParams:
   temperature: 0
 judgeParams:

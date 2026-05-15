@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Semicolon"
+  short_description: "The semicolon separates related clauses where a comma is too weak and a period too final"
+  default_prompt: "Use $oiticica-semicolon to review English prose with a concrete Weak/Fault/Better/Why contrast."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Style Qualities"
+  short_description: "Style has six essential qualities: correctness, concision, clarity, harmony, originality, and vigor"
+  default_prompt: "Use $oiticica-style-qualities to review English prose with a concrete Weak/Fault/Better/Why contrast."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Image"
+  short_description: "An image is an aesthetic relation between objects, phenomena, or actions"
+  default_prompt: "Use $oiticica-image to review English prose with a concrete Weak/Fault/Better/Why contrast."

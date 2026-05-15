@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Narration"
+  short_description: "Narration is a sequence of facts or episodes"
+  default_prompt: "Use $oiticica-narration to review English prose with a concrete Weak/Fault/Better/Why contrast."

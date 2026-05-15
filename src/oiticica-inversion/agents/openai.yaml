@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Inversion"
+  short_description: "Inversion alters logical word order to give relief, rhythm, or emphasis"
+  default_prompt: "Use $oiticica-inversion to review English prose with a concrete Weak/Fault/Better/Why contrast."

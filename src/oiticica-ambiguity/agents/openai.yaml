@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Ambiguity"
+  short_description: "Ambiguity is a structure that allows more than one meaning when only one is intended"
+  default_prompt: "Use $oiticica-ambiguity to review English prose with a concrete Weak/Fault/Better/Why contrast."

@@ -25,7 +25,7 @@ SKILLS = [
             "Generic labels such as beautiful, gloomy, splendid, or picturesque are supported by particulars.",
             "The order lets the reader locate the parts without rereading.",
         ],
-        "positive": "A Dickens street passage that names shop signs, fog, mud, and lamps so the reader can place the scene.",
+        "positive": "A public-domain source model from Dickens's Bleak House, chapter 1: a fog passage that gives visible city details.",
         "negative": "A sunset described only as golden, majestic, beautiful, and beyond words.",
     },
     {
@@ -43,7 +43,7 @@ SKILLS = [
             "Motives and consequences are close to the actions they explain.",
             "No descriptive pause hides the main action.",
         ],
-        "positive": "The opening pursuit in Stevenson where the black spot, flight, and search advance in order.",
+        "positive": "A public-domain source model from Stevenson's Treasure Island, chapter 1: Billy Bones arrives and the danger begins in sequence.",
         "negative": "A battle report that pauses for costumes, weather, and moral reflections before saying who attacked.",
     },
     {
@@ -61,7 +61,7 @@ SKILLS = [
             "Transitions name the relation: cause, contrast, concession, or result.",
             "The conclusion follows from the stated sequence.",
         ],
-        "positive": "A Johnson essay paragraph that states a moral claim, tests it with example, then turns the consequence.",
+        "positive": "A public-domain source model from Federalist No. 10: a claim about faction is tested by cause and consequence.",
         "negative": "Liberty is noble, sacred, splendid, and bright; tyranny is base, dark, hateful, and low.",
     },
     {
@@ -79,7 +79,7 @@ SKILLS = [
             "The thought is easy to grasp on first reading.",
             "Sound, order, specificity, and energy support the meaning.",
         ],
-        "positive": "Austen's balanced free indirect prose where grammar, economy, clarity, rhythm, personal angle, and force work together.",
+        "positive": "A public-domain source model from Austen's Pride and Prejudice, chapter 1: balanced social irony with grammar, economy, clarity, rhythm, point of view, and force.",
         "negative": "The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.",
     },
     {
@@ -97,7 +97,7 @@ SKILLS = [
             "No correction changes the facts or voice without reason.",
             "The revised sentence remains idiomatic English.",
         ],
-        "positive": "A George Eliot sentence whose long structure still keeps agreement and reference intact.",
+        "positive": "A public-domain source model from Eliot's Middlemarch, chapter 1: a long sentence whose agreement and reference stay intact.",
         "negative": "Between you and I, the committee were unable to decide who they should appoint.",
     },
     {
@@ -115,7 +115,7 @@ SKILLS = [
             "The actor and object remain the same.",
             "The result reads as current standard English.",
         ],
-        "positive": "Austen dialogue that uses standard syntax while preserving social tone.",
+        "positive": "A public-domain source model from Austen's Pride and Prejudice: standard syntax preserves social tone; no source wording is supplied.",
         "negative": "Him and me was going to the market when the letters arrived.",
     },
     {
@@ -133,7 +133,7 @@ SKILLS = [
             "No proper noun is normalized accidentally.",
             "The correction does not mask a grammar or meaning issue.",
         ],
-        "positive": "A Bronte passage quoted with edition spelling preserved and surrounding analysis in modern spelling.",
+        "positive": "A public-domain source model from Charlotte Bronte's Jane Eyre, chapter 1: source spelling is preserved while commentary uses modern spelling.",
         "negative": "The goverment recieved seperate accomodations for it's officers.",
     },
     {
@@ -151,7 +151,7 @@ SKILLS = [
             "The explanation names the morphological pattern.",
             "The sentence keeps its intended meaning.",
         ],
-        "positive": "Miltonic coinage that follows recognizable English and Latin-derived morphology.",
+        "positive": "A public-domain source model from Milton's Paradise Lost, book 1: the coined place-name Pandemonium follows recognizable English and Latin-derived morphology.",
         "negative": "The speaker misunderestimated the danger and unpossible results.",
     },
     {
@@ -169,7 +169,7 @@ SKILLS = [
             "The correction does not introduce a new register mismatch.",
             "The reason would let a reader choose correctly next time.",
         ],
-        "positive": "A Conan Doyle sentence that uses inference and observation in their distinct senses.",
+        "positive": "A public-domain source model from Conan Doyle's Sherlock Holmes stories: observation and inference are kept as distinct mental acts.",
         "negative": "The witness inferred that the detective implied the clue from the ash.",
     },
     {
@@ -187,7 +187,7 @@ SKILLS = [
             "The review distinguishes loanword from needless display.",
             "The correction improves clarity without narrowing meaning.",
         ],
-        "positive": "A Conrad sentence that keeps nautical loanwords because they name exact things.",
+        "positive": "A public-domain source model from Conrad's Heart of Darkness, chapter 1: nautical terms name exact things aboard the Nellie.",
         "negative": "We made a rendezvous for the personnel to assist at the conference.",
     },
     {
@@ -205,7 +205,7 @@ SKILLS = [
             "Technical meaning survives.",
             "The sentence sounds like modern English, not translated Latin.",
         ],
-        "positive": "Newman's prose using Latinate terms where theological distinctions require them.",
+        "positive": "A public-domain source model from Federalist No. 51: Latinate constitutional terms remain useful because they name exact political relations.",
         "negative": "The committee effectuated the termination of the utilization of the facility.",
     },
     {
@@ -223,7 +223,7 @@ SKILLS = [
             "Necessary cultural terms remain.",
             "The correction is shorter or clearer than the calque.",
         ],
-        "positive": "Thackeray keeping salon where the social institution, not a generic room, is meant.",
+        "positive": "A public-domain source model from Thackeray's Vanity Fair: a French social term is kept when it names a specific social institution.",
         "negative": "He demanded to his friend if she would assist at the lecture.",
     },
     {
@@ -241,7 +241,7 @@ SKILLS = [
             "Modern replacement keeps the meaning.",
             "The passage's register is consistent after revision.",
         ],
-        "positive": "A Shakespeare quotation kept archaic because the wording is the source.",
+        "positive": "A public-domain source model from Shakespeare's Hamlet, act 1, scene 3: archaic wording is kept because the wording is the source.",
         "negative": "The product team hath shipped the dashboard unto customers.",
     },
     {
@@ -259,7 +259,7 @@ SKILLS = [
             "No established word would serve as well.",
             "The sentence tells the reader what the new term denotes.",
         ],
-        "positive": "Wells using scientific terms to name newly imagined machinery and social forms.",
+        "positive": "A public-domain source model from Wells's The Time Machine, chapter 1: Time Traveller names a newly imagined role.",
         "negative": "We solutionized the problem through ideational futureproofment.",
     },
     {
@@ -277,7 +277,7 @@ SKILLS = [
             "Long subordinate clauses are reduced or coordinated when clarity improves.",
             "The shorter version preserves all necessary facts.",
         ],
-        "positive": "Hemingway's early story prose where selected details carry the scene without explanation.",
+        "positive": "A public-domain source model from Lincoln's Gettysburg Address: selected words carry civic argument without surplus explanation.",
         "negative": "The celestial orb of daytime commenced its ascent above the eastern horizon.",
     },
     {
@@ -295,7 +295,7 @@ SKILLS = [
             "Modifiers attach to the intended words.",
             "Cause, condition, concession, and result are in logical order.",
         ],
-        "positive": "Orwell's expository prose where actors and consequences are plain.",
+        "positive": "A public-domain source model from Lincoln's Second Inaugural Address: actors, causes, and consequences remain plain.",
         "negative": "After reviewing the file, the error was obvious and it was fixed.",
     },
     {
@@ -313,7 +313,7 @@ SKILLS = [
             "The fix removes the unintended reading.",
             "The revision does not flatten deliberate irony or double meaning.",
         ],
-        "positive": "A Henry James ambiguity preserved when the uncertainty is the point of view.",
+        "positive": "A public-domain source model from Henry James's The Turn of the Screw: ambiguity is preserved when uncertainty is the point of view.",
         "negative": "She saw the man with the telescope and waved.",
     },
     {
@@ -331,7 +331,7 @@ SKILLS = [
             "The repair completes one coherent construction.",
             "Deliberate speech effects are not overcorrected.",
         ],
-        "positive": "A Dickens character's broken speech kept because panic causes the break.",
+        "positive": "A public-domain source model from Shakespeare's King Lear, act 2, scene 4: broken speech is kept when emotion causes the break.",
         "negative": "The report, when the auditors finished reading it, they rejected the figures.",
     },
     {
@@ -349,7 +349,7 @@ SKILLS = [
             "Inserted clauses are necessary and local.",
             "The revision improves clarity without deleting significant facts.",
         ],
-        "positive": "Austen's periodic sentence where every insertion bears on the final judgment.",
+        "positive": "A public-domain source model from Austen's Pride and Prejudice, chapter 1: a periodic sentence whose insertions bear on the final judgment.",
         "negative": "A one-sentence room description that includes windows, history, furniture, weather, ancestry, and moral commentary.",
     },
     {
@@ -367,7 +367,7 @@ SKILLS = [
             "The rhythm varies.",
             "No fragment hides a needed subject, verb, or relation.",
         ],
-        "positive": "Stevenson varying short and long sentences during action.",
+        "positive": "A public-domain source model from Stevenson's Treasure Island: short and longer sentences vary during action.",
         "negative": "The crowd moved. Shouts. Blades. Blood. Panic. A fall. More shouts.",
     },
     {
@@ -385,7 +385,7 @@ SKILLS = [
             "The word choice narrows meaning rather than inflating tone.",
             "A reader can tell what changed after revision.",
         ],
-        "positive": "Hardy's rural nouns naming exact tools, plants, and relations.",
+        "positive": "A public-domain source model from Hardy's The Return of the Native: rural nouns name exact landscape features and relations.",
         "negative": "The fervent ice of her cold indifference burned quietly.",
     },
     {
@@ -403,7 +403,7 @@ SKILLS = [
             "A comma would be ambiguous or too weak.",
             "A period would break a useful relation.",
         ],
-        "positive": "A Gibbon sentence whose semicolons keep balanced historical clauses in relation.",
+        "positive": "A public-domain source model from Federalist No. 10: semicolons keep related political clauses in sequence.",
         "negative": "The moon rose; the soup was cold; sincerity is rare.",
     },
     {
@@ -421,7 +421,7 @@ SKILLS = [
             "Parenthetic and restrictive material are distinguished.",
             "The punctuation removes ambiguity.",
         ],
-        "positive": "A Woolf sentence whose commas mark parenthetic turns without losing the main clause.",
+        "positive": "A public-domain source model from Austen's Pride and Prejudice: commas mark parenthetic turns without losing the main clause.",
         "negative": "The captain, ordered, the sailors, to wait.",
     },
     {
@@ -439,7 +439,7 @@ SKILLS = [
             "Cadence supports emphasis.",
             "Sound changes do not alter meaning.",
         ],
-        "positive": "Melville's sea prose when cadence carries swell and pause without obscuring action.",
+        "positive": "A public-domain source model from Melville's Moby-Dick, chapter 1: sea prose uses cadence without obscuring action.",
         "negative": "The analysis is is in an area of airy irony.",
     },
     {
@@ -457,7 +457,7 @@ SKILLS = [
             "Meaning and register remain intact.",
             "The review does not over-police ordinary English joins.",
         ],
-        "positive": "A Tennyson line where sound pattern is deliberate music.",
+        "positive": "A public-domain source model from Tennyson's The Princess: a line where sound pattern is deliberate music.",
         "negative": "Ask Ken to pass us some analysis notes.",
     },
     {
@@ -475,7 +475,7 @@ SKILLS = [
             "The correction reduces distraction.",
             "Meaning remains exact.",
         ],
-        "positive": "Poe using vowel echo to sustain a poem's sound design.",
+        "positive": "A public-domain source model from Poe's The Raven: vowel echo sustains the poem's sound design.",
         "negative": "The pale sale failed mainly in May.",
     },
     {
@@ -493,7 +493,7 @@ SKILLS = [
             "The revision reduces noise without reducing precision.",
             "Any retained pattern serves meaning.",
         ],
-        "positive": "Coleridge using consonant repetition to imitate motion or pressure.",
+        "positive": "A public-domain source model from Coleridge's The Rime of the Ancient Mariner: consonant repetition imitates motion.",
         "negative": "The platform provides powerful proactive performance possibilities.",
     },
     {
@@ -511,7 +511,7 @@ SKILLS = [
             "The sentence remains idiomatic.",
             "No exact technical term is lost.",
         ],
-        "positive": "Blank verse that uses vowel contact deliberately in its meter.",
+        "positive": "A public-domain source model from Shakespeare's Hamlet: blank verse uses vowel contact deliberately in its meter.",
         "negative": "We agree entirely on airy aerial areas.",
     },
     {
@@ -529,7 +529,7 @@ SKILLS = [
             "The metrical observation explains an effect.",
             "The review does not impose meter on prose without need.",
         ],
-        "positive": "A Shakespeare pentameter line scanned by stress to explain emphasis.",
+        "positive": "A public-domain source model from Shakespeare's Sonnet 18: iambic pentameter can be scanned by stress to explain emphasis.",
         "negative": "Judging an English line only by Portuguese-style syllable count.",
     },
     {
@@ -547,7 +547,7 @@ SKILLS = [
             "Long and short units vary with the movement of thought.",
             "The revision can be read aloud smoothly.",
         ],
-        "positive": "The King James translators balancing clauses so sound and sense reinforce each other.",
+        "positive": "A public-domain source model from the King James Bible, Ecclesiastes 3: balanced clauses make sound and sense reinforce each other.",
         "negative": "A paragraph where every sentence has the same length and syntactic pattern.",
     },
     {
@@ -565,7 +565,7 @@ SKILLS = [
             "The vocabulary names the subject's own world.",
             "The sentence could not be moved unchanged to any subject of the same class.",
         ],
-        "positive": "Austen's exact social observation that could belong only to that character and room.",
+        "positive": "A public-domain source model from Austen's Emma, chapter 1: exact social observation belongs to that character and household.",
         "negative": "The queen of night spread her silver mantle over the sleeping earth.",
     },
     {
@@ -583,7 +583,7 @@ SKILLS = [
             "The image clarifies or intensifies the subject.",
             "No dead metaphor carries the main force.",
         ],
-        "positive": "Dickens comparing a legal fog to the actual fog around Chancery so image and institution meet.",
+        "positive": "A public-domain source model from Dickens's Bleak House, chapter 1: legal fog and actual fog meet in one image.",
         "negative": "Hope was a lighthouse, a sword, a garden, and a river in his heart.",
     },
     {
@@ -601,7 +601,7 @@ SKILLS = [
             "Nominalizations do not bury movement.",
             "The sentence has emphasis without inflation.",
         ],
-        "positive": "Conrad naming ship, sea, wind, and action with strong verbs.",
+        "positive": "A public-domain source model from Melville's Moby-Dick: ship, sea, force, and action are carried by strong verbs.",
         "negative": "The implementation of the evacuation was effected by the residents.",
     },
     {
@@ -619,7 +619,7 @@ SKILLS = [
             "The inversion does not obscure subject and verb.",
             "The direct order is worse for a named reason.",
         ],
-        "positive": "A poetic inversion in Wordsworth that places the landscape word under stress.",
+        "positive": "A public-domain source model from Wordsworth's Composed upon Westminster Bridge: inversion places the landscape under stress.",
         "negative": "Brightly the quarterly report did the manager submit.",
     },
     {
@@ -637,14 +637,57 @@ SKILLS = [
             "The grammar lets the reader compare like with like.",
             "The contrast adds force rather than ornament.",
         ],
-        "positive": "A Johnson antithesis where opposing clauses sharpen the moral judgment.",
+        "positive": "A public-domain source model from Federalist No. 51: the angels/men antithesis sharpens the political judgment.",
         "negative": "We are not merely shipping code; we are deciding destiny.",
     },
 ]
 
 
+SOURCE_NOTES = {
+    "description": ("Charles Dickens", "Bleak House", "chapter 1", "Positive model is a paraphrase of the fog description, not a quotation."),
+    "narration": ("Robert Louis Stevenson", "Treasure Island", "chapter 1", "Positive model is a paraphrase of Billy Bones's arrival and the first threat sequence."),
+    "dissertation": ("James Madison", "Federalist No. 10", "", "Positive model is a paraphrase of the faction argument, not a quotation."),
+    "style-qualities": ("Jane Austen", "Pride and Prejudice", "chapter 1", "Positive model is a paraphrase of Austen's balanced social irony, not a quotation."),
+    "correctness": ("George Eliot", "Middlemarch", "chapter 1", "Positive model is a paraphrase of Eliot's controlled long syntax, not a quotation."),
+    "solecism": ("Jane Austen", "Pride and Prejudice", "", "Positive model is a paraphrase of Austen dialogue, not a quotation."),
+    "spelling": ("Charlotte Bronte", "Jane Eyre", "chapter 1", "Positive model is about preserving source spelling in quotation while modernizing commentary."),
+    "word-formation": ("John Milton", "Paradise Lost", "book 1", "Positive model refers to Milton's coined place-name Pandemonium."),
+    "confused-words": ("Arthur Conan Doyle", "Sherlock Holmes stories", "", "Positive model is a paraphrase of Holmes's distinction between observation and inference."),
+    "foreignism": ("Joseph Conrad", "Heart of Darkness", "chapter 1", "Positive model is a paraphrase of nautical diction aboard the Nellie, not a quotation."),
+    "latinism": ("James Madison", "Federalist No. 51", "", "Positive model is a paraphrase of constitutional diction, not a quotation."),
+    "gallicism": ("William Makepeace Thackeray", "Vanity Fair", "", "Positive model is a paraphrase of social French loanword use, not a quotation."),
+    "archaism": ("William Shakespeare", "Hamlet", "act 1, scene 3", "Positive model refers to archaic wording preserved because it is source language."),
+    "neologism": ("H. G. Wells", "The Time Machine", "chapter 1", "Positive model refers to the Time Traveller naming a new imagined role."),
+    "concision": ("Abraham Lincoln", "Gettysburg Address", "", "Positive model is a paraphrase of Lincoln's compressed civic argument, not a quotation."),
+    "clarity": ("Abraham Lincoln", "Second Inaugural Address", "", "Positive model is a paraphrase of Lincoln's plain cause-and-consequence structure."),
+    "ambiguity": ("Henry James", "The Turn of the Screw", "", "Positive model is a paraphrase of point-of-view uncertainty, not a quotation."),
+    "anacoluthon": ("William Shakespeare", "King Lear", "act 2, scene 4", "Positive model is a paraphrase of broken syntax caused by emotion."),
+    "accumulation": ("Jane Austen", "Pride and Prejudice", "chapter 1", "Positive model is a paraphrase of Austen's controlled periodic syntax."),
+    "brachylogy": ("Robert Louis Stevenson", "Treasure Island", "", "Positive model is a paraphrase of sentence-length variation in action scenes."),
+    "precision": ("Thomas Hardy", "The Return of the Native", "", "Positive model is a paraphrase of Hardy's exact rural nouns, not a quotation."),
+    "semicolon": ("James Madison", "Federalist No. 10", "", "Positive model is a paraphrase of related political clauses, not a quotation."),
+    "comma": ("Jane Austen", "Pride and Prejudice", "", "Positive model is a paraphrase of comma-managed parenthesis, not a quotation."),
+    "harmony": ("Herman Melville", "Moby-Dick", "chapter 1", "Positive model is a paraphrase of cadence in sea prose, not a quotation."),
+    "cacophony": ("Alfred Tennyson", "The Princess", "", "Positive model is a paraphrase of deliberate musical sound patterning."),
+    "assonance": ("Edgar Allan Poe", "The Raven", "", "Positive model is a paraphrase of vowel echo, not a quotation."),
+    "alliteration": ("Samuel Taylor Coleridge", "The Rime of the Ancient Mariner", "", "Positive model is a paraphrase of consonant repetition used for motion."),
+    "hiatus": ("William Shakespeare", "Hamlet", "", "Positive model is a paraphrase of deliberate vowel contact in blank verse."),
+    "meter": ("William Shakespeare", "Sonnet 18", "", "Positive model refers to iambic pentameter scanned by stress."),
+    "prose-rhythm": ("King James Bible translators", "Ecclesiastes", "chapter 3", "Positive model is a paraphrase of balanced clause rhythm, not a quotation."),
+    "originality": ("Jane Austen", "Emma", "chapter 1", "Positive model is a paraphrase of exact social observation, not a quotation."),
+    "image": ("Charles Dickens", "Bleak House", "chapter 1", "Positive model is a paraphrase of the Chancery fog image, not a quotation."),
+    "vigor": ("Herman Melville", "Moby-Dick", "", "Positive model is a paraphrase of strong sea-action verbs, not a quotation."),
+    "inversion": ("William Wordsworth", "Composed upon Westminster Bridge", "", "Positive model is a paraphrase of poetic inversion used for emphasis."),
+    "antithesis": ("James Madison", "Federalist No. 51", "", "Positive model refers to the men/angels antithesis."),
+}
+
+
 def title(name: str) -> str:
     return " ".join(part.capitalize() for part in name.split("-"))
+
+
+def yaml_string(value: str) -> str:
+    return json.dumps(value)
 
 
 def skill_md(spec: dict[str, object]) -> str:
@@ -654,7 +697,6 @@ def skill_md(spec: dict[str, object]) -> str:
     description = str(spec["concept"]).rstrip(".")
     rules = "\n".join(f"- {rule}" for rule in spec["rules"])
     rubric = "\n".join(f"- {item}" for item in spec["rubric"])
-    labels = ", ".join(str(rule).split()[0].strip(".,").lower() for rule in spec["rules"][:3])
     return f"""---
 name: {skill_name}
 description: Apply Oiticica's {title_name.lower()} concept in modern English with concise rules, objective rubrics, and concrete contrast.
@@ -704,11 +746,51 @@ Pass only when every applicable check passes. If correctness fails, fix or name 
 
 Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
 
-## Eval Hooks
+## Source Boundary
 
-- Positive model: {spec["positive"]}
-- Negative model: {spec["negative"]}
-- Required labels should be concrete, such as `{labels}` or a more exact local relation.
+Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
+When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.
+"""
+
+
+def openai_yaml(spec: dict[str, object]) -> str:
+    name = str(spec["name"])
+    skill = f"oiticica-{name}"
+    title_name = title(name)
+    concept = str(spec["concept"]).rstrip(".")
+    return f"""interface:
+  display_name: {yaml_string(f"Oiticica {title_name}")}
+  short_description: {yaml_string(concept)}
+  default_prompt: {yaml_string(f"Use ${skill} to review English prose with a concrete Weak/Fault/Better/Why contrast.")}
+"""
+
+
+def notes_md(spec: dict[str, object]) -> str:
+    name = str(spec["name"])
+    skill = f"oiticica-{name}"
+    author, work, location, note = SOURCE_NOTES[name]
+    location_line = f"\n- Location: {location}" if location else ""
+    return f"""# Notes for {skill}
+
+## Modern English Example Boundary
+
+The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+
+## Positive Model Source
+
+- Author or source: {author}
+- Work: {work}{location_line}
+- Boundary: {note}
+
+## Positive Eval Example
+
+{spec["positive"]}
+
+## Negative Eval Example
+
+{spec["negative"]}
+
+Boundary: invented weak passage, not a public-domain quotation.
 """
 
 
@@ -724,10 +806,13 @@ def evals_json(spec: dict[str, object]) -> str:
                 "id": f"{name}-positive-classic-model",
                 "name": f"{name} positive classic model",
                 "prompt": (
-                    f"Use the {skill} skill. Review this English-classic model: {positive}. "
-                    f"Name the concept as {skill}. Treat the model as strong unless you find a concrete fault. "
+                    f"Use the {skill} skill. Example type: public-domain source-model paraphrase, not a quotation. "
+                    f"<example>{positive}</example> Task: name the concept as {skill}. Treat the described source-model relation as strong. "
+                    "Do not infer a fault from the absence of a longer source passage. In Preserve, copy only the literal text inside <example> exactly as supplied. "
+                    "If Preserve adds any source wording, quoted passage, or imagined prose, the answer fails. "
                     "Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. "
-                    "Under Rubric, give at least two named objective checks from the skill and mark pass or fail."
+                    "Under Rubric, give at least two named objective checks from the skill and mark pass or fail. "
+                    "For repair-only checks, mark Pass when no repair is needed because the model is strong."
                 ),
                 "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
                 "assertions": [
@@ -740,14 +825,15 @@ def evals_json(spec: dict[str, object]) -> str:
                 "id": f"{name}-negative-classic-contrast",
                 "name": f"{name} negative classic contrast",
                 "prompt": (
-                    f"Use the {skill} skill. Review this weak English-classic-style passage: {negative}. "
-                    "Give one concrete contrast with Weak, Fault, Better, Why, and Rubric. "
+                    f"Use the {skill} skill. Example type: invented weak passage, not a quotation. "
+                    f"Example: {negative}. Task: give one concrete contrast with Weak, Fault, Better, Why, and Rubric. "
+                    "Use the Example text exactly in Weak. "
                     "In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose."
                 ),
                 "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
                 "assertions": [
                     "The output includes Weak, Fault, Better, Why, and Rubric sections.",
-                    "The output names a concrete broken relation, false relation, sound collision, or conflicting readings rather than saying only unclear, awkward, or verbose.",
+                    "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
                     "The Better version repairs the fault while preserving the intended meaning.",
                 ],
             },
@@ -766,6 +852,8 @@ def readme() -> str:
 Modern English Codex skills derived from the first part of Jose Oiticica's `Manual de Estilo`.
 
 Each skill isolates one concept, gives shallow rules, applies English grammar and orthography, and includes positive and negative eval cases drawn from English-classic models or imitations.
+
+Each skill also includes `agents/openai.yaml` for agent UI metadata and `agents/notes.md` naming the public-domain source behind the positive model and the boundary for invented weak examples.
 
 ## Use
 
@@ -789,6 +877,7 @@ Static checks:
 python3 -m py_compile scripts/generate_skills.py
 python3 scripts/generate_skills.py --check
 bash -n scripts/link_skills.sh
+direnv exec . bash scripts/validate_skills.sh <skill-relpath>
 ```
 """
 
@@ -813,6 +902,8 @@ def main() -> int:
         skill_dir = SRC / f"oiticica-{spec['name']}"
         ok &= write(skill_dir / "SKILL.md", skill_md(spec), args.check)
         ok &= write(skill_dir / "evals" / "evals.json", evals_json(spec), args.check)
+        ok &= write(skill_dir / "agents" / "openai.yaml", openai_yaml(spec), args.check)
+        ok &= write(skill_dir / "agents" / "notes.md", notes_md(spec), args.check)
     ok &= write(ROOT / "README.md", readme(), args.check)
 
     if args.check and not ok:

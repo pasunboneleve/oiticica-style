@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Clarity"
+  short_description: "Clarity transmits thought in the form most easily understood"
+  default_prompt: "Use $oiticica-clarity to review English prose with a concrete Weak/Fault/Better/Why contrast."

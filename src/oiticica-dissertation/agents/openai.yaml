@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Dissertation"
+  short_description: "Dissertation is a sequence of opinions"
+  default_prompt: "Use $oiticica-dissertation to review English prose with a concrete Weak/Fault/Better/Why contrast."

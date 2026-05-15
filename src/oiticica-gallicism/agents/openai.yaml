@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Gallicism"
+  short_description: "Gallicism is foreignness drawn from French diction or syntax; in English, treat any imported construction by English idiom"
+  default_prompt: "Use $oiticica-gallicism to review English prose with a concrete Weak/Fault/Better/Why contrast."

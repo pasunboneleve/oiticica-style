@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Concision"
+  short_description: "Concision expresses aspects, facts, or opinions with the fewest words compatible with the other qualities"
+  default_prompt: "Use $oiticica-concision to review English prose with a concrete Weak/Fault/Better/Why contrast."

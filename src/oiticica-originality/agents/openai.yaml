@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Originality"
+  short_description: "Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms"
+  default_prompt: "Use $oiticica-originality to review English prose with a concrete Weak/Fault/Better/Why contrast."

@@ -1,0 +1,48 @@
+name: Skill CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: stable
+
+      - name: Install skill-validator
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          GOBIN="$HOME/.local/bin" go install github.com/agent-ecosystem/skill-validator/cmd/skill-validator@latest
+
+      - name: Determine skill validation scope
+        id: skill-scope
+        run: |
+          scripts/skill_ci_scope.sh \
+            "${{ github.event_name }}" \
+            "${{ github.sha }}" \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+
+      - name: Report skipped skill validation
+        if: steps.skill-scope.outputs.mode == 'skip'
+        run: echo "No changed src/ skill directories detected; skipping skill validation."
+
+      - name: Validate Codex skills
+        if: steps.skill-scope.outputs.mode != 'skip'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SKILL_VALIDATION_MODE: ${{ steps.skill-scope.outputs.mode }}
+          SKILL_VALIDATION_TARGETS: ${{ steps.skill-scope.outputs.skills }}
+        run: scripts/run_skill_ci_validation.sh

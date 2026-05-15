@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Vigor"
+  short_description: "Vigor is energy of expression in aspects, episodes, or conceptions"
+  default_prompt: "Use $oiticica-vigor to review English prose with a concrete Weak/Fault/Better/Why contrast."

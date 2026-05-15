@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Solecism"
+  short_description: "Solecism is an error of syntax"
+  default_prompt: "Use $oiticica-solecism to review English prose with a concrete Weak/Fault/Better/Why contrast."

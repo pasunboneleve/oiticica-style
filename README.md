@@ -4,6 +4,8 @@ Modern English Codex skills derived from the first part of Jose Oiticica's `Manu
 
 Each skill isolates one concept, gives shallow rules, applies English grammar and orthography, and includes positive and negative eval cases drawn from English-classic models or imitations.
 
+Each skill also includes `agents/openai.yaml` for agent UI metadata and `agents/notes.md` naming the public-domain source behind the positive model and the boundary for invented weak examples.
+
 ## Use
 
 Run:
@@ -60,4 +62,5 @@ Static checks:
 python3 -m py_compile scripts/generate_skills.py
 python3 scripts/generate_skills.py --check
 bash -n scripts/link_skills.sh
+direnv exec . bash scripts/validate_skills.sh <skill-relpath>
 ```

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Prose Rhythm"
+  short_description: "Harmony in prose comes from varied rhythmic groups arranged to fit sense"
+  default_prompt: "Use $oiticica-prose-rhythm to review English prose with a concrete Weak/Fault/Better/Why contrast."

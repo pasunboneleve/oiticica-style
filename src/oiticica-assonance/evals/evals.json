@@ -4,7 +4,7 @@
     {
       "id": "assonance-positive-classic-model",
       "name": "assonance positive classic model",
-      "prompt": "Use the oiticica-assonance skill. Review this English-classic model: Poe using vowel echo to sustain a poem's sound design. Name the concept as oiticica-assonance. Treat the model as strong unless you find a concrete fault. Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. Under Rubric, give at least two named objective checks from the skill and mark pass or fail.",
+      "prompt": "Use the oiticica-assonance skill. Example type: public-domain source-model paraphrase, not a quotation. <example>A public-domain source model from Poe's The Raven: vowel echo sustains the poem's sound design</example> Task: name the concept as oiticica-assonance. Treat the described source-model relation as strong. Do not infer a fault from the absence of a longer source passage. In Preserve, copy only the literal text inside <example> exactly as supplied. If Preserve adds any source wording, quoted passage, or imagined prose, the answer fails. Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. Under Rubric, give at least two named objective checks from the skill and mark pass or fail. For repair-only checks, mark Pass when no repair is needed because the model is strong.",
       "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
       "assertions": [
         "The output identifies the relevant Oiticica concept as oiticica-assonance or assonance.",
@@ -15,11 +15,11 @@
     {
       "id": "assonance-negative-classic-contrast",
       "name": "assonance negative classic contrast",
-      "prompt": "Use the oiticica-assonance skill. Review this weak English-classic-style passage: The pale sale failed mainly in May. Give one concrete contrast with Weak, Fault, Better, Why, and Rubric. In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose.",
+      "prompt": "Use the oiticica-assonance skill. Example type: invented weak passage, not a quotation. Example: The pale sale failed mainly in May. Task: give one concrete contrast with Weak, Fault, Better, Why, and Rubric. Use the Example text exactly in Weak. In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose.",
       "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
       "assertions": [
         "The output includes Weak, Fault, Better, Why, and Rubric sections.",
-        "The output names a concrete broken relation, false relation, sound collision, or conflicting readings rather than saying only unclear, awkward, or verbose.",
+        "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
         "The Better version repairs the fault while preserving the intended meaning."
       ]
     }

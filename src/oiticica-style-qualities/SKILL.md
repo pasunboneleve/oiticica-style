@@ -53,8 +53,7 @@ Pass only when every applicable check passes. If correctness fails, fix or name 
 
 Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
 
-## Eval Hooks
+## Source Boundary
 
-- Positive model: Austen's balanced free indirect prose where grammar, economy, clarity, rhythm, personal angle, and force work together.
-- Negative model: The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.
-- Required labels should be concrete, such as `judge, treat, treat` or a more exact local relation.
+Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
+When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.

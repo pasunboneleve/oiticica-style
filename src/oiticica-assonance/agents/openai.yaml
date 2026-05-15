@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Assonance"
+  short_description: "Assonance is repetition of vowel sounds"
+  default_prompt: "Use $oiticica-assonance to review English prose with a concrete Weak/Fault/Better/Why contrast."

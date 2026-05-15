@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Correctness"
+  short_description: "Correctness observes the grammatical tradition of the language being used"
+  default_prompt: "Use $oiticica-correctness to review English prose with a concrete Weak/Fault/Better/Why contrast."
