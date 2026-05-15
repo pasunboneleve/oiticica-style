@@ -4,23 +4,23 @@
     {
       "id": "neologism-positive-classic-model",
       "name": "neologism positive classic model",
-      "prompt": "Use the oiticica-neologism skill. Example type: public-domain source-model paraphrase, not a quotation. <example>A public-domain source model from Wells's The Time Machine, chapter 1: Time Traveller names a newly imagined role</example> Task: name the concept as oiticica-neologism. Treat the described source-model relation as strong. Do not infer a fault from the absence of a longer source passage. In Preserve, copy only the literal text inside <example> exactly as supplied. If Preserve adds any source wording, quoted passage, or imagined prose, the answer fails. Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. Under Rubric, give at least two named objective checks from the skill and mark pass or fail. For repair-only checks, mark Pass when no repair is needed because the model is strong.",
+      "prompt": "Assess this strong public-domain source-model paraphrase.\n\n<example>A public-domain source model from Wells's The Time Machine, chapter 1: Time Traveller names a newly imagined role</example>",
       "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
       "assertions": [
-        "The output identifies the relevant Oiticica concept as oiticica-neologism or neologism.",
-        "The output includes a Preserve section or explicitly says the model should be preserved or treated as strong.",
-        "The output applies at least two objective rubric checks instead of generic praise."
+        "The output identifies the relevant Oiticica concept as oiticica-neologism.",
+        "The output uses Principle, Preserve, Why, and Rubric sections, and does not use Weak, Fault, or Better as repair headings.",
+        "The Rubric applies at least two objective checks from the skill, with pass or fail judgments."
       ]
     },
     {
       "id": "neologism-negative-classic-contrast",
       "name": "neologism negative classic contrast",
-      "prompt": "Use the oiticica-neologism skill. Example type: invented weak passage, not a quotation. Example: We solutionized the problem through ideational futureproofment. Task: give one concrete contrast with Weak, Fault, Better, Why, and Rubric. Use the Example text exactly in Weak. In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose.",
+      "prompt": "Review this invented weak passage.\n\n<example>We solutionized the problem through ideational futureproofment</example>",
       "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
       "assertions": [
-        "The output includes Weak, Fault, Better, Why, and Rubric sections.",
-        "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
-        "The Better version repairs the fault while preserving the intended meaning."
+        "The output identifies the relevant Oiticica concept as oiticica-neologism.",
+        "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault.",
+        "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose."
       ]
     }
   ]

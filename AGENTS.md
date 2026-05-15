@@ -22,6 +22,7 @@ This repository contains modern English Codex skills derived from the first part
 - Modern English classic examples must come from public-domain, widely read English works or civic texts.
 - `agents/notes.md` must name the source behind each modern English example and say whether the eval text is a source-model paraphrase, an invented weak passage, or a quotation.
 - Eval prompts must keep the prompt instruction separate from the example text. If the example is not a quotation, say so.
+- Eval prompts must prove skill lift: without-skill runs should ideally fail 0% and with-skill runs should pass 100%. Do not make prompts self-contained by teaching the review shape, rubric, concept definition, or expected fault; that behavior belongs in `SKILL.md`.
 
 ## Link Script
 
@@ -39,3 +40,5 @@ direnv exec . bash scripts/validate_skills.sh <skill-relpath>
 ```
 
 Use `scripts/validate_skills.sh` for model-backed validation. Pass changed skill relpaths such as `oiticica-description` so unrelated skill evals do not run. The CI workflow uses `scripts/skill_ci_scope.sh` to choose focused validation when only skill directories changed, and full validation when workflow or script logic changes.
+
+The default model-backed gate requires at least 20 percentage points of pass-rate lift over the without-skill baseline and at least 90% with-skill pass rate.

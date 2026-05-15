@@ -18,11 +18,27 @@ Source concept: Neologism is a recently created or introduced word or expression
 
 ## Review Shape
 
-Use a concrete contrast:
+Use the source-model shape for strong models:
 
 ```markdown
 Principle:
-<one sentence naming the concept>
+<oiticica-neologism: one sentence naming the concept>
+
+Preserve:
+<supplied example text>
+
+Why:
+<why the model satisfies the concept>
+
+Rubric:
+<at least two objective checks, each marked Pass or Fail>
+```
+
+Use the repair shape for weak passages:
+
+```markdown
+Principle:
+<oiticica-neologism: one sentence naming the concept>
 
 Weak:
 <small passage or paraphrase>
@@ -37,8 +53,11 @@ Why:
 <explain how the revision restores the relation>
 
 Rubric:
-<pass/fail against the objective checks>
+<at least two objective checks, each marked Pass or Fail>
 ```
+
+Start `Principle` with the exact skill name `oiticica-neologism`.
+If the prompt says source-model or source-model paraphrase, copy the supplied example in `Preserve` and do not use repair headings.
 
 ## Objective Rubric
 

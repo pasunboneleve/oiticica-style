@@ -714,11 +714,27 @@ Source concept: {description}.
 
 ## Review Shape
 
-Use a concrete contrast:
+Use the source-model shape for strong models:
 
 ```markdown
 Principle:
-<one sentence naming the concept>
+<{skill_name}: one sentence naming the concept>
+
+Preserve:
+<supplied example text>
+
+Why:
+<why the model satisfies the concept>
+
+Rubric:
+<at least two objective checks, each marked Pass or Fail>
+```
+
+Use the repair shape for weak passages:
+
+```markdown
+Principle:
+<{skill_name}: one sentence naming the concept>
 
 Weak:
 <small passage or paraphrase>
@@ -733,8 +749,11 @@ Why:
 <explain how the revision restores the relation>
 
 Rubric:
-<pass/fail against the objective checks>
+<at least two objective checks, each marked Pass or Fail>
 ```
+
+Start `Principle` with the exact skill name `{skill_name}`.
+If the prompt says source-model or source-model paraphrase, copy the supplied example in `Preserve` and do not use repair headings.
 
 ## Objective Rubric
 
@@ -806,35 +825,28 @@ def evals_json(spec: dict[str, object]) -> str:
                 "id": f"{name}-positive-classic-model",
                 "name": f"{name} positive classic model",
                 "prompt": (
-                    f"Use the {skill} skill. Example type: public-domain source-model paraphrase, not a quotation. "
-                    f"<example>{positive}</example> Task: name the concept as {skill}. Treat the described source-model relation as strong. "
-                    "Do not infer a fault from the absence of a longer source passage. In Preserve, copy only the literal text inside <example> exactly as supplied. "
-                    "If Preserve adds any source wording, quoted passage, or imagined prose, the answer fails. "
-                    "Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. "
-                    "Under Rubric, give at least two named objective checks from the skill and mark pass or fail. "
-                    "For repair-only checks, mark Pass when no repair is needed because the model is strong."
+                    "Assess this strong public-domain source-model paraphrase.\n\n"
+                    f"<example>{positive}</example>"
                 ),
                 "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
                 "assertions": [
-                    f"The output identifies the relevant Oiticica concept as {skill} or {name}.",
-                    "The output includes a Preserve section or explicitly says the model should be preserved or treated as strong.",
-                    "The output applies at least two objective rubric checks instead of generic praise.",
+                    f"The output identifies the relevant Oiticica concept as {skill}.",
+                    "The output uses Principle, Preserve, Why, and Rubric sections, and does not use Weak, Fault, or Better as repair headings.",
+                    "The Rubric applies at least two objective checks from the skill, with pass or fail judgments.",
                 ],
             },
             {
                 "id": f"{name}-negative-classic-contrast",
                 "name": f"{name} negative classic contrast",
                 "prompt": (
-                    f"Use the {skill} skill. Example type: invented weak passage, not a quotation. "
-                    f"Example: {negative}. Task: give one concrete contrast with Weak, Fault, Better, Why, and Rubric. "
-                    "Use the Example text exactly in Weak. "
-                    "In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose."
+                    "Review this invented weak passage.\n\n"
+                    f"<example>{negative}</example>"
                 ),
                 "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
                 "assertions": [
-                    "The output includes Weak, Fault, Better, Why, and Rubric sections.",
+                    f"The output identifies the relevant Oiticica concept as {skill}.",
+                    "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault.",
                     "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
-                    "The Better version repairs the fault while preserving the intended meaning.",
                 ],
             },
         ],
