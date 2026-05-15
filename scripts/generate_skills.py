@@ -62,7 +62,7 @@ SKILLS = [
             "The conclusion follows from the stated sequence.",
         ],
         "positive": "A Johnson essay paragraph that states a moral claim, tests it with example, then turns the consequence.",
-        "negative": "An essay that stacks admirable nouns about liberty without saying what should be done.",
+        "negative": "Liberty is noble, sacred, splendid, and bright; tyranny is base, dark, hateful, and low.",
     },
     {
         "name": "style-qualities",
@@ -80,7 +80,7 @@ SKILLS = [
             "Sound, order, specificity, and energy support the meaning.",
         ],
         "positive": "Austen's balanced free indirect prose where grammar, economy, clarity, rhythm, personal angle, and force work together.",
-        "negative": "A grammatically correct paragraph that is vague, wordy, flat, and borrowed in every phrase.",
+        "negative": "The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.",
     },
     {
         "name": "correctness",
@@ -638,7 +638,7 @@ SKILLS = [
             "The contrast adds force rather than ornament.",
         ],
         "positive": "A Johnson antithesis where opposing clauses sharpen the moral judgment.",
-        "negative": "We are not building software; we are creating destiny.",
+        "negative": "We are not merely shipping code; we are deciding destiny.",
     },
 ]
 
@@ -725,12 +725,14 @@ def evals_json(spec: dict[str, object]) -> str:
                 "name": f"{name} positive classic model",
                 "prompt": (
                     f"Use the {skill} skill. Review this English-classic model: {positive}. "
-                    "Explain why the passage should be preserved rather than flattened."
+                    f"Name the concept as {skill}. Treat the model as strong unless you find a concrete fault. "
+                    "Do not rewrite it into a Weak/Better contrast. Use the headings Principle, Preserve, Why, and Rubric. "
+                    "Under Rubric, give at least two named objective checks from the skill and mark pass or fail."
                 ),
-                "expected_output": "The response preserves a strong classic model and judges it by the skill's objective rubric.",
+                "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
                 "assertions": [
-                    "The output identifies the relevant Oiticica concept.",
-                    "The output says the model should be preserved or treated as strong.",
+                    f"The output identifies the relevant Oiticica concept as {skill} or {name}.",
+                    "The output includes a Preserve section or explicitly says the model should be preserved or treated as strong.",
                     "The output applies at least two objective rubric checks instead of generic praise.",
                 ],
             },
@@ -739,12 +741,13 @@ def evals_json(spec: dict[str, object]) -> str:
                 "name": f"{name} negative classic contrast",
                 "prompt": (
                     f"Use the {skill} skill. Review this weak English-classic-style passage: {negative}. "
-                    "Give one concrete contrast with Weak, Fault, Better, Why, and Rubric."
+                    "Give one concrete contrast with Weak, Fault, Better, Why, and Rubric. "
+                    "In Fault, name the exact broken relation instead of relying on labels such as unclear, awkward, vague, or verbose."
                 ),
                 "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
                 "assertions": [
                     "The output includes Weak, Fault, Better, Why, and Rubric sections.",
-                    "The output names a concrete broken relation rather than saying only unclear, awkward, or verbose.",
+                    "The output names a concrete broken relation, false relation, sound collision, or conflicting readings rather than saying only unclear, awkward, or verbose.",
                     "The Better version repairs the fault while preserving the intended meaning.",
                 ],
             },

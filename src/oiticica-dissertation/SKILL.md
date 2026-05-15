@@ -56,5 +56,5 @@ Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do no
 ## Eval Hooks
 
 - Positive model: A Johnson essay paragraph that states a moral claim, tests it with example, then turns the consequence.
-- Negative model: An essay that stacks admirable nouns about liberty without saying what should be done.
+- Negative model: Liberty is noble, sacred, splendid, and bright; tyranny is base, dark, hateful, and low.
 - Required labels should be concrete, such as `state, give, distinguish` or a more exact local relation.

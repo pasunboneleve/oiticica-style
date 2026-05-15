@@ -56,5 +56,5 @@ Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do no
 ## Eval Hooks
 
 - Positive model: Austen's balanced free indirect prose where grammar, economy, clarity, rhythm, personal angle, and force work together.
-- Negative model: A grammatically correct paragraph that is vague, wordy, flat, and borrowed in every phrase.
+- Negative model: The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.
 - Required labels should be concrete, such as `judge, treat, treat` or a more exact local relation.

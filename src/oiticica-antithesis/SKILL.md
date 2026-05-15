@@ -56,5 +56,5 @@ Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do no
 ## Eval Hooks
 
 - Positive model: A Johnson antithesis where opposing clauses sharpen the moral judgment.
-- Negative model: We are not building software; we are creating destiny.
+- Negative model: We are not merely shipping code; we are deciding destiny.
 - Required labels should be concrete, such as `use, keep, do` or a more exact local relation.

@@ -1,0 +1,19 @@
+root: src
+workspace: /tmp/oiticica-style-evals
+baseline: true
+target: gpt-4o-mini
+judge: gpt-4o-mini
+baseUrl: https://api.openai.com/v1
+apiKeyEnv: OPENAI_API_KEY
+concurrency: 4
+layout: iteration
+strict: false
+report:
+  enabled: false
+logging:
+  format: jsonl
+  file: /tmp/oiticica-style-evals.jsonl
+targetParams:
+  temperature: 0
+judgeParams:
+  temperature: 0
