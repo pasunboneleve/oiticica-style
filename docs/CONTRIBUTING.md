@@ -1,7 +1,7 @@
 # Contributing
 
 This repository converts concepts from José Oiticica’s *Manual de Estilo* into
-modern English Codex skills.
+modern English [Codex](https://developers.openai.com/codex/cli) skills.
 
 The source of truth for generated skill files is `scripts/generate_skills.py`.
 Edit that script when adding or changing generated skill content. Do not hand

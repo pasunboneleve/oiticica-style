@@ -1,7 +1,7 @@
 # Oiticica style skills
 
-A catalogue of Codex writing skills adapted from José Oiticica’s
-*Manual de Estilo*.
+A catalogue of [Codex](https://developers.openai.com/codex/cli) writing skills
+adapted from José Oiticica’s *Manual de Estilo*.
 
 Oiticica’s method is unusually agent-friendly: name one virtue or vice of
 style, define it sharply, then test prose against examples. This repository

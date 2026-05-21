@@ -11,6 +11,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Changed
 
 - Linked the contribution guide mentions of `skill-validator` to its upstream repository.
+- Linked documentation mentions of Codex to the Codex CLI documentation.
 
 ## [0.1.0] - 2026-05-21
 
