@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-21
+
+### Changed
+
+- Linked the contribution guide mentions of `skill-validator` to its upstream repository.
+
 ## [0.1.0] - 2026-05-21
 
 ### Added
