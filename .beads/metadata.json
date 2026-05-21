@@ -1,7 +1,0 @@
-{
-  "database": "dolt",
-  "backend": "dolt",
-  "dolt_mode": "embedded",
-  "dolt_database": "oiticica_style",
-  "project_id": "809d8768-fa67-4022-9073-ad4f45d8f094"
-}
