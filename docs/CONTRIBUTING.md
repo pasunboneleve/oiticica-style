@@ -42,6 +42,22 @@ behavior belongs in `SKILL.md`.
 
 ## Validation
 
+`scripts/validate_skills.sh` is the main local validation wrapper. It installs
+`skill-validator` into `~/.local/bin` when that command is not already on
+`PATH`; this requires [Go](https://go.dev/). It also installs
+[`agent-skills-eval`](https://github.com/darkrishabh/agent-skills-eval)
+globally with Bun or npm when that command is not already on `PATH`.
+
+`skill-validator` checks skill structure, frontmatter, Markdown, token size, and
+allowed files. `agent-skills-eval` runs the model-backed evals in
+`evals/evals.json` against both a with-skill run and a without-skill baseline,
+then `scripts/check_eval_deltas.js` enforces the configured aggregate gates.
+Model-backed evals use `scripts/agent-skills-eval.yaml`, which sets target and
+judge temperature to `0`.
+
+For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
+`.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
+
 Run static checks before committing generated or documentation changes:
 
 ```bash
@@ -59,3 +75,7 @@ direnv exec . bash scripts/validate_skills.sh oiticica-concision
 Use additional skill names when several skills changed. Run the full suite only
 when shared generator, eval, or validation logic changes broadly enough to
 affect every skill.
+
+The default model-backed gate requires at least 20 percentage points of
+pass-rate lift over the without-skill baseline and at least 90% with-skill pass
+rate.

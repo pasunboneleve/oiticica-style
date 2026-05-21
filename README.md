@@ -58,6 +58,12 @@ The script links only skill directories. It does **not** install `AGENTS.md`,
 After linking, start Codex and invoke a skill by name, for example:
 
 ```text
+Use oiticica-style to diagnose and revise this paragraph.
+```
+
+or invoke a narrower principle directly:
+
+```text
 Use oiticica-concision to tighten this paragraph without losing meaning.
 ```
 
@@ -68,6 +74,10 @@ Use oiticica-ambiguity to find sentences that allow more than one reading.
 ```
 
 ## Skills
+
+### General router
+
+- [`oiticica-style`](src/oiticica-style/SKILL.md): Orchestrates the principle skills by identifying genre, eliminating defects, and applying qualities only where the passage needs them.
 
 ### Forms of composition
 
