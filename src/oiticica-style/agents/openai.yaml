@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Style"
+  short_description: "Route English prose through the relevant Oiticica principle skills"
+  default_prompt: "Use $oiticica-style to diagnose this passage, select the relevant Oiticica skills, and revise it."
