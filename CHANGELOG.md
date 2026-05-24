@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-24
+
 ### Changed
 
 - Switched repository task-tracking workflow instructions to Kata.
