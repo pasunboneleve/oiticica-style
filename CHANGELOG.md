@@ -16,6 +16,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Preserved model-backed validation defaults in `scripts/skilpel.yaml`.
 - Tightened `oiticica-style` preservation and ambiguity routing evals for released `skilpel` validation.
 
+### Fixed
+
+- Clean up temporary `skilpel` download directories and preserve download or checksum failures during validation.
+
 ## [0.1.1] - 2026-05-21
 
 ### Changed

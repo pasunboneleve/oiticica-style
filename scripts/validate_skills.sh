@@ -76,13 +76,19 @@ ensure_skilpel() {
 
   asset="skilpel-$os-$arch"
   tmp="$(mktemp -d "${TMPDIR:-/tmp}/skilpel-download.XXXXXX")" || return $?
+  local status=0
 
-  curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset" -o "$tmp/$asset"
-  curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset.sha256" -o "$tmp/$asset.sha256"
-  (cd "$tmp" && shasum -a 256 -c "$asset.sha256")
+  (
+    set -euo pipefail
+    curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset" -o "$tmp/$asset"
+    curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset.sha256" -o "$tmp/$asset.sha256"
+    (cd "$tmp" && shasum -a 256 -c "$asset.sha256")
 
-  mkdir -p "$INSTALL_ROOT/bin"
-  install -m 0755 "$tmp/$asset" "$INSTALL_ROOT/bin/skilpel"
+    mkdir -p "$INSTALL_ROOT/bin"
+    install -m 0755 "$tmp/$asset" "$INSTALL_ROOT/bin/skilpel"
+  ) || status=$?
+  rm -rf "$tmp"
+  return "$status"
 }
 
 validate_skill_args() {
