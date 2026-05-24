@@ -12,6 +12,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Changed generated skill eval files from JSON to YAML.
 - Replaced `agent-skills-eval` validation with latest-release `skilpel` validation.
 - Preserved model-backed validation defaults in `scripts/skilpel.yaml`.
+- Tightened `oiticica-style` preservation and ambiguity routing evals for released `skilpel` validation.
 
 ## [0.1.1] - 2026-05-21
 

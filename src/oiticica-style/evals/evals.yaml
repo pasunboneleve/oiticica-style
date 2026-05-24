@@ -38,18 +38,17 @@ evals:
     prompt: |
       Review and revise this sentence.
 
-      <example>Maya told the editor the article was wrong after reviewing the notes.</example>
+      <example>Maya told Omar the article was wrong after reviewing the notes.</example>
     expected_output: "The response selects the ambiguity skill rather than only generic clarity, and removes the double reading."
     assertions:
       - "The output selects oiticica-ambiguity with evidence from the phrase that allows more than one reading."
-      - "The Diagnosis states at least two possible readings or identifies the ambiguous attachment."
-      - "The Revision makes clear whether Maya or the editor reviewed the notes."
+      - "The Diagnosis identifies the ambiguous attachment by saying it is unclear whether Maya or Omar reviewed the notes."
   - id: "already-good-preserve"
     name: "already good preserve"
     prompt: |
       Review this sentence and revise only if needed.
 
-      <example>The payment handler records the provider event ID before it emits invoice-paid, so repeated webhooks cannot mark the invoice twice.</example>
+      <example>The cache stores user sessions for ten minutes.</example>
     expected_output: "The response preserves already clear prose and does not route to decorative sound or figure skills."
     assertions:
       - "The output says no revision is needed or preserves the sentence without substantive rewriting."
