@@ -4,7 +4,7 @@ This repository contains modern English Codex skills derived from the first part
 
 ## Workflow
 
-- Use `bd` for task tracking. Run `bd ready`, `bd show <id>`, `bd update <id> --claim`, and `bd close <id> --reason "<evidence>"`.
+- Use `kata` for task tracking. Run `kata ready --json`, `kata show <ref> --json`, `kata assign <ref> <owner> --json`, `kata comment <ref> --body "<note>" --json`, and `kata close <ref> --done --message "<validation and delivery evidence>" --commit <sha>`.
 - Work on a feature branch. Do not implement on `main`.
 - Do not push unless the user explicitly asks.
 - Do not push directly to `main`.
@@ -13,7 +13,7 @@ This repository contains modern English Codex skills derived from the first part
 ## Skill Rules
 
 - Every skill lives under `src/oiticica-*/SKILL.md`.
-- Every skill must have `evals/evals.json` with positive and negative eval cases.
+- Every skill must have `evals/evals.yaml` with positive and negative eval cases.
 - Every skill must have `agents/openai.yaml` and `agents/notes.md`.
 - Skill names and directories must use the `oiticica-` prefix.
 - Skills must be concise, modern English, and based on one concept from the first part of the manual.

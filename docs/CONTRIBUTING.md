@@ -5,7 +5,7 @@ modern English [Codex](https://developers.openai.com/codex/cli) skills.
 
 The source of truth for generated skill files is `scripts/generate_skills.py`.
 Edit that script when adding or changing generated skill content. Do not hand
-edit generated `SKILL.md`, `evals/evals.json`, `agents/openai.yaml`, or
+edit generated `SKILL.md`, `evals/evals.yaml`, `agents/openai.yaml`, or
 `agents/notes.md` files unless you are also changing the generator so the edit
 is reproducible.
 
@@ -45,17 +45,15 @@ behavior belongs in `SKILL.md`.
 `scripts/validate_skills.sh` is the main local validation wrapper. It installs
 [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) into
 `~/.local/bin` when that command is not already on `PATH`; this requires
-[Go](https://go.dev/). It also installs
-[`agent-skills-eval`](https://github.com/darkrishabh/agent-skills-eval)
-globally with Bun or npm when that command is not already on `PATH`.
+[Go](https://go.dev/). It also installs the latest released
+[`skilpel`](https://github.com/pasunboneleve/skilpel) executable artifact into
+`~/.local/bin` when that command is not already on `PATH`.
 
 [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) checks
 skill structure, frontmatter, Markdown, token size, and allowed files.
-`agent-skills-eval` runs the model-backed evals in
-`evals/evals.json` against both a with-skill run and a without-skill baseline,
-then `scripts/check_eval_deltas.js` enforces the configured aggregate gates.
-Model-backed evals use `scripts/agent-skills-eval.yaml`, which sets target and
-judge temperature to `0`.
+`skilpel` runs the model-backed evals in `evals/evals.yaml` against both a
+with-skill run and a without-skill baseline, then enforces the pass-rate and
+baseline-delta gates configured in `scripts/skilpel.yaml`.
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
 `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.

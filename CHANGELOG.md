@@ -6,6 +6,21 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-24
+
+### Changed
+
+- Switched repository task-tracking workflow instructions to Kata.
+- Changed generated skill eval files from JSON to YAML.
+- Replaced `agent-skills-eval` validation with latest-release `skilpel` validation.
+- Preserved model-backed validation defaults in `scripts/skilpel.yaml`.
+- Tightened `oiticica-style` preservation and ambiguity routing evals for released `skilpel` validation.
+
+### Fixed
+
+- Clean up temporary `skilpel` download directories and preserve download or checksum failures during validation.
+- Force pretty `skilpel` progress logs in GitHub Actions validation.
+
 ## [0.1.1] - 2026-05-21
 
 ### Changed

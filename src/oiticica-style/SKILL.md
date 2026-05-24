@@ -67,8 +67,9 @@ Use sound and figure skills only when the text demands them:
 - Do not turn a practical rewrite request into a long taxonomy.
 - For generic description with words such as `nice`, `impressive`, `beautiful`, `great`, `pleasant`, or `atmosphere`, select `oiticica-description` plus `oiticica-precision` or `oiticica-originality`.
 - For event sequence, causal order, condition before effect, or consequence before cause, select `oiticica-narration` plus `oiticica-clarity`; do not label the sequence issue as correctness unless grammar is actually wrong.
-- For ambiguous attachment, select `oiticica-ambiguity`, name both possible readings, and if the user gives no intended reading, choose one plausible reading in the revision and make the choice explicit.
+- For ambiguous attachment, select `oiticica-ambiguity` even when clarity or narration also applies. Name both possible readings, and if the user gives no intended reading, choose one plausible reading in the revision and make the choice explicit. In the revision, repeat the intended actor or object by name when a pronoun would preserve the ambiguity.
 - When the user says `revise only if needed`, revise only when a selected check fails. If selected checks pass, write `Revision: No revision needed.` A passing `oiticica-clarity`, `oiticica-concision`, or `oiticica-vigor` check is evidence to preserve, not permission to paraphrase.
+- For `revise only if needed`, do not treat smoother flow, streamlining, or a possible shorter wording as a need. Name the passing relation and stop unless there is a concrete defect in correctness, ambiguity, precision, order, force, or concision.
 - Treat compact causal prose as already strong when the actor, action order, and consequence are explicit. Do not replace a shorter causal link with a longer paraphrase unless it fixes a concrete fault in correctness, clarity, or force.
 
 ## Output shape

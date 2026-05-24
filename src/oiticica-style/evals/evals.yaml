@@ -1,0 +1,67 @@
+skill_name: "oiticica-style"
+evals:
+  - id: "description-generic-routing"
+    name: "description generic routing"
+    prompt: |
+      Review and revise this passage.
+
+      <example>The office was very nice and impressive. It had a beautiful desk, a great window, and a pleasant atmosphere.</example>
+    expected_output: "The response selects the relevant Oiticica skills for descriptive prose and revises the generic description with concrete detail."
+    assertions:
+      - "The output uses the orchestrator shape with Genre, Selected skills, Diagnosis, Revision, and Checks sections."
+      - "The output selects oiticica-description and at least one of oiticica-precision or oiticica-originality, with evidence from the passage."
+      - "The Revision replaces generic praise such as nice, impressive, beautiful, great, or pleasant with more concrete descriptive detail."
+  - id: "narration-sequence-routing"
+    name: "narration sequence routing"
+    prompt: |
+      Review and revise this passage.
+
+      <example>The alarm sounded after the team evacuated the room, because smoke had filled the hall before anyone noticed the burning wire.</example>
+    expected_output: "The response routes event prose through narration and clarity, then restores event order."
+    assertions:
+      - "The output uses the orchestrator shape with Genre, Selected skills, Diagnosis, Revision, and Checks sections."
+      - "The output identifies oiticica-narration as the genre and selects oiticica-clarity, with evidence from event order, cause, condition, or consequence."
+      - "The Revision puts the smoke, noticed wire, alarm, and evacuation into a clearer temporal or causal sequence."
+  - id: "correctness-before-polish"
+    name: "correctness before polish"
+    prompt: |
+      Review and revise this passage.
+
+      <example>Between you and I, the report were more impactful because it utilized fewer words.</example>
+    expected_output: "The response fixes correctness before applying concision or vigor."
+    assertions:
+      - "The output selects at least one correctness defect skill such as oiticica-correctness, oiticica-solecism, or oiticica-confused-words before any quality skill."
+      - "The Diagnosis names grammar, syntax, agreement, case, or word-choice faults before style polish."
+      - "The Revision fixes 'between you and I' and 'report were' while preserving the sentence's intended claim."
+  - id: "ambiguity-specific-routing"
+    name: "ambiguity specific routing"
+    prompt: |
+      Review and revise this sentence.
+
+      <example>Maya told Omar the article was wrong after reviewing the notes.</example>
+    expected_output: "The response selects the ambiguity skill rather than only generic clarity, and removes the double reading."
+    assertions:
+      - "The output selects oiticica-ambiguity with evidence from the phrase that allows more than one reading."
+      - "The Diagnosis identifies the ambiguous attachment by saying it is unclear whether Maya or Omar reviewed the notes."
+  - id: "already-good-preserve"
+    name: "already good preserve"
+    prompt: |
+      Review this sentence and revise only if needed.
+
+      <example>The cache stores user sessions for ten minutes.</example>
+    expected_output: "The response preserves already clear prose and does not route to decorative sound or figure skills."
+    assertions:
+      - "The output says no revision is needed or preserves the sentence without substantive rewriting."
+      - "The output identifies passing relations using relevant skills such as oiticica-clarity, oiticica-precision, or oiticica-vigor."
+      - "The output does not select unrelated sound or figure skills such as oiticica-alliteration, oiticica-assonance, oiticica-meter, oiticica-image, oiticica-inversion, or oiticica-antithesis."
+  - id: "single-skill-deference"
+    name: "single skill deference"
+    prompt: |
+      Use oiticica-concision on this sentence.
+
+      <example>The team made a decision to begin the implementation of the plan.</example>
+    expected_output: "The response defers to the named concision skill rather than running a broad audit."
+    assertions:
+      - "The output selects or uses oiticica-concision as the controlling skill."
+      - "The output does not run a broad multi-skill audit or select more than one additional skill unless it names a necessary correctness fault."
+      - "The Revision makes the sentence shorter while preserving the intended action."

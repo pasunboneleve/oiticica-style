@@ -1,0 +1,11 @@
+baseline: true
+provider: openai
+target: gpt-4o-mini
+judge: gpt-4o-mini
+apiKeyEnv: OPENAI_API_KEY
+minPass: 0.90
+minDelta: 0.20
+targetParams:
+  temperature: 0
+judgeParams:
+  temperature: 0

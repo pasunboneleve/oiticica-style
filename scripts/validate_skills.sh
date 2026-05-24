@@ -5,14 +5,10 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SKILLS_ROOT="${SKILLS_ROOT:-$ROOT/src}"
 INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
 SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
-AGENT_SKILLS_EVAL_VERSION="${AGENT_SKILLS_EVAL_VERSION:-latest}"
-AGENT_SKILLS_EVAL_API_KEY_ENV="${AGENT_SKILLS_EVAL_API_KEY_ENV:-OPENAI_API_KEY}"
-AGENT_SKILLS_EVAL_BASE_URL="${AGENT_SKILLS_EVAL_BASE_URL:-https://api.openai.com/v1}"
-AGENT_SKILLS_EVAL_TARGET="${AGENT_SKILLS_EVAL_TARGET:-gpt-4o-mini}"
-AGENT_SKILLS_EVAL_JUDGE="${AGENT_SKILLS_EVAL_JUDGE:-$AGENT_SKILLS_EVAL_TARGET}"
-AGENT_SKILLS_EVAL_WORKSPACE="${AGENT_SKILLS_EVAL_WORKSPACE:-${TMPDIR:-/tmp}/agent-skills-eval-oiticica-style}"
-AGENT_SKILLS_EVAL_MIN_PASS="${AGENT_SKILLS_EVAL_MIN_PASS:-0.90}"
-AGENT_SKILLS_EVAL_MIN_DELTA="${AGENT_SKILLS_EVAL_MIN_DELTA:-0.20}"
+SKILPEL_DOWNLOAD_BASE="${SKILPEL_DOWNLOAD_BASE:-https://github.com/pasunboneleve/skilpel/releases/latest/download}"
+SKILPEL_CONFIG="${SKILPEL_CONFIG:-$ROOT/scripts/skilpel.yaml}"
+SKILPEL_LOG_FORMAT="${SKILPEL_LOG_FORMAT:-auto}"
+SKILPEL_WORKSPACE="${SKILPEL_WORKSPACE:-${TMPDIR:-/tmp}/skilpel-oiticica-style}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
 usage() {
@@ -33,23 +29,67 @@ ensure_skill_validator() {
   GOBIN="$INSTALL_ROOT/bin" go install "github.com/agent-ecosystem/skill-validator/cmd/skill-validator@$SKILL_VALIDATOR_VERSION"
 }
 
-ensure_eval_validator() {
-  if command -v agent-skills-eval >/dev/null 2>&1; then
+ensure_skilpel() {
+  local arch
+  local asset
+  local os
+  local tmp
+
+  if command -v skilpel >/dev/null 2>&1; then
     return 0
   fi
 
-  if command -v bun >/dev/null 2>&1; then
-    bun add -g "agent-skills-eval@$AGENT_SKILLS_EVAL_VERSION"
-    return $?
+  if ! command -v curl >/dev/null 2>&1; then
+    printf 'error: skilpel is not in PATH and curl is unavailable to download it\n' >&2
+    return 1
   fi
 
-  if command -v npm >/dev/null 2>&1; then
-    npm install -g "agent-skills-eval@$AGENT_SKILLS_EVAL_VERSION"
-    return $?
+  if ! command -v shasum >/dev/null 2>&1; then
+    printf 'error: skilpel is not in PATH and shasum is unavailable to verify it\n' >&2
+    return 1
   fi
 
-  printf 'error: agent-skills-eval is not in PATH and neither bun nor npm is available to install it\n' >&2
-  return 1
+  case "$(uname -s)" in
+    Linux)
+      os=linux
+      ;;
+    Darwin)
+      os=darwin
+      ;;
+    *)
+      printf 'error: unsupported skilpel release platform: %s\n' "$(uname -s)" >&2
+      return 1
+      ;;
+  esac
+
+  case "$(uname -m)" in
+    x86_64 | amd64)
+      arch=amd64
+      ;;
+    arm64 | aarch64)
+      arch=arm64
+      ;;
+    *)
+      printf 'error: unsupported skilpel release architecture: %s\n' "$(uname -m)" >&2
+      return 1
+      ;;
+  esac
+
+  asset="skilpel-$os-$arch"
+  tmp="$(mktemp -d "${TMPDIR:-/tmp}/skilpel-download.XXXXXX")" || return $?
+  local status=0
+
+  (
+    set -euo pipefail
+    curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset" -o "$tmp/$asset"
+    curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset.sha256" -o "$tmp/$asset.sha256"
+    (cd "$tmp" && shasum -a 256 -c "$asset.sha256")
+
+    mkdir -p "$INSTALL_ROOT/bin"
+    install -m 0755 "$tmp/$asset" "$INSTALL_ROOT/bin/skilpel"
+  ) || status=$?
+  rm -rf "$tmp"
+  return "$status"
 }
 
 validate_skill_args() {
@@ -68,51 +108,23 @@ validate_skill_args() {
   done
 }
 
-run_eval_validator() {
-  local eval_status=0
+run_skilpel() {
   local run_workspace
   local skill
-  local include_args=()
+  local skill_args=()
 
   for skill in "$@"; do
-    include_args+=(--include "$skill")
+    skill_args+=(--skill "$skill")
   done
 
-  run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
+  run_workspace="$(mktemp -d "${SKILPEL_WORKSPACE%/}.XXXXXX")" || return $?
 
-  agent-skills-eval \
-    --config "$ROOT/scripts/agent-skills-eval.yaml" \
-    "$SKILLS_ROOT" \
-    "${include_args[@]}" \
+  skilpel run \
+    --config "$SKILPEL_CONFIG" \
+    --root "$SKILLS_ROOT" \
     --workspace "$run_workspace" \
-    --baseline \
-    --target "$AGENT_SKILLS_EVAL_TARGET" \
-    --judge "$AGENT_SKILLS_EVAL_JUDGE" \
-    --base-url "$AGENT_SKILLS_EVAL_BASE_URL" \
-    --api-key-env "$AGENT_SKILLS_EVAL_API_KEY_ENV" \
-    --no-report || eval_status=$?
-
-  if ((eval_status != 0)); then
-    printf 'agent-skills-eval exited with status %d; checking configured aggregate gates\n' "$eval_status" >&2
-  fi
-
-  check_eval_deltas "$run_workspace"
-}
-
-check_eval_deltas() {
-  local workspace="$1"
-  local js_runtime
-
-  if command -v node >/dev/null 2>&1; then
-    js_runtime=node
-  elif command -v bun >/dev/null 2>&1; then
-    js_runtime=bun
-  else
-    printf 'error: neither node nor bun is available to check agent-skills-eval deltas\n' >&2
-    return 1
-  fi
-
-  "$js_runtime" "$ROOT/scripts/check_eval_deltas.js" "$workspace" "$AGENT_SKILLS_EVAL_MIN_DELTA" "$AGENT_SKILLS_EVAL_MIN_PASS"
+    --log-format "$SKILPEL_LOG_FORMAT" \
+    "${skill_args[@]}"
 }
 
 run_skill_validator() {
@@ -141,9 +153,9 @@ run_skill_validator_path() {
 main() {
   validate_skill_args "$@" || return $?
   ensure_skill_validator || return $?
-  ensure_eval_validator || return $?
+  ensure_skilpel || return $?
   run_skill_validator "$@" || return $?
-  run_eval_validator "$@" || return $?
+  run_skilpel "$@" || return $?
 }
 
 main "$@"

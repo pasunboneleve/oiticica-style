@@ -813,45 +813,65 @@ Boundary: invented weak passage, not a public-domain quotation.
 """
 
 
-def evals_json(spec: dict[str, object]) -> str:
+def yaml_scalar(value: str) -> str:
+    return json.dumps(value)
+
+
+def yaml_block(value: str, indent: int) -> str:
+    prefix = " " * indent
+    return "\n".join(f"{prefix}{line}" if line else prefix.rstrip() for line in value.splitlines())
+
+
+def evals_yaml(spec: dict[str, object]) -> str:
     name = spec["name"]
     skill = f"oiticica-{name}"
     positive = str(spec["positive"]).rstrip(".")
     negative = str(spec["negative"]).rstrip(".")
-    data = {
-        "skill_name": skill,
-        "evals": [
-            {
-                "id": f"{name}-positive-classic-model",
-                "name": f"{name} positive classic model",
-                "prompt": (
-                    "Assess this strong public-domain source-model paraphrase.\n\n"
-                    f"<example>{positive}</example>"
-                ),
-                "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
-                "assertions": [
-                    f"The output identifies the relevant Oiticica concept as {skill}.",
-                    "The output uses Principle, Preserve, Why, and Rubric sections, and does not use Weak, Fault, or Better as repair headings.",
-                    "The Rubric applies at least two objective checks from the skill, with pass or fail judgments.",
-                ],
-            },
-            {
-                "id": f"{name}-negative-classic-contrast",
-                "name": f"{name} negative classic contrast",
-                "prompt": (
-                    "Review this invented weak passage.\n\n"
-                    f"<example>{negative}</example>"
-                ),
-                "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
-                "assertions": [
-                    f"The output identifies the relevant Oiticica concept as {skill}.",
-                    "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault.",
-                    "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
-                ],
-            },
-        ],
-    }
-    return json.dumps(data, indent=2) + "\n"
+    evals = [
+        {
+            "id": f"{name}-positive-classic-model",
+            "name": f"{name} positive classic model",
+            "prompt": (
+                "Assess this strong public-domain source-model paraphrase.\n\n"
+                f"<example>{positive}</example>"
+            ),
+            "expected_output": "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks.",
+            "assertions": [
+                f"The output identifies the relevant Oiticica concept as {skill}.",
+                "The output uses Principle, Preserve, Why, and Rubric sections, and does not use Weak, Fault, or Better as repair headings.",
+                "The Rubric applies at least two objective checks from the skill, with pass or fail judgments.",
+            ],
+        },
+        {
+            "id": f"{name}-negative-classic-contrast",
+            "name": f"{name} negative classic contrast",
+            "prompt": (
+                "Review this invented weak passage.\n\n"
+                f"<example>{negative}</example>"
+            ),
+            "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",
+            "assertions": [
+                f"The output identifies the relevant Oiticica concept as {skill}.",
+                "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault.",
+                "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
+            ],
+        },
+    ]
+
+    lines = [f"skill_name: {yaml_scalar(skill)}", "evals:"]
+    for item in evals:
+        lines.extend(
+            [
+                f"  - id: {yaml_scalar(item['id'])}",
+                f"    name: {yaml_scalar(item['name'])}",
+                "    prompt: |",
+                yaml_block(str(item["prompt"]), 6),
+                f"    expected_output: {yaml_scalar(item['expected_output'])}",
+                "    assertions:",
+            ]
+        )
+        lines.extend(f"      - {yaml_scalar(assertion)}" for assertion in item["assertions"])
+    return "\n".join(lines) + "\n"
 
 
 def readme_has_all_skills() -> bool:
@@ -892,10 +912,16 @@ def main() -> int:
     ok = True
     for spec in SKILLS:
         skill_dir = SRC / f"oiticica-{spec['name']}"
+        stale_json_eval = skill_dir / "evals" / "evals.json"
         ok &= write(skill_dir / "SKILL.md", skill_md(spec), args.check)
-        ok &= write(skill_dir / "evals" / "evals.json", evals_json(spec), args.check)
+        ok &= write(skill_dir / "evals" / "evals.yaml", evals_yaml(spec), args.check)
         ok &= write(skill_dir / "agents" / "openai.yaml", openai_yaml(spec), args.check)
         ok &= write(skill_dir / "agents" / "notes.md", notes_md(spec), args.check)
+        if args.check and stale_json_eval.exists():
+            print(f"stale generated eval file remains: {stale_json_eval.relative_to(ROOT)}")
+            ok = False
+        elif not args.check and stale_json_eval.exists():
+            stale_json_eval.unlink()
     if args.check:
         ok &= readme_has_all_skills()
 
