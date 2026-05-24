@@ -1,5 +1,8 @@
 # Oiticica style skills
 
+[![Skill CI](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml?query=event%3Apull_request)
+[![Release](https://img.shields.io/github/v/tag/pasunboneleve/oiticica-style?label=release)](https://github.com/pasunboneleve/oiticica-style/tags)
+
 A catalogue of [Codex](https://developers.openai.com/codex/cli) writing skills
 adapted from José Oiticica’s *Manual de Estilo*.
 
