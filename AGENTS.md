@@ -4,7 +4,7 @@ This repository contains modern English Codex skills derived from the first part
 
 ## Workflow
 
-- Use `bd` for task tracking. Run `bd ready`, `bd show <id>`, `bd update <id> --claim`, and `bd close <id> --reason "<evidence>"`.
+- Use `kata` for task tracking. Run `kata ready --json`, `kata show <ref> --json`, `kata assign <ref> <owner> --json`, `kata comment <ref> --body "<note>" --json`, and `kata close <ref> --done --message "<validation and delivery evidence>" --commit <sha>`.
 - Work on a feature branch. Do not implement on `main`.
 - Do not push unless the user explicitly asks.
 - Do not push directly to `main`.
