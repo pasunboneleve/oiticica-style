@@ -45,4 +45,5 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SKILL_VALIDATION_MODE: ${{ steps.skill-scope.outputs.mode }}
           SKILL_VALIDATION_TARGETS: ${{ steps.skill-scope.outputs.skills }}
+          SKILPEL_LOG_FORMAT: pretty
         run: scripts/run_skill_ci_validation.sh

@@ -20,7 +20,7 @@ evals:
     expected_output: "The response routes event prose through narration and clarity, then restores event order."
     assertions:
       - "The output uses the orchestrator shape with Genre, Selected skills, Diagnosis, Revision, and Checks sections."
-      - "The output selects oiticica-narration and oiticica-clarity, with evidence from event order, cause, condition, or consequence."
+      - "The output identifies oiticica-narration as the genre and selects oiticica-clarity, with evidence from event order, cause, condition, or consequence."
       - "The Revision puts the smoke, noticed wire, alarm, and evacuation into a clearer temporal or causal sequence."
   - id: "correctness-before-polish"
     name: "correctness before polish"

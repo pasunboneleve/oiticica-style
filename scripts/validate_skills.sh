@@ -7,6 +7,7 @@ INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
 SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
 SKILPEL_DOWNLOAD_BASE="${SKILPEL_DOWNLOAD_BASE:-https://github.com/pasunboneleve/skilpel/releases/latest/download}"
 SKILPEL_CONFIG="${SKILPEL_CONFIG:-$ROOT/scripts/skilpel.yaml}"
+SKILPEL_LOG_FORMAT="${SKILPEL_LOG_FORMAT:-auto}"
 SKILPEL_WORKSPACE="${SKILPEL_WORKSPACE:-${TMPDIR:-/tmp}/skilpel-oiticica-style}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
@@ -122,6 +123,7 @@ run_skilpel() {
     --config "$SKILPEL_CONFIG" \
     --root "$SKILLS_ROOT" \
     --workspace "$run_workspace" \
+    --log-format "$SKILPEL_LOG_FORMAT" \
     "${skill_args[@]}"
 }
 

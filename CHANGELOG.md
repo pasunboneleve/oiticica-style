@@ -19,6 +19,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Fixed
 
 - Clean up temporary `skilpel` download directories and preserve download or checksum failures during validation.
+- Force pretty `skilpel` progress logs in GitHub Actions validation.
 
 ## [0.1.1] - 2026-05-21
 
