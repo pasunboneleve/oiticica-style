@@ -13,7 +13,7 @@ This repository contains modern English Codex skills derived from the first part
 ## Skill Rules
 
 - Every skill lives under `src/oiticica-*/SKILL.md`.
-- Every skill must have `evals/evals.json` with positive and negative eval cases.
+- Every skill must have `evals/evals.yaml` with positive and negative eval cases.
 - Every skill must have `agents/openai.yaml` and `agents/notes.md`.
 - Skill names and directories must use the `oiticica-` prefix.
 - Skills must be concise, modern English, and based on one concept from the first part of the manual.

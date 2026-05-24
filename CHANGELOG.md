@@ -9,6 +9,9 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Changed
 
 - Switched repository task-tracking workflow instructions to Kata.
+- Changed generated skill eval files from JSON to YAML.
+- Replaced `agent-skills-eval` validation with latest-release `skilpel` validation.
+- Preserved model-backed validation defaults in `scripts/skilpel.yaml`.
 
 ## [0.1.1] - 2026-05-21
 
