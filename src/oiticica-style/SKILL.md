@@ -105,3 +105,5 @@ Before answering, verify that:
 - every selected skill has evidence in the passage;
 - all blocking defects are handled before qualities;
 - the revision preserves the original meaning, facts, and intended register.
+
+Source notes live in `references/notes.md`.
