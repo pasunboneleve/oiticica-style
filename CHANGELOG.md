@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-25
+
 ### Changed
 
 - Moved generated skill source notes from `agents/notes.md` to `references/notes.md`.
@@ -18,6 +20,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Documentation
 
+- Added README validation and release badges.
 - Documented the `skilpel` validation output split and `SKILPEL_OUTPUT=json`
   override.
 
