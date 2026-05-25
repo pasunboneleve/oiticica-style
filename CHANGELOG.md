@@ -10,6 +10,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 - Replaced positive skill eval source-model paraphrases with exact public-domain quotations and recorded exact source references in agent notes.
 
+### Changed
+
+- Moved generated skill source notes from `agents/notes.md` to `references/notes.md`.
+
 ## [0.2.0] - 2026-05-24
 
 ### Changed

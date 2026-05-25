@@ -1064,12 +1064,18 @@ def main() -> int:
         ok &= write(skill_dir / "SKILL.md", skill_md(spec), args.check)
         ok &= write(skill_dir / "evals" / "evals.yaml", evals_yaml(spec), args.check)
         ok &= write(skill_dir / "agents" / "openai.yaml", openai_yaml(spec), args.check)
-        ok &= write(skill_dir / "agents" / "notes.md", notes_md(spec), args.check)
+        stale_agent_notes = skill_dir / "agents" / "notes.md"
+        ok &= write(skill_dir / "references" / "notes.md", notes_md(spec), args.check)
         if args.check and stale_json_eval.exists():
             print(f"stale generated eval file remains: {stale_json_eval.relative_to(ROOT)}")
             ok = False
+        if args.check and stale_agent_notes.exists():
+            print(f"stale generated notes file remains: {stale_agent_notes.relative_to(ROOT)}")
+            ok = False
         elif not args.check and stale_json_eval.exists():
             stale_json_eval.unlink()
+        if not args.check and stale_agent_notes.exists():
+            stale_agent_notes.unlink()
     if args.check:
         ok &= readme_has_all_skills()
 

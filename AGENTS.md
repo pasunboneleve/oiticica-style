@@ -14,13 +14,13 @@ This repository contains modern English Codex skills derived from the first part
 
 - Every skill lives under `src/oiticica-*/SKILL.md`.
 - Every skill must have `evals/evals.yaml` with positive and negative eval cases.
-- Every skill must have `agents/openai.yaml` and `agents/notes.md`.
+- Every skill must have `agents/openai.yaml` and `references/notes.md`.
 - Skill names and directories must use the `oiticica-` prefix.
 - Skills must be concise, modern English, and based on one concept from the first part of the manual.
 - Apply English grammar, punctuation, morphology, idiom, and prosody. Do not carry Portuguese orthography or grammar into English.
 - Prefer shallow, objective rules over long explanation.
 - Modern English classic examples must come from public-domain, widely read English works or civic texts.
-- `agents/notes.md` must name the source behind each modern English example and say whether the eval text is a source-model paraphrase, an invented weak passage, or a quotation.
+- `references/notes.md` must name the source behind each modern English example and say whether the eval text is a source-model paraphrase, an invented weak passage, or a quotation.
 - Eval prompts must keep the prompt instruction separate from the example text. If the example is not a quotation, say so.
 - Eval prompts must prove skill lift: without-skill runs should ideally fail 0% and with-skill runs should pass 100%. Do not make prompts self-contained by teaching the review shape, rubric, concept definition, or expected fault; that behavior belongs in `SKILL.md`.
 

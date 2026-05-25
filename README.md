@@ -141,7 +141,7 @@ Each skill contains:
 
 - `SKILL.md` — the rule, boundary, examples, and application notes.
 - `agents/openai.yaml` — agent UI metadata.
-- `agents/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
+- `references/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
 
 Positive examples are sourced from public-domain English texts, such as
 Shakespeare, the Federalist Papers, and other classic works. Source notes mark

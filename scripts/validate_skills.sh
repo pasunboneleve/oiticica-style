@@ -145,7 +145,7 @@ run_skill_validator_path() {
     --emit-annotations \
     --strict \
     --skip links \
-    --allow-dirs agents,evals,examples,home \
+    --allow-dirs agents,evals,examples,home,references \
     --allow-flat-layouts \
     "$1"
 }

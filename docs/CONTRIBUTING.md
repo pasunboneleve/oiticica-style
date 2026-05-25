@@ -6,7 +6,7 @@ modern English [Codex](https://developers.openai.com/codex/cli) skills.
 The source of truth for generated skill files is `scripts/generate_skills.py`.
 Edit that script when adding or changing generated skill content. Do not hand
 edit generated `SKILL.md`, `evals/evals.yaml`, `agents/openai.yaml`, or
-`agents/notes.md` files unless you are also changing the generator so the edit
+`references/notes.md` files unless you are also changing the generator so the edit
 is reproducible.
 
 `README.md` is hand edited. Keep every generated skill linked in its skill
@@ -32,7 +32,7 @@ Use public-domain English classics or civic texts for positive examples, such
 as Shakespeare, the Federalist Papers, Austen, Dickens, Milton, Lincoln, or
 other widely read sources.
 
-Each `agents/notes.md` entry must name the source behind the example and state
+Each `references/notes.md` entry must name the source behind the example and state
 whether the eval passage is a quotation, a source-model paraphrase, or an
 invented weak contrast.
 
