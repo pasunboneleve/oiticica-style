@@ -6,6 +6,16 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Explicitly request `skilpel` text summaries in skill validation while keeping
+  the latest-release executable download.
+
+### Documentation
+
+- Documented the `skilpel` validation output split and `SKILPEL_OUTPUT=json`
+  override.
+
 ## [0.2.0] - 2026-05-24
 
 ### Changed

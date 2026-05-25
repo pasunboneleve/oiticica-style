@@ -8,7 +8,9 @@ SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
 SKILPEL_DOWNLOAD_BASE="${SKILPEL_DOWNLOAD_BASE:-https://github.com/pasunboneleve/skilpel/releases/latest/download}"
 SKILPEL_CONFIG="${SKILPEL_CONFIG:-$ROOT/scripts/skilpel.yaml}"
 SKILPEL_LOG_FORMAT="${SKILPEL_LOG_FORMAT:-auto}"
+SKILPEL_OUTPUT="${SKILPEL_OUTPUT:-text}"
 SKILPEL_WORKSPACE="${SKILPEL_WORKSPACE:-${TMPDIR:-/tmp}/skilpel-oiticica-style}"
+SKILPEL="${SKILPEL:-$INSTALL_ROOT/bin/skilpel}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
 usage() {
@@ -33,19 +35,20 @@ ensure_skilpel() {
   local arch
   local asset
   local os
+  local skilpel_dir
   local tmp
 
-  if command -v skilpel >/dev/null 2>&1; then
+  if [[ -x "$SKILPEL" ]]; then
     return 0
   fi
 
   if ! command -v curl >/dev/null 2>&1; then
-    printf 'error: skilpel is not in PATH and curl is unavailable to download it\n' >&2
+    printf 'error: skilpel is not installed and curl is unavailable to download it\n' >&2
     return 1
   fi
 
   if ! command -v shasum >/dev/null 2>&1; then
-    printf 'error: skilpel is not in PATH and shasum is unavailable to verify it\n' >&2
+    printf 'error: skilpel is not installed and shasum is unavailable to verify it\n' >&2
     return 1
   fi
 
@@ -76,6 +79,7 @@ ensure_skilpel() {
   esac
 
   asset="skilpel-$os-$arch"
+  skilpel_dir="$(dirname "$SKILPEL")"
   tmp="$(mktemp -d "${TMPDIR:-/tmp}/skilpel-download.XXXXXX")" || return $?
   local status=0
 
@@ -85,8 +89,8 @@ ensure_skilpel() {
     curl -fsSL "$SKILPEL_DOWNLOAD_BASE/$asset.sha256" -o "$tmp/$asset.sha256"
     (cd "$tmp" && shasum -a 256 -c "$asset.sha256")
 
-    mkdir -p "$INSTALL_ROOT/bin"
-    install -m 0755 "$tmp/$asset" "$INSTALL_ROOT/bin/skilpel"
+    mkdir -p "$skilpel_dir"
+    install -m 0755 "$tmp/$asset" "$SKILPEL"
   ) || status=$?
   rm -rf "$tmp"
   return "$status"
@@ -119,11 +123,12 @@ run_skilpel() {
 
   run_workspace="$(mktemp -d "${SKILPEL_WORKSPACE%/}.XXXXXX")" || return $?
 
-  skilpel run \
+  "$SKILPEL" run \
     --config "$SKILPEL_CONFIG" \
     --root "$SKILLS_ROOT" \
     --workspace "$run_workspace" \
     --log-format "$SKILPEL_LOG_FORMAT" \
+    --output "$SKILPEL_OUTPUT" \
     "${skill_args[@]}"
 }
 

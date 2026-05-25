@@ -157,7 +157,10 @@ direnv exec . bash scripts/validate_skills.sh oiticica-concision
 ```
 
 Use `scripts/validate_skills.sh` with changed skill names so unrelated skill
-evals do not run.
+evals do not run. The wrapper downloads the latest released `skilpel`
+executable to `~/.local/bin/skilpel` and prints human-readable validation
+results by default; set `SKILPEL_OUTPUT=json` when a machine-readable summary
+is needed.
 
 ## Contributing
 
