@@ -16,7 +16,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Fixed
 
-- Replaced positive skill eval source-model paraphrases with exact public-domain quotations and recorded exact source references in agent notes.
+- Replaced positive skill eval source-model paraphrases with exact public-domain quotations and recorded exact source references in `references/notes.md`.
 
 ### Documentation
 
