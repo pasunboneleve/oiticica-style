@@ -47,13 +47,19 @@ behavior belongs in `SKILL.md`.
 `~/.local/bin` when that command is not already on `PATH`; this requires
 [Go](https://go.dev/). It also installs the latest released
 [`skilpel`](https://github.com/pasunboneleve/skilpel) executable artifact into
-`~/.local/bin` when that command is not already on `PATH`.
+`~/.local/bin/skilpel` when that managed executable is not already present. Set
+`SKILPEL=/path/to/skilpel` to test a local build explicitly.
 
 [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) checks
 skill structure, frontmatter, Markdown, token size, and allowed files.
 `skilpel` runs the model-backed evals in `evals/evals.yaml` against both a
 with-skill run and a without-skill baseline, then enforces the pass-rate and
 baseline-delta gates configured in `scripts/skilpel.yaml`.
+
+The wrapper requests `skilpel`'s human-readable text summary on stdout and lets
+progress logs go to stderr. GitHub Actions sets `SKILPEL_LOG_FORMAT=pretty` so
+intermediate eval results stay visible during long provider calls. Set
+`SKILPEL_OUTPUT=json` for a machine-readable final summary.
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
 `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.

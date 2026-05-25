@@ -6,13 +6,20 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Moved generated skill source notes from `agents/notes.md` to `references/notes.md`.
+- Explicitly request `skilpel` text summaries in skill validation while keeping
+  the latest-release executable download.
+
 ### Fixed
 
 - Replaced positive skill eval source-model paraphrases with exact public-domain quotations and recorded exact source references in agent notes.
 
-### Changed
+### Documentation
 
-- Moved generated skill source notes from `agents/notes.md` to `references/notes.md`.
+- Documented the `skilpel` validation output split and `SKILPEL_OUTPUT=json`
+  override.
 
 ## [0.2.0] - 2026-05-24
 
