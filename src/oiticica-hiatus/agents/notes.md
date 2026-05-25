@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: William Shakespeare
 - Work: Hamlet
-- Boundary: Positive model is a paraphrase of deliberate vowel contact in blank verse.
+- Reference: William Shakespeare, Hamlet, act 3, scene 1.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Shakespeare's Hamlet: blank verse uses vowel contact deliberately in its meter.
+To be, or not to be, that is the question:
 
 ## Negative Eval Example
 

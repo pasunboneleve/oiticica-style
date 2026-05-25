@@ -3,9 +3,9 @@ evals:
   - id: "spelling-positive-classic-model"
     name: "spelling positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Charlotte Bronte's Jane Eyre, chapter 1: source spelling is preserved while commentary uses modern spelling</example>
+      <example>There was no possibility of taking a walk that day.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-spelling."

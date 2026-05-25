@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: Robert Louis Stevenson
 - Work: Treasure Island
-- Boundary: Positive model is a paraphrase of sentence-length variation in action scenes.
+- Reference: Robert Louis Stevenson, Treasure Island, chapter 1.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Stevenson's Treasure Island: short and longer sentences vary during action.
+I remember him as if it were yesterday, as he came plodding to the inn door, his sea-chest following behind him in a hand-barrow;
 
 ## Negative Eval Example
 

@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Fixed
+
+- Replaced positive skill eval source-model paraphrases with exact public-domain quotations and recorded exact source references in agent notes.
+
 ## [0.2.0] - 2026-05-24
 
 ### Changed

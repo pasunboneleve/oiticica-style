@@ -2,18 +2,19 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: John Milton
 - Work: Paradise Lost
 - Location: book 1
-- Boundary: Positive model refers to Milton's coined place-name Pandemonium.
+- Reference: John Milton, Paradise Lost, book 1, lines 756-757.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Milton's Paradise Lost, book 1: the coined place-name Pandemonium follows recognizable English and Latin-derived morphology.
+Pandemonium, the high Capital Of Satan and his Peers:
 
 ## Negative Eval Example
 

@@ -2,18 +2,19 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: William Shakespeare
 - Work: King Lear
 - Location: act 2, scene 4
-- Boundary: Positive model is a paraphrase of broken syntax caused by emotion.
+- Reference: William Shakespeare, King Lear, act 2, scene 4.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Shakespeare's King Lear, act 2, scene 4: broken speech is kept when emotion causes the break.
+I will have such revenges on you both, That all the world shall—I will do such things,—
 
 ## Negative Eval Example
 

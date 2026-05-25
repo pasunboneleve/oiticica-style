@@ -3,9 +3,9 @@ evals:
   - id: "antithesis-positive-classic-model"
     name: "antithesis positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Federalist No. 51: the angels/men antithesis sharpens the political judgment</example>
+      <example>If men were angels, no government would be necessary.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-antithesis."

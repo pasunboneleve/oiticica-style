@@ -3,9 +3,9 @@ evals:
   - id: "image-positive-classic-model"
     name: "image positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Dickens's Bleak House, chapter 1: legal fog and actual fog meet in one image</example>
+      <example>Fog everywhere.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-image."

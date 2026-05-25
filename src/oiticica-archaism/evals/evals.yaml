@@ -3,9 +3,9 @@ evals:
   - id: "archaism-positive-classic-model"
     name: "archaism positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Shakespeare's Hamlet, act 1, scene 3: archaic wording is kept because the wording is the source</example>
+      <example>Neither a borrower nor a lender be;</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-archaism."

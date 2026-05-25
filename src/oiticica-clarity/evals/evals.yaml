@@ -3,9 +3,9 @@ evals:
   - id: "clarity-positive-classic-model"
     name: "clarity positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Lincoln's Second Inaugural Address: actors, causes, and consequences remain plain</example>
+      <example>Both parties deprecated war; but one of them would make war rather than let the nation survive; and the other would accept war rather than let it perish.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-clarity."

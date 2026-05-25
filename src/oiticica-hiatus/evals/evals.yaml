@@ -3,9 +3,9 @@ evals:
   - id: "hiatus-positive-classic-model"
     name: "hiatus positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Shakespeare's Hamlet: blank verse uses vowel contact deliberately in its meter</example>
+      <example>To be, or not to be, that is the question:</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-hiatus."

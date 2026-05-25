@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: Alfred Tennyson
 - Work: The Princess
-- Boundary: Positive model is a paraphrase of deliberate musical sound patterning.
+- Reference: Alfred, Lord Tennyson, The Princess, part VII, song "Now sleeps the crimson petal".
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Tennyson's The Princess: a line where sound pattern is deliberate music.
+The moan of doves in immemorial elms, And murmuring of innumerable bees.
 
 ## Negative Eval Example
 

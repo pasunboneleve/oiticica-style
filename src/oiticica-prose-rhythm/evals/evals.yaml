@@ -3,9 +3,9 @@ evals:
   - id: "prose-rhythm-positive-classic-model"
     name: "prose-rhythm positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from the King James Bible, Ecclesiastes 3: balanced clauses make sound and sense reinforce each other</example>
+      <example>To every thing there is a season, and a time to every purpose under the heaven:</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-prose-rhythm."

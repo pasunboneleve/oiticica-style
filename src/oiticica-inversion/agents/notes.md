@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: William Wordsworth
 - Work: Composed upon Westminster Bridge
-- Boundary: Positive model is a paraphrase of poetic inversion used for emphasis.
+- Reference: William Wordsworth, "Composed upon Westminster Bridge, September 3, 1802", line 1.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Wordsworth's Composed upon Westminster Bridge: inversion places the landscape under stress.
+Earth has not anything to show more fair:
 
 ## Negative Eval Example
 

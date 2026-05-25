@@ -3,9 +3,9 @@ evals:
   - id: "foreignism-positive-classic-model"
     name: "foreignism positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Conrad's Heart of Darkness, chapter 1: nautical terms name exact things aboard the Nellie</example>
+      <example>The Nellie, a cruising yawl, swung to her anchor without a flutter of the sails,</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-foreignism."

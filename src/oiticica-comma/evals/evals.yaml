@@ -3,9 +3,9 @@ evals:
   - id: "comma-positive-classic-model"
     name: "comma positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Austen's Pride and Prejudice: commas mark parenthetic turns without losing the main clause</example>
+      <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-comma."

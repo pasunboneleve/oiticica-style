@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: Herman Melville
 - Work: Moby-Dick
-- Boundary: Positive model is a paraphrase of strong sea-action verbs, not a quotation.
+- Reference: Herman Melville, Moby-Dick, chapter 1, opening sentence.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Melville's Moby-Dick: ship, sea, force, and action are carried by strong verbs.
+Call me Ishmael.
 
 ## Negative Eval Example
 

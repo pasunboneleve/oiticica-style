@@ -3,9 +3,9 @@ evals:
   - id: "semicolon-positive-classic-model"
     name: "semicolon positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Federalist No. 10: semicolons keep related political clauses in sequence</example>
+      <example>There are two methods of curing the mischiefs of faction: the one, by removing its causes; the other, by controlling its effects.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-semicolon."

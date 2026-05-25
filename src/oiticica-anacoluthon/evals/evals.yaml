@@ -3,9 +3,9 @@ evals:
   - id: "anacoluthon-positive-classic-model"
     name: "anacoluthon positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Shakespeare's King Lear, act 2, scene 4: broken speech is kept when emotion causes the break</example>
+      <example>I will have such revenges on you both, That all the world shall—I will do such things,—</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-anacoluthon."

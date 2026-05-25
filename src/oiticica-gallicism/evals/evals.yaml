@@ -3,9 +3,9 @@ evals:
   - id: "gallicism-positive-classic-model"
     name: "gallicism positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Thackeray's Vanity Fair: a French social term is kept when it names a specific social institution</example>
+      <example>here was George already suffering ennui, and eager for others' society!</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-gallicism."

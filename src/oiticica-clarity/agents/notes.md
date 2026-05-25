@@ -2,17 +2,18 @@
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model paraphrase, not a quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
 
 ## Positive Model Source
 
 - Author or source: Abraham Lincoln
 - Work: Second Inaugural Address
-- Boundary: Positive model is a paraphrase of Lincoln's plain cause-and-consequence structure.
+- Reference: Abraham Lincoln, Second Inaugural Address, paragraph 3.
+- Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-A public-domain source model from Lincoln's Second Inaugural Address: actors, causes, and consequences remain plain.
+Both parties deprecated war; but one of them would make war rather than let the nation survive; and the other would accept war rather than let it perish.
 
 ## Negative Eval Example
 
