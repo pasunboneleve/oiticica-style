@@ -3,9 +3,9 @@ evals:
   - id: "concision-positive-classic-model"
     name: "concision positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Lincoln's Gettysburg Address: selected words carry civic argument without surplus explanation</example>
+      <example>government of the people, by the people, for the people, shall not perish from the earth.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-concision."

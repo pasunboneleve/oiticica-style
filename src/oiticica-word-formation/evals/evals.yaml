@@ -3,9 +3,9 @@ evals:
   - id: "word-formation-positive-classic-model"
     name: "word-formation positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Milton's Paradise Lost, book 1: the coined place-name Pandemonium follows recognizable English and Latin-derived morphology</example>
+      <example>Pandemonium, the high Capital Of Satan and his Peers:</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-word-formation."

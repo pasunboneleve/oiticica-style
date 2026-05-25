@@ -1,5 +1,8 @@
 # Oiticica style skills
 
+[![Skill CI](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml?query=event%3Apull_request)
+[![Release](https://img.shields.io/github/v/tag/pasunboneleve/oiticica-style?label=release)](https://github.com/pasunboneleve/oiticica-style/tags)
+
 A catalogue of [Codex](https://developers.openai.com/codex/cli) writing skills
 adapted from José Oiticica’s *Manual de Estilo*.
 
@@ -138,7 +141,7 @@ Each skill contains:
 
 - `SKILL.md` — the rule, boundary, examples, and application notes.
 - `agents/openai.yaml` — agent UI metadata.
-- `agents/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
+- `references/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
 
 Positive examples are sourced from public-domain English texts, such as
 Shakespeare, the Federalist Papers, and other classic works. Source notes mark
@@ -157,7 +160,10 @@ direnv exec . bash scripts/validate_skills.sh oiticica-concision
 ```
 
 Use `scripts/validate_skills.sh` with changed skill names so unrelated skill
-evals do not run.
+evals do not run. The wrapper downloads the latest released `skilpel`
+executable to `~/.local/bin/skilpel` and prints human-readable validation
+results by default; set `SKILPEL_OUTPUT=json` when a machine-readable summary
+is needed.
 
 ## Contributing
 

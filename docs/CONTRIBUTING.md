@@ -6,7 +6,7 @@ modern English [Codex](https://developers.openai.com/codex/cli) skills.
 The source of truth for generated skill files is `scripts/generate_skills.py`.
 Edit that script when adding or changing generated skill content. Do not hand
 edit generated `SKILL.md`, `evals/evals.yaml`, `agents/openai.yaml`, or
-`agents/notes.md` files unless you are also changing the generator so the edit
+`references/notes.md` files unless you are also changing the generator so the edit
 is reproducible.
 
 `README.md` is hand edited. Keep every generated skill linked in its skill
@@ -32,7 +32,7 @@ Use public-domain English classics or civic texts for positive examples, such
 as Shakespeare, the Federalist Papers, Austen, Dickens, Milton, Lincoln, or
 other widely read sources.
 
-Each `agents/notes.md` entry must name the source behind the example and state
+Each `references/notes.md` entry must name the source behind the example and state
 whether the eval passage is a quotation, a source-model paraphrase, or an
 invented weak contrast.
 
@@ -47,13 +47,19 @@ behavior belongs in `SKILL.md`.
 `~/.local/bin` when that command is not already on `PATH`; this requires
 [Go](https://go.dev/). It also installs the latest released
 [`skilpel`](https://github.com/pasunboneleve/skilpel) executable artifact into
-`~/.local/bin` when that command is not already on `PATH`.
+`~/.local/bin/skilpel` when that managed executable is not already present. Set
+`SKILPEL=/path/to/skilpel` to test a local build explicitly.
 
 [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) checks
 skill structure, frontmatter, Markdown, token size, and allowed files.
 `skilpel` runs the model-backed evals in `evals/evals.yaml` against both a
 with-skill run and a without-skill baseline, then enforces the pass-rate and
 baseline-delta gates configured in `scripts/skilpel.yaml`.
+
+The wrapper requests `skilpel`'s human-readable text summary on stdout and lets
+progress logs go to stderr. GitHub Actions sets `SKILPEL_LOG_FORMAT=pretty` so
+intermediate eval results stay visible during long provider calls. Set
+`SKILPEL_OUTPUT=json` for a machine-readable final summary.
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
 `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.

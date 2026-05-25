@@ -3,9 +3,9 @@ evals:
   - id: "narration-positive-classic-model"
     name: "narration positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Stevenson's Treasure Island, chapter 1: Billy Bones arrives and the danger begins in sequence</example>
+      <example>I remember him as if it were yesterday, as he came plodding to the inn door,</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-narration."

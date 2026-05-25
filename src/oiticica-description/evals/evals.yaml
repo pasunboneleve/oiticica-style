@@ -3,9 +3,9 @@ evals:
   - id: "description-positive-classic-model"
     name: "description positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Dickens's Bleak House, chapter 1: a fog passage that gives visible city details</example>
+      <example>Fog up the river, where it flows among green aits and meadows; fog down the river, where it rolls defiled among the tiers of shipping.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-description."

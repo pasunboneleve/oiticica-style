@@ -3,9 +3,9 @@ evals:
   - id: "vigor-positive-classic-model"
     name: "vigor positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Melville's Moby-Dick: ship, sea, force, and action are carried by strong verbs</example>
+      <example>Call me Ishmael.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-vigor."

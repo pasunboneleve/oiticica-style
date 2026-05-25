@@ -3,9 +3,9 @@ evals:
   - id: "solecism-positive-classic-model"
     name: "solecism positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Austen's Pride and Prejudice: standard syntax preserves social tone; no source wording is supplied</example>
+      <example>"My dear Mr. Bennet," said his lady to him one day, "have you heard that Netherfield Park is let at last?"</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-solecism."

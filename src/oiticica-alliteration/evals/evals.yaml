@@ -3,9 +3,9 @@ evals:
   - id: "alliteration-positive-classic-model"
     name: "alliteration positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Coleridge's The Rime of the Ancient Mariner: consonant repetition imitates motion</example>
+      <example>The fair breeze blew, the white foam flew,</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-alliteration."

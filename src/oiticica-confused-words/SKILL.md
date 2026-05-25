@@ -74,5 +74,6 @@ Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do no
 
 ## Source Boundary
 
+Source notes live in `references/notes.md`.
 Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
 When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.

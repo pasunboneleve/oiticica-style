@@ -3,9 +3,9 @@ evals:
   - id: "ambiguity-positive-classic-model"
     name: "ambiguity positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Henry James's The Turn of the Screw: ambiguity is preserved when uncertainty is the point of view</example>
+      <example>What did it mean? Could it mean anything?</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-ambiguity."

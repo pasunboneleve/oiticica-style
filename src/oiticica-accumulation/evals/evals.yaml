@@ -3,9 +3,9 @@ evals:
   - id: "accumulation-positive-classic-model"
     name: "accumulation positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Austen's Pride and Prejudice, chapter 1: a periodic sentence whose insertions bear on the final judgment</example>
+      <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-accumulation."

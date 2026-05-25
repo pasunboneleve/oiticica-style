@@ -3,9 +3,9 @@ evals:
   - id: "cacophony-positive-classic-model"
     name: "cacophony positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Tennyson's The Princess: a line where sound pattern is deliberate music</example>
+      <example>The moan of doves in immemorial elms, And murmuring of innumerable bees.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-cacophony."

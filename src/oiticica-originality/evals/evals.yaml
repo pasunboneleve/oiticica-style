@@ -3,9 +3,9 @@ evals:
   - id: "originality-positive-classic-model"
     name: "originality positive classic model"
     prompt: |
-      Assess this strong public-domain source-model paraphrase.
+      Assess this strong public-domain source-model quotation.
 
-      <example>A public-domain source model from Austen's Emma, chapter 1: exact social observation belongs to that character and household</example>
+      <example>Emma Woodhouse, handsome, clever, and rich, with a comfortable home and happy disposition,</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-originality."
