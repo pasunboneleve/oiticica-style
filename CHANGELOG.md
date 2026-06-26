@@ -6,6 +6,16 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-26
+
+### Added
+
+- Linked skills into `~/.agents/skills` for Pi-compatible agent installs.
+
+### Documentation
+
+- Updated the README to position the repository for Codex, Claude Code, and Pi, with links to each agent's website.
+
 ## [0.2.1] - 2026-05-25
 
 ### Changed
