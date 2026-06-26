@@ -1,14 +1,15 @@
-# Oiticica style skills
+# Oiticica style skills for [Codex](https://developers.openai.com/codex/cli), [Claude Code](https://claude.com/product/claude-code), and [Pi](https://pi.dev/)
 
 [![Skill CI](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/oiticica-style/actions/workflows/skill-ci.yml?query=event%3Apull_request)
 [![Release](https://img.shields.io/github/v/tag/pasunboneleve/oiticica-style?label=release)](https://github.com/pasunboneleve/oiticica-style/tags)
 
-A catalogue of [Codex](https://developers.openai.com/codex/cli) writing skills
+A catalogue of writing skills for [Codex](https://developers.openai.com/codex/cli),
+[Claude Code](https://claude.com/product/claude-code), and [Pi](https://pi.dev/),
 adapted from José Oiticica’s *Manual de Estilo*.
 
 Oiticica’s method is unusually agent-friendly: name one virtue or vice of
 style, define it sharply, then test prose against examples. This repository
-translates that method into modern English skills for Codex.
+translates that method into modern English skills for coding agents.
 
 The result is not a single “write better” instruction. It is a working taxonomy
 of style: correctness, concision, clarity, harmony, originality, vigor, and the
@@ -38,11 +39,11 @@ Oiticica’s method gives agents a better unit of work than a general prose
 summary. Each skill isolates one writing operation so an agent can apply, test,
 and revise against it.
 
-A century-old style manual becomes a working taxonomy of Codex skills.
+A century-old style manual becomes a working taxonomy of agent skills.
 
 ## Quickstart
 
-Link the skills into Codex and Claude:
+Link the skills into Codex, Claude Code, and Pi:
 
 ```bash
 bash scripts/link_skills.sh
@@ -53,12 +54,13 @@ This creates symlinks under:
 ```bash
 ~/.codex/skills
 ~/.claude/skills
+~/.agents/skills
 ```
 
 The script links only skill directories. It does **not** install `AGENTS.md`,
 `CLAUDE.md`, or project-level instructions.
 
-After linking, start Codex and invoke a skill by name, for example:
+After linking, start Codex, Claude Code, or Pi and invoke a skill by name, for example:
 
 ```text
 Use oiticica-style to diagnose and revise this paragraph.

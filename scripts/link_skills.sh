@@ -6,6 +6,8 @@ repo_root="$(cd -- "${script_dir}/.." && pwd -P)"
 skills_root="${SKILLS_ROOT:-${repo_root}/src}"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
 dest_root="${CODEX_SKILLS_DIR:-${codex_home}/skills}"
+agents_home="${AGENTS_HOME:-${HOME}/.agents}"
+agents_skills_dir="${AGENTS_SKILLS_DIR:-${agents_home}/skills}"
 claude_home="${CLAUDE_HOME:-${HOME}/.claude}"
 claude_skills_dir="${CLAUDE_SKILLS_DIR:-${claude_home}/skills}"
 
@@ -45,15 +47,17 @@ link_skill_dir() {
 }
 
 unlink_dead_links "${dest_root}"
+unlink_dead_links "${agents_skills_dir}"
 unlink_dead_links "${claude_skills_dir}"
 
-mkdir -p -- "${dest_root}" "${claude_skills_dir}"
+mkdir -p -- "${dest_root}" "${agents_skills_dir}" "${claude_skills_dir}"
 
 while IFS= read -r -d '' skill_file; do
   skill_dir="$(dirname -- "${skill_file}")"
   skill_name="$(basename -- "${skill_dir}")"
 
   link_skill_dir "${skill_dir}" "${dest_root}/${skill_name}"
+  link_skill_dir "${skill_dir}" "${agents_skills_dir}/${skill_name}"
   link_skill_dir "${skill_dir}" "${claude_skills_dir}/${skill_name}"
 done < <(find "${skills_root}" -type f -name SKILL.md -print0 | sort -z)
 
