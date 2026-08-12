@@ -20,6 +20,11 @@ This repository contains modern English Codex skills derived from the first part
 - Apply English grammar, punctuation, morphology, idiom, and prosody. Do not carry Portuguese orthography or grammar into English.
 - Prefer shallow, objective rules over long explanation.
 - Modern English classic examples must come from public-domain, widely read English works or civic texts.
+- Preferred source pools include Shakespeare; Jonathan Swift, especially
+  *Gulliver’s Travels*; the Federalist Papers; Austen; Dickens; Milton; Lincoln;
+  the United States Constitution; Edward Bulwer-Lytton’s *Paul Clifford*; and
+  public-domain Bible translations such as the Berean Literal Bible, World
+  English Bible, and Berean Standard Bible.
 - `references/notes.md` must name the source behind each modern English example and say whether the eval text is a source-model paraphrase, an invented weak passage, or a quotation.
 - Eval prompts must keep the prompt instruction separate from the example text. If the example is not a quotation, say so.
 - Eval prompts must prove skill lift: without-skill runs should ideally fail 0% and with-skill runs should pass 100%. Do not make prompts self-contained by teaching the review shape, rubric, concept definition, or expected fault; that behavior belongs in `SKILL.md`.

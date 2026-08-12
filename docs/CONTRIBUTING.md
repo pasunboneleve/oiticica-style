@@ -28,9 +28,12 @@ python3 scripts/generate_skills.py
 
 ## Examples and Evals
 
-Use public-domain English classics or civic texts for positive examples, such
-as Shakespeare, the Federalist Papers, Austen, Dickens, Milton, Lincoln, or
-other widely read sources.
+Use public-domain English classics, civic texts, or Bible translations for
+eval examples. The preferred source pool includes Shakespeare; Jonathan
+Swift, especially *Gulliver’s Travels*; the Federalist Papers; Austen; Dickens;
+Milton; Lincoln; the United States Constitution; Edward Bulwer-Lytton’s *Paul
+Clifford*; and the Berean Literal Bible, World English Bible, and Berean
+Standard Bible.
 
 Each `references/notes.md` entry must name the source behind the example and state
 whether the eval passage is a quotation, a source-model paraphrase, or an
@@ -54,20 +57,14 @@ behavior belongs in `SKILL.md`.
 skill structure, frontmatter, Markdown, token size, and allowed files.
 `skilpel` runs the model-backed evals in `evals/evals.yaml` against both a
 with-skill run and a without-skill baseline, then enforces pass-rate and
-baseline-delta gates. Most skills use `scripts/skilpel.yaml`. The
-`oiticica-style-defects` audit uses `scripts/skilpel-style-defects.yaml` and
-GPT-5.6 Luna because its six-way specificity checks exceeded the gate with Luna
-but not with GPT-4o mini. The Luna configuration uses its required temperature
-of `1` and low reasoning effort; targeted comparison showed better adherence at
-`low` than at `none`. It does not set a seed: the current OpenAI Responses API
-does not support that field.
+baseline-delta gates. All skills use `scripts/skilpel.yaml` with GPT-5.6 Luna.
+The configuration uses temperature `1` and low reasoning effort. It does not
+set a seed because the OpenAI Responses API does not expose that parameter.
 
 The wrapper requests `skilpel`'s human-readable text summary on stdout and lets
 progress logs go to stderr. GitHub Actions sets `SKILPEL_LOG_FORMAT=pretty` so
 intermediate eval results stay visible during long provider calls. Set
-`SKILPEL_OUTPUT=json` for a machine-readable final summary. When a mixed or
-full run uses both model configurations, the wrapper emits one JSON object with
-the two summaries in its `runs` array.
+`SKILPEL_OUTPUT=json` for a machine-readable final summary.
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
 `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.

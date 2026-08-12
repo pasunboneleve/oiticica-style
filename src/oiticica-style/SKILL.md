@@ -66,6 +66,7 @@ Use sound and figure skills only when the text demands them:
 - Do not route to sound, meter, image, inversion, or antithesis unless that feature is present and relevant.
 - Do not turn a practical rewrite request into a long taxonomy.
 - For generic description with words such as `nice`, `impressive`, `beautiful`, `great`, `pleasant`, or `atmosphere`, select `oiticica-description` plus `oiticica-precision` or `oiticica-originality`.
+- When revising generic description, replace controlling evaluative praise with observable properties, actions, spatial relations, or sensory facts. Substituting synonyms such as `elegant`, `welcoming`, or `striking` without concrete evidence does not fix the defect.
 - For event sequence, causal order, condition before effect, or consequence before cause, select `oiticica-narration` plus `oiticica-clarity`; do not label the sequence issue as correctness unless grammar is actually wrong.
 - When revising an event-sequence fault, put each cause before its effect unless the user requests a deliberate narrative reversal. Do not merely remove punctuation or a conjunction while leaving the same confused order.
 - For ambiguous attachment, select `oiticica-ambiguity` even when clarity or narration also applies. Name both possible readings, and if the user gives no intended reading, choose one plausible reading in the revision and make the choice explicit. In the revision, repeat the intended actor or object by name when a pronoun would preserve the ambiguity.

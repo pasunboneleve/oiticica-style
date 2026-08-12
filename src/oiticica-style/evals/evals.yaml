@@ -42,7 +42,7 @@ evals:
     expected_output: "The response selects the ambiguity skill rather than only generic clarity, and removes the double reading."
     assertions:
       - "The output selects oiticica-ambiguity with evidence from the phrase that allows more than one reading."
-      - "The Diagnosis identifies the ambiguous attachment by saying it is unclear whether Maya or Omar reviewed the notes."
+      - "The output identifies the ambiguous attachment by saying it is unclear whether Maya or Omar reviewed the notes."
   - id: "already-good-preserve"
     name: "already good preserve"
     prompt: |
