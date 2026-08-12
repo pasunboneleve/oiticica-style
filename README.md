@@ -100,6 +100,12 @@ Use oiticica-ambiguity to find sentences that allow more than one reading.
 - [`oiticica-originality`](src/oiticica-originality/SKILL.md): Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.
 - [`oiticica-vigor`](src/oiticica-vigor/SKILL.md): Vigor is energy of expression in aspects, episodes, or conceptions.
 
+### Essential defects
+
+- [`oiticica-style-defects`](src/oiticica-style-defects/SKILL.md): Audits or
+  compares drafts for impurity, prolixity, obscurity, disharmony, banality,
+  and weakness, then names narrower follow-up skills where useful.
+
 ### Faults of correctness
 
 - [`oiticica-solecism`](src/oiticica-solecism/SKILL.md): Solecism is an error of syntax.

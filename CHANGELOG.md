@@ -6,6 +6,11 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added `oiticica-style-defects`, a fixed six-defect audit for diagnosing and
+  comparing drafts with concrete evidence and narrow follow-up handles.
+
 ## [0.3.0] - 2026-06-26
 
 ### Added

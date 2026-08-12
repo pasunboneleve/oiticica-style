@@ -1,0 +1,49 @@
+skill_name: "oiticica-style-defects"
+evals:
+  - id: "style-defects-positive-source-model"
+    name: "style defects positive source model"
+    prompt: |
+      Review this public-domain source-model quotation for defects of style. Revise only if needed.
+
+      <example>Call me Ishmael.</example>
+    expected_output: "The response audits all six essential defects, finds no supported defect, and preserves the source-model quotation."
+    assertions:
+      - "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness."
+      - "The output gives every defect a None, Minor, or Major grade and does not claim a defect without concrete evidence."
+      - "The output grades all six defects None, preserves the supplied source-model quotation, and says no revision is needed."
+  - id: "style-defects-negative-weak-passage"
+    name: "style defects negative weak passage"
+    prompt: |
+      Review this invented weak passage for defects of style.
+
+      <example>The deployment was, in every possible respect, a very excellent and successful implementation of general improvements.</example>
+    expected_output: "The response identifies evidenced defects across the fixed six-defect audit without rewriting the passage."
+    assertions:
+      - "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness."
+      - "The output identifies prolixity and banality or weakness with concrete evidence from the passage."
+      - "The output does not rewrite the passage because the prompt requests diagnosis only."
+  - id: "style-defects-parallel-draft-comparison"
+    name: "style defects parallel draft comparison"
+    prompt: |
+      Compare these invented parallel drafts for defects of style and recommend the stronger draft.
+
+      <draft-a>The incident produced a situation in which an interruption of service was experienced by users for a period of approximately twenty minutes.</draft-a>
+
+      <draft-b>Users lost service for twenty minutes.</draft-b>
+    expected_output: "The response applies one six-defect audit to both drafts and selects the concise, direct draft."
+    assertions:
+      - "The output gives each supplied draft its own complete six-defect audit."
+      - "The output gives Draft A an evidenced Major grade for Prolixity."
+      - "The output gives Draft B no Major defect."
+      - "The output recommends Draft B and explains the verdict through the relative severity of evidenced defects."
+  - id: "style-defects-specific-follow-up"
+    name: "style defects specific follow-up"
+    prompt: |
+      Diagnose the defects of style in this invented sentence and name any useful follow-up skill.
+
+      <example>Maya told Leila that she had misread the figures.</example>
+    expected_output: "The response classifies the ambiguous pronoun as obscurity and recommends the ambiguity skill for deeper repair."
+    assertions:
+      - "The output grades obscurity above None and identifies that either Maya or Leila may have misread the figures."
+      - "The output recommends oiticica-ambiguity as the narrow follow-up handle."
+      - "The output grades every defect other than obscurity as None and explicitly says revision was not requested."

@@ -83,6 +83,110 @@ SKILLS = [
         "negative": "The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.",
     },
     {
+        "name": "style-defects",
+        "kind": "defect-audit",
+        "concept": "Style has six essential defects corresponding to its six qualities: impurity, prolixity, obscurity, disharmony, banality, and weakness.",
+        "interface": {
+            "display_name": "Oiticica Style Defects",
+            "short_description": "Audit six essential defects across parallel drafts",
+            "default_prompt": "Use $oiticica-style-defects to compare these drafts, cite each evidenced defect, and recommend the strongest.",
+        },
+        "rules": [
+            "Inspect all six defects for every passage or draft, using the same evidence threshold when comparing parallel work.",
+            "Report only defects supported by a quoted word, phrase, sentence relation, or audible pattern.",
+            "Grade each defect as None, Minor, or Major according to its effect and recurrence.",
+            "Do not treat a possible shorter wording as prolixity unless the original repeats meaning or can lose words without losing logic, emphasis, or voice.",
+            "When a pronoun, modifier, attachment, or scope permits more than one plausible reading, name the competing readings, grade obscurity above None, and use oiticica-ambiguity rather than generic clarity as the follow-up.",
+            "Recommend a narrower Oiticica skill only when it would add a specific diagnosis or repair.",
+        ],
+        "rubric": [
+            "All six defects receive an explicit grade.",
+            "Every non-None grade cites concrete textual evidence.",
+            "The comparison applies one standard to every draft and explains the verdict.",
+            "No rewrite appears unless the user requests one.",
+        ],
+        "positive": "Call me Ishmael.",
+        "negative": "The deployment was, in every possible respect, a very excellent and successful implementation of general improvements.",
+        "additional_examples": [
+            {
+                "title": "Parallel Comparison Draft A",
+                "text": "The incident produced a situation in which an interruption of service was experienced by users for a period of approximately twenty minutes.",
+                "boundary": "Invented weak passage for this eval, not a public-domain quotation.",
+            },
+            {
+                "title": "Parallel Comparison Draft B",
+                "text": "Users lost service for twenty minutes.",
+                "boundary": "Invented strong passage for this eval, not a public-domain quotation.",
+            },
+            {
+                "title": "Ambiguity Eval Example",
+                "text": "Maya told Leila that she had misread the figures.",
+                "boundary": "Invented ambiguous passage for this eval, not a public-domain quotation.",
+            },
+        ],
+        "evals": [
+            {
+                "id": "style-defects-positive-source-model",
+                "name": "style defects positive source model",
+                "prompt": (
+                    "Review this public-domain source-model quotation for defects of style. "
+                    "Revise only if needed.\n\n"
+                    "<example>Call me Ishmael.</example>"
+                ),
+                "expected_output": "The response audits all six essential defects, finds no supported defect, and preserves the source-model quotation.",
+                "assertions": [
+                    "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness.",
+                    "The output gives every defect a None, Minor, or Major grade and does not claim a defect without concrete evidence.",
+                    "The output grades all six defects None, preserves the supplied source-model quotation, and says no revision is needed.",
+                ],
+            },
+            {
+                "id": "style-defects-negative-weak-passage",
+                "name": "style defects negative weak passage",
+                "prompt": (
+                    "Review this invented weak passage for defects of style.\n\n"
+                    "<example>The deployment was, in every possible respect, a very excellent and successful implementation of general improvements.</example>"
+                ),
+                "expected_output": "The response identifies evidenced defects across the fixed six-defect audit without rewriting the passage.",
+                "assertions": [
+                    "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness.",
+                    "The output identifies prolixity and banality or weakness with concrete evidence from the passage.",
+                    "The output does not rewrite the passage because the prompt requests diagnosis only.",
+                ],
+            },
+            {
+                "id": "style-defects-parallel-draft-comparison",
+                "name": "style defects parallel draft comparison",
+                "prompt": (
+                    "Compare these invented parallel drafts for defects of style and recommend the stronger draft.\n\n"
+                    "<draft-a>The incident produced a situation in which an interruption of service was experienced by users for a period of approximately twenty minutes.</draft-a>\n\n"
+                    "<draft-b>Users lost service for twenty minutes.</draft-b>"
+                ),
+                "expected_output": "The response applies one six-defect audit to both drafts and selects the concise, direct draft.",
+                "assertions": [
+                    "The output gives each supplied draft its own complete six-defect audit.",
+                    "The output gives Draft A an evidenced Major grade for Prolixity.",
+                    "The output gives Draft B no Major defect.",
+                    "The output recommends Draft B and explains the verdict through the relative severity of evidenced defects.",
+                ],
+            },
+            {
+                "id": "style-defects-specific-follow-up",
+                "name": "style defects specific follow-up",
+                "prompt": (
+                    "Diagnose the defects of style in this invented sentence and name any useful follow-up skill.\n\n"
+                    "<example>Maya told Leila that she had misread the figures.</example>"
+                ),
+                "expected_output": "The response classifies the ambiguous pronoun as obscurity and recommends the ambiguity skill for deeper repair.",
+                "assertions": [
+                    "The output grades obscurity above None and identifies that either Maya or Leila may have misread the figures.",
+                    "The output recommends oiticica-ambiguity as the narrow follow-up handle.",
+                    "The output grades every defect other than obscurity as None and explicitly says revision was not requested.",
+                ],
+            },
+        ],
+    },
+    {
         "name": "correctness",
         "concept": "Correctness observes the grammatical tradition of the language being used.",
         "rules": [
@@ -648,6 +752,7 @@ SOURCE_NOTES = {
     "narration": ("Robert Louis Stevenson", "Treasure Island", "chapter 1", "Positive model is an exact public-domain quotation."),
     "dissertation": ("James Madison", "Federalist No. 10", "", "Positive model is an exact public-domain quotation."),
     "style-qualities": ("Jane Austen", "Pride and Prejudice", "chapter 1", "Positive model is an exact public-domain quotation."),
+    "style-defects": ("Herman Melville", "Moby-Dick", "chapter 1", "Positive model is an exact public-domain quotation."),
     "correctness": ("George Eliot", "Middlemarch", "chapter 1", "Positive model is an exact public-domain quotation."),
     "solecism": ("Jane Austen", "Pride and Prejudice", "", "Positive model is an exact public-domain quotation."),
     "spelling": ("Charlotte Bronte", "Jane Eyre", "chapter 1", "Positive model is about preserving source spelling in quotation while modernizing commentary."),
@@ -697,6 +802,10 @@ POSITIVE_QUOTES = {
     "style-qualities": (
         "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
         "Jane Austen, Pride and Prejudice, chapter 1, opening sentence.",
+    ),
+    "style-defects": (
+        "Call me Ishmael.",
+        "Herman Melville, Moby-Dick, chapter 1, opening sentence.",
     ),
     "correctness": (
         "Miss Brooke had that kind of beauty which seems to be thrown into relief by poor dress.",
@@ -838,6 +947,9 @@ def yaml_string(value: str) -> str:
 
 def skill_md(spec: dict[str, object]) -> str:
     name = spec["name"]
+    if spec.get("kind") == "defect-audit":
+        return style_defects_skill_md(spec)
+
     skill_name = f"oiticica-{name}"
     title_name = title(str(name))
     description = str(spec["concept"]).rstrip(".")
@@ -919,11 +1031,106 @@ When a task asks for a `Preserve` section, copy the supplied example text exactl
 """
 
 
+def style_defects_skill_md(spec: dict[str, object]) -> str:
+    rules = "\n".join(f"- {rule}" for rule in spec["rules"])
+    rubric = "\n".join(f"- {item}" for item in spec["rubric"])
+    return f"""---
+name: oiticica-style-defects
+description: Audit or compare English drafts using Oiticica's six essential style defects, with fixed severity grades, concrete evidence, and narrow follow-up handles.
+---
+
+# Oiticica Style Defects
+
+Use one fixed audit for a single passage or for parallel drafts. Diagnose defects; do not replace the adaptive routing performed by `oiticica-style`.
+
+Source concept: {spec["concept"]}
+
+## Six Defects
+
+- **Impurity** damages correctness through unintended faults in grammar, spelling, idiom, punctuation, or word form. Preserve deliberate dialect and historical quotation.
+- **Prolixity** damages concision through removable words, clauses, repetition, circumlocution, or avoidable subordination.
+- **Obscurity** damages clarity by hiding the actor, action, attachment, order, condition, or consequence, or by permitting unintended readings.
+- **Disharmony** damages readable sound or cadence through a demonstrable collision, distracting repetition, or monotonous rhythm.
+- **Banality** damages originality when stock phrasing, generic praise, or borrowed imagery carries the main effect.
+- **Weakness** damages vigor when passive construction, nominalization, abstraction, or inflation buries the main actor or force.
+
+## Audit Rules
+
+{rules}
+
+Use these grades:
+
+- `None`: no concrete evidence of the defect.
+- `Minor`: a local defect that can be repaired without changing the passage's structure or meaning.
+- `Major`: a repeated or controlling defect that impedes meaning, force, or comparison.
+
+Do not infer a defect from personal preference, sentence length alone, or a feature deliberately required by the genre or voice.
+
+## Output Shape
+
+For each passage or draft, use:
+
+```markdown
+<passage or draft label>:
+- Impurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
+- Prolixity — <None|Minor|Major>: <evidence or "No concrete evidence.">
+- Obscurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
+- Disharmony — <None|Minor|Major>: <evidence or "No concrete evidence.">
+- Banality — <None|Minor|Major>: <evidence or "No concrete evidence.">
+- Weakness — <None|Minor|Major>: <evidence or "No concrete evidence.">
+
+Verdict:
+<strongest draft or overall diagnosis, justified by defect severity>
+
+Follow-up:
+- <zero to three narrower oiticica-* skills, each tied to an evidenced defect>
+
+Revision:
+<revision only when requested, otherwise "Not requested.">
+```
+
+When the prompt says `revise only if needed` and every grade is `None`, write `Revision: No revision needed.`
+
+## Objective Rubric
+
+{rubric}
+
+Pass only when every applicable check passes. Correctness and intelligibility defects outweigh decorative polish in the verdict.
+
+## Follow-up Boundary
+
+- Route impurity to `oiticica-correctness` or the precise grammar, spelling, word-form, or foreignism skill.
+- Route prolixity to `oiticica-concision` or `oiticica-accumulation`.
+- Route competing referents, attachments, or scopes to `oiticica-ambiguity`; route other obscurity to `oiticica-clarity`, `oiticica-anacoluthon`, `oiticica-brachylogy`, `oiticica-precision`, `oiticica-comma`, or `oiticica-semicolon`.
+- Route disharmony to `oiticica-harmony`, `oiticica-cacophony`, `oiticica-assonance`, `oiticica-alliteration`, `oiticica-hiatus`, `oiticica-meter`, or `oiticica-prose-rhythm`.
+- Route banality to `oiticica-originality`, `oiticica-description`, `oiticica-precision`, or `oiticica-image`.
+- Route weakness to `oiticica-vigor`, `oiticica-concision`, `oiticica-clarity`, `oiticica-inversion`, or `oiticica-antithesis`.
+
+Recommend only the smallest useful set. Do not run the narrower skills unless the user requests deeper diagnosis or repair.
+
+## Source Boundary
+
+Source notes live in `references/notes.md`.
+Do not invent source quotations. Preserve supplied source-model text exactly unless the user asks for a revision.
+"""
+
+
 def openai_yaml(spec: dict[str, object]) -> str:
     name = str(spec["name"])
     skill = f"oiticica-{name}"
     title_name = title(name)
     concept = str(spec["concept"]).rstrip(".")
+    interface = spec.get("interface")
+    if isinstance(interface, dict):
+        display_name = str(interface["display_name"])
+        short_description = str(interface["short_description"])
+        default_prompt = str(interface["default_prompt"])
+        return f"""interface:
+  display_name: {yaml_string(display_name)}
+  short_description: {yaml_string(short_description)}
+  default_prompt: {yaml_string(default_prompt)}
+"""
+
     return f"""interface:
   display_name: {yaml_string(f"Oiticica {title_name}")}
   short_description: {yaml_string(concept)}
@@ -937,6 +1144,10 @@ def notes_md(spec: dict[str, object]) -> str:
     author, work, location, _note = SOURCE_NOTES[name]
     _quote, reference = POSITIVE_QUOTES[name]
     location_line = f"\n- Location: {location}" if location else ""
+    additional_examples = "".join(
+        f'''\n\n## {example["title"]}\n\n{example["text"]}\n\nBoundary: {example["boundary"]}'''
+        for example in spec.get("additional_examples", [])
+    )
     return f"""# Notes for {skill}
 
 ## Modern English Example Boundary
@@ -958,7 +1169,7 @@ The positive eval example is a source-model quotation. The negative eval example
 
 {spec["negative"]}
 
-Boundary: invented weak passage, not a public-domain quotation.
+Boundary: invented weak passage, not a public-domain quotation.{additional_examples}
 """
 
 
@@ -976,7 +1187,7 @@ def evals_yaml(spec: dict[str, object]) -> str:
     skill = f"oiticica-{name}"
     positive = str(spec["positive"])
     negative = str(spec["negative"]).rstrip(".")
-    evals = [
+    default_evals = [
         {
             "id": f"{name}-positive-classic-model",
             "name": f"{name} positive classic model",
@@ -1006,6 +1217,7 @@ def evals_yaml(spec: dict[str, object]) -> str:
             ],
         },
     ]
+    evals = spec.get("evals", default_evals)
 
     lines = [f"skill_name: {yaml_scalar(skill)}", "evals:"]
     for item in evals:
