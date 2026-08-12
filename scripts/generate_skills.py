@@ -900,7 +900,7 @@ SOURCE_NOTES = {
     "brachylogy": ("Robert Louis Stevenson", "Treasure Island", "", "Positive model is an exact public-domain quotation."),
     "precision": ("Thomas Hardy", "The Return of the Native", "", "Positive model is an exact public-domain quotation."),
     "semicolon": ("James Madison", "Federalist No. 10", "", "Positive model is an exact public-domain quotation."),
-    "comma": ("Jane Austen", "Pride and Prejudice", "", "Positive model is an exact public-domain quotation."),
+    "comma": ("James Madison", "Federalist No. 10", "", "Positive model is an exact public-domain quotation."),
     "harmony": ("Herman Melville", "Moby-Dick", "chapter 1", "Positive model is an exact public-domain quotation."),
     "cacophony": ("Alfred Tennyson", "The Princess", "", "Positive model is an exact public-domain quotation."),
     "assonance": ("Edgar Allan Poe", "The Raven", "", "Positive model is an exact public-domain quotation."),
@@ -1009,8 +1009,8 @@ POSITIVE_QUOTES = {
         "Federalist No. 10, paragraph beginning \"There are two methods of curing the mischiefs of faction\".",
     ),
     "comma": (
-        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-        "Jane Austen, Pride and Prejudice, chapter 1, opening sentence.",
+        "Among the numerous advantages promised by a well constructed union, none deserves to be more accurately developed than its tendency to break and control the violence of faction.",
+        "Federalist No. 10, opening sentence.",
     ),
     "harmony": (
         "Whenever I find myself growing grim about the mouth;",
@@ -1330,7 +1330,7 @@ def evals_yaml(spec: dict[str, object]) -> str:
             "assertions": [
                 f"The output identifies the relevant Oiticica concept as {skill}.",
                 "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault.",
-                "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose.",
+                "The output names at least one concrete, skill-relevant fault and its textual evidence rather than saying only unclear, awkward, vague, or verbose.",
             ],
         },
     ]

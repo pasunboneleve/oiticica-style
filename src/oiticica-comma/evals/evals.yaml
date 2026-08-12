@@ -5,7 +5,7 @@ evals:
     prompt: |
       Assess this strong public-domain source-model quotation.
 
-      <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
+      <example>Among the numerous advantages promised by a well constructed union, none deserves to be more accurately developed than its tendency to break and control the violence of faction.</example>
     expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-comma."
@@ -21,4 +21,4 @@ evals:
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-comma."
       - "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault."
-      - "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose."
+      - "The output names at least one concrete, skill-relevant fault and its textual evidence rather than saying only unclear, awkward, vague, or verbose."
