@@ -2,7 +2,7 @@
 
 ## Modern English Example Boundary
 
-The orchestrator eval examples are invented weak passages. They are not quotations or source-model paraphrases.
+The orchestrator eval examples are invented passages, not quotations or source-model paraphrases. The routing and single-skill cases are weak passages; the preservation case is intentionally adequate prose.
 
 ## Purpose
 

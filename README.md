@@ -100,6 +100,12 @@ Use oiticica-ambiguity to find sentences that allow more than one reading.
 - [`oiticica-originality`](src/oiticica-originality/SKILL.md): Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.
 - [`oiticica-vigor`](src/oiticica-vigor/SKILL.md): Vigor is energy of expression in aspects, episodes, or conceptions.
 
+### Essential defects
+
+- [`oiticica-style-defects`](src/oiticica-style-defects/SKILL.md): Audits or
+  compares drafts for impurity, prolixity, obscurity, disharmony, banality,
+  and weakness, then names narrower follow-up skills where useful.
+
 ### Faults of correctness
 
 - [`oiticica-solecism`](src/oiticica-solecism/SKILL.md): Solecism is an error of syntax.
@@ -145,10 +151,11 @@ Each skill contains:
 - `agents/openai.yaml` — agent UI metadata.
 - `references/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
 
-Positive examples are sourced from public-domain English texts, such as
-Shakespeare, the Federalist Papers, and other classic works. Source notes mark
-whether each eval passage is quoted, paraphrased from a source model, or
-invented as a weak contrast.
+Eval quotations use public-domain English texts, including Shakespeare, Swift’s
+*Gulliver’s Travels*, the Federalist Papers, the United States Constitution,
+Bulwer-Lytton’s *Paul Clifford*, and the BLB, WEB, and BSB Bible translations.
+Source notes classify each passage as a quotation, source-model paraphrase, or
+invented weak contrast.
 
 ## Development
 
@@ -165,7 +172,7 @@ Use `scripts/validate_skills.sh` with changed skill names so unrelated skill
 evals do not run. The wrapper downloads the latest released `skilpel`
 executable to `~/.local/bin/skilpel` and prints human-readable validation
 results by default; set `SKILPEL_OUTPUT=json` when a machine-readable summary
-is needed.
+is needed. All skill evals use GPT-5.6 Luna through `scripts/skilpel.yaml`.
 
 ## Contributing
 

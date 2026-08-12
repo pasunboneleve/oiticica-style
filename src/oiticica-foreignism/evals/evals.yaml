@@ -21,4 +21,4 @@ evals:
     assertions:
       - "The output identifies the relevant Oiticica concept as oiticica-foreignism."
       - "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault."
-      - "The output names a concrete fault in relation, sequence, diction, syntax, sound, or reading rather than saying only unclear, awkward, vague, or verbose."
+      - "The output names at least one concrete, skill-relevant fault and its textual evidence rather than saying only unclear, awkward, vague, or verbose."

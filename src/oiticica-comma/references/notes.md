@@ -6,14 +6,14 @@ The positive eval example is a source-model quotation. The negative eval example
 
 ## Positive Model Source
 
-- Author or source: Jane Austen
-- Work: Pride and Prejudice
-- Reference: Jane Austen, Pride and Prejudice, chapter 1, opening sentence.
+- Author or source: James Madison
+- Work: Federalist No. 10
+- Reference: Federalist No. 10, opening sentence.
 - Boundary: Positive model is an exact public-domain quotation.
 
 ## Positive Eval Example
 
-It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.
+Among the numerous advantages promised by a well constructed union, none deserves to be more accurately developed than its tendency to break and control the violence of faction.
 
 ## Negative Eval Example
 
