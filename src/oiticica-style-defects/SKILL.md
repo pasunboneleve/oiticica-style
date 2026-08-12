@@ -5,82 +5,31 @@ description: Audit or compare English drafts using Oiticica's six essential styl
 
 # Oiticica Style Defects
 
-Use one fixed audit for a single passage or for parallel drafts. Diagnose defects; do not replace the adaptive routing performed by `oiticica-style`.
+Audit every supplied passage or parallel draft with the same six decisions.
 
 Source concept: Style has six essential defects corresponding to its six qualities: impurity, prolixity, obscurity, disharmony, banality, and weakness.
 
-## Six Defects
+## Decisions
 
-- **Impurity** damages correctness through unintended faults in grammar, spelling, idiom, punctuation, or word form. Preserve deliberate dialect and historical quotation.
-- **Prolixity** damages concision through removable words, clauses, repetition, circumlocution, or avoidable subordination.
-- **Obscurity** damages clarity by hiding the actor, action, attachment, order, condition, or consequence, or by permitting unintended readings.
-- **Disharmony** damages readable sound or cadence through a demonstrable collision, distracting repetition, or monotonous rhythm.
-- **Banality** damages originality when stock phrasing, generic praise, or borrowed imagery carries the main effect.
-- **Weakness** damages vigor when passive construction, nominalization, abstraction, or inflation buries the main actor or force.
+Apply all six. A matching test requires at least `Minor`, even when the prose remains intelligible.
 
-## Audit Rules
+- **Impurity**: a form violates its grammatical role or governing usage. Exempt historically attested spelling, capitalization, and punctuation, deliberate dialect, and editorial notation.
+- **Prolixity**: words can be deleted, without substitution, while preserving logic, tense, necessary emphasis, and voice. A shorter rewording is not evidence.
+- **Obscurity**: two contextually coherent referents, attachments, or comparison terms survive the whole supplied passage and materially change the relation asserted, or a deictic's discourse role is unclear. Name the readings. Ordinary contextual deixis such as `this place`, `now`, or `before` is `None` when its role is clear even if the quotation does not name the real-world place or time. A choice between a discourse span and that span's named subject is also `None` when it leaves the asserted relation unchanged. A fleeting syntactic possibility that the passage resolves, a semantically implausible referent, or a bare dictionary sense is `None`.
+- **Disharmony**: immediately neighboring identical word tokens, or another accidental phonetic collision that distracts when read aloud, even if the construction is grammatical. A repeated word or phrase later in the passage is not adjacent. Repeated content words, parallel coordination, and a deliberate semantic echo are `None` unless they independently create a separate phonetic collision; describe that sound rather than calling the repetition adjacent.
+- **Banality**: stock phrasing, generic praise, or borrowed imagery supplies the main effect. A conventional transition, idiom, or functional connective is `None` when it merely carries the logic, even if it is familiar or dispensable; familiarity alone does not satisfy the main-effect test.
+- **Weakness**: passive construction, nominalization, abstraction, or inflation buries the main actor, movement, or force. Quote the grammatical construction and name what it buries. A finite `be` auxiliary plus a past participle can supply passive evidence when its subject receives an action, especially in an expression of movement; an absent actor strengthens but is not required for that diagnosis. A passive is `None` when attention properly belongs on its receiver and the actor is visible or immaterial. `Be` plus an `-ing` present participle is progressive, not passive. An active infinitive remains active when its agent is implicit or its recipient is explicit. A stative construction, gentle tone, an unnamed semantic instigator alone, or the mere possibility of a stronger recast is `None`. Do not double-count an absent actor as obscurity unless the missing identity is necessary to understand the relation or permits competing readings.
 
-- Inspect all six defects for every passage or draft, using the same evidence threshold when comparing parallel work.
-- Report only defects supported by a quoted word, phrase, sentence relation, or audible pattern.
-- Grade each defect as None, Minor, or Major according to its effect and recurrence.
-- Do not treat a possible shorter wording as prolixity unless the original repeats meaning or can lose words without losing logic, emphasis, or voice.
-- When a pronoun, modifier, attachment, or scope permits more than one plausible reading, name the competing readings, grade obscurity above None, and use oiticica-ambiguity rather than generic clarity as the follow-up.
-- Recommend a narrower Oiticica skill only when it would add a specific diagnosis or repair.
+Grade `None` for no evidence, `Minor` for a local defect, and `Major` for a repeated or controlling defect. Quote the evidence and explain why it matches the decision. Assign one textual cause to one primary defect. Do not use prolixity as a fallback: deleting an unclear essential relation is obscurity, repairing sound is disharmony, and making passive action active is weakness. Do not grade a conventional functional transition as banality unless it supplies the passage's main effect.
 
-Use these grades:
+Do not presume sourced, famous, literary, civic, sacred, quoted, grammatical, or intelligible prose is defect-free. Judge literal translations as English unless source-language structure is explicitly required. Preserve quotations; do not rewrite unless asked.
 
-- `None`: no concrete evidence of the defect.
-- `Minor`: a local defect that can be repaired without changing the passage's structure or meaning.
-- `Major`: a repeated or controlling defect that impedes meaning, force, or comparison.
+Source boundaries and quotation locations are recorded in `references/notes.md`.
 
-Do not infer a defect from personal preference, sentence length alone, or a feature deliberately required by the genre or voice.
+## Response
 
-## Output Shape
+Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
 
-For each passage or draft, use:
+Map the six defects respectively to `oiticica-correctness`, `oiticica-concision`, `oiticica-ambiguity` or `oiticica-clarity`, `oiticica-harmony`, `oiticica-originality`, and `oiticica-vigor`. Do not run them unless asked.
 
-```markdown
-<passage or draft label>:
-- Impurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Prolixity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Obscurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Disharmony — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Banality — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Weakness — <None|Minor|Major>: <evidence or "No concrete evidence.">
-
-Verdict:
-<strongest draft or overall diagnosis, justified by defect severity>
-
-Follow-up:
-- <zero to three narrower oiticica-* skills, each tied to an evidenced defect>
-
-Revision:
-<revision only when requested, otherwise "Not requested.">
-```
-
-When the prompt says `revise only if needed` and every grade is `None`, write `Revision: No revision needed.`
-
-## Objective Rubric
-
-- All six defects receive an explicit grade.
-- Every non-None grade cites concrete textual evidence.
-- The comparison applies one standard to every draft and explains the verdict.
-- No rewrite appears unless the user requests one.
-
-Pass only when every applicable check passes. Correctness and intelligibility defects outweigh decorative polish in the verdict.
-
-## Follow-up Boundary
-
-- Route impurity to `oiticica-correctness` or the precise grammar, spelling, word-form, or foreignism skill.
-- Route prolixity to `oiticica-concision` or `oiticica-accumulation`.
-- Route competing referents, attachments, or scopes to `oiticica-ambiguity`; route other obscurity to `oiticica-clarity`, `oiticica-anacoluthon`, `oiticica-brachylogy`, `oiticica-precision`, `oiticica-comma`, or `oiticica-semicolon`.
-- Route disharmony to `oiticica-harmony`, `oiticica-cacophony`, `oiticica-assonance`, `oiticica-alliteration`, `oiticica-hiatus`, `oiticica-meter`, or `oiticica-prose-rhythm`.
-- Route banality to `oiticica-originality`, `oiticica-description`, `oiticica-precision`, or `oiticica-image`.
-- Route weakness to `oiticica-vigor`, `oiticica-concision`, `oiticica-clarity`, `oiticica-inversion`, or `oiticica-antithesis`.
-
-Recommend only the smallest useful set. Do not run the narrower skills unless the user requests deeper diagnosis or repair.
-
-## Source Boundary
-
-Source notes live in `references/notes.md`.
-Do not invent source quotations. Preserve supplied source-model text exactly unless the user asks for a revision.
+If revision was not requested, write `Revision: Not requested.` If the prompt says `revise only if needed` and all grades are `None`, write `Revision: No revision needed.`

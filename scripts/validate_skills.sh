@@ -7,6 +7,7 @@ INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
 SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
 SKILPEL_DOWNLOAD_BASE="${SKILPEL_DOWNLOAD_BASE:-https://github.com/pasunboneleve/skilpel/releases/latest/download}"
 SKILPEL_CONFIG="${SKILPEL_CONFIG:-$ROOT/scripts/skilpel.yaml}"
+SKILPEL_STYLE_DEFECTS_CONFIG="${SKILPEL_STYLE_DEFECTS_CONFIG:-$ROOT/scripts/skilpel-style-defects.yaml}"
 SKILPEL_LOG_FORMAT="${SKILPEL_LOG_FORMAT:-auto}"
 SKILPEL_OUTPUT="${SKILPEL_OUTPUT:-text}"
 SKILPEL_WORKSPACE="${SKILPEL_WORKSPACE:-${TMPDIR:-/tmp}/skilpel-oiticica-style}"
@@ -112,24 +113,93 @@ validate_skill_args() {
   done
 }
 
-run_skilpel() {
+run_skilpel_group() {
+  local config="$1"
+  local group="$2"
   local run_workspace
   local skill
   local skill_args=()
+  shift 2
 
   for skill in "$@"; do
     skill_args+=(--skill "$skill")
   done
 
-  run_workspace="$(mktemp -d "${SKILPEL_WORKSPACE%/}.XXXXXX")" || return $?
+  run_workspace="$(mktemp -d "${SKILPEL_WORKSPACE%/}-$group.XXXXXX")" || return $?
 
   "$SKILPEL" run \
-    --config "$SKILPEL_CONFIG" \
+    --config "$config" \
     --root "$SKILLS_ROOT" \
     --workspace "$run_workspace" \
     --log-format "$SKILPEL_LOG_FORMAT" \
     --output "$SKILPEL_OUTPUT" \
     "${skill_args[@]}"
+}
+
+run_skilpel() {
+  local aggregate_dir
+  local aggregate_status
+  local default_status
+  local skill
+  local selected_skills=("$@")
+  local style_defects_status
+  local default_skills=()
+  local style_defects_skills=()
+
+  if (($# == 0)); then
+    for skill_file in "$SKILLS_ROOT"/*/SKILL.md; do
+      [[ -f "$skill_file" ]] || continue
+      selected_skills+=("$(basename "$(dirname "$skill_file")")")
+    done
+  fi
+
+  for skill in "${selected_skills[@]}"; do
+    if [[ "$skill" == "oiticica-style-defects" ]]; then
+      style_defects_skills+=("$skill")
+    else
+      default_skills+=("$skill")
+    fi
+  done
+
+  if [[ "$SKILPEL_OUTPUT" == "json" ]] &&
+    ((${#default_skills[@]} > 0)) &&
+    ((${#style_defects_skills[@]} > 0)); then
+    aggregate_dir="$(mktemp -d "${TMPDIR:-/tmp}/skilpel-summaries.XXXXXX")" || return $?
+    default_status=0
+    style_defects_status=0
+
+    run_skilpel_group "$SKILPEL_CONFIG" default "${default_skills[@]}" \
+      >"$aggregate_dir/default.json" || default_status=$?
+    run_skilpel_group "$SKILPEL_STYLE_DEFECTS_CONFIG" style-defects "${style_defects_skills[@]}" \
+      >"$aggregate_dir/style-defects.json" || style_defects_status=$?
+
+    aggregate_status=0
+    python3 -c \
+      'import json, sys; from pathlib import Path; print(json.dumps({"runs": [json.loads(Path(path).read_text()) for path in sys.argv[1:]]}, indent=2))' \
+      "$aggregate_dir/default.json" "$aggregate_dir/style-defects.json" || aggregate_status=$?
+    rm -rf "$aggregate_dir"
+
+    if ((aggregate_status != 0)); then
+      return 2
+    fi
+    if ((default_status > style_defects_status)); then
+      return "$default_status"
+    fi
+    return "$style_defects_status"
+  fi
+
+  default_status=0
+  style_defects_status=0
+  if ((${#default_skills[@]} > 0)); then
+    run_skilpel_group "$SKILPEL_CONFIG" default "${default_skills[@]}" || default_status=$?
+  fi
+  if ((${#style_defects_skills[@]} > 0)); then
+    run_skilpel_group "$SKILPEL_STYLE_DEFECTS_CONFIG" style-defects "${style_defects_skills[@]}" || style_defects_status=$?
+  fi
+  if ((default_status > style_defects_status)); then
+    return "$default_status"
+  fi
+  return "$style_defects_status"
 }
 
 run_skill_validator() {

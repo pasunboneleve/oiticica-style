@@ -171,7 +171,9 @@ Use `scripts/validate_skills.sh` with changed skill names so unrelated skill
 evals do not run. The wrapper downloads the latest released `skilpel`
 executable to `~/.local/bin/skilpel` and prints human-readable validation
 results by default; set `SKILPEL_OUTPUT=json` when a machine-readable summary
-is needed.
+is needed. A mixed or full JSON run returns one object whose `runs` array holds
+the summary for each model configuration. The style-defects audit uses its
+dedicated GPT-5.6 Luna config; other skills retain the default model config.
 
 ## Contributing
 

@@ -93,11 +93,10 @@ SKILLS = [
         },
         "rules": [
             "Inspect all six defects for every passage or draft, using the same evidence threshold when comparing parallel work.",
-            "Report only defects supported by a quoted word, phrase, sentence relation, or audible pattern.",
-            "Grade each defect as None, Minor, or Major according to its effect and recurrence.",
-            "Do not treat a possible shorter wording as prolixity unless the original repeats meaning or can lose words without losing logic, emphasis, or voice.",
-            "When a pronoun, modifier, attachment, or scope permits more than one plausible reading, name the competing readings, grade obscurity above None, and use oiticica-ambiguity rather than generic clarity as the follow-up.",
-            "Recommend a narrower Oiticica skill only when it would add a specific diagnosis or repair.",
+            "Do not presume that sourced, famous, literary, civic, sacred, quoted, grammatical, or intelligible prose is defect-free; preservation forbids silent rewriting, not diagnosis.",
+            "Judge a literal translation by English grammar and style unless the task explicitly requires preserving source-language structure.",
+            "Assign one textual cause to one primary defect; grade another defect above None only when separate evidence supports it.",
+            "Support every non-None grade with a quoted word, relation, or audible pattern; do not rewrite unless asked.",
         ],
         "rubric": [
             "All six defects receive an explicit grade.",
@@ -105,83 +104,213 @@ SKILLS = [
             "The comparison applies one standard to every draft and explains the verdict.",
             "No rewrite appears unless the user requests one.",
         ],
-        "positive": "Call me Ishmael.",
-        "negative": "The deployment was, in every possible respect, a very excellent and successful implementation of general improvements.",
-        "additional_examples": [
+        "positive": "between you and I",
+        "negative": "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.",
+        "examples": [
             {
-                "title": "Parallel Comparison Draft A",
-                "text": "The incident produced a situation in which an interruption of service was experienced by users for a period of approximately twenty minutes.",
-                "boundary": "Invented weak passage for this eval, not a public-domain quotation.",
+                "title": "Positive Eval: Impurity",
+                "polarity": "Positive: the target defect is present.",
+                "source": "William Shakespeare",
+                "work": "The Merchant of Venice",
+                "location": "act 3, scene 2, Antonio’s letter",
+                "text": "between you and I",
+                "boundary": "Verbatim public-domain excerpt. The nonstandard pronoun case supplies the impurity without the source sentence’s separate passive construction or sound pattern.",
             },
             {
-                "title": "Parallel Comparison Draft B",
-                "text": "Users lost service for twenty minutes.",
-                "boundary": "Invented strong passage for this eval, not a public-domain quotation.",
+                "title": "Positive Eval: Prolixity",
+                "polarity": "Positive: the target defect is present.",
+                "source": "Jonathan Swift",
+                "work": "Gulliver’s Travels",
+                "location": "part 1, chapter 7",
+                "text": "I fastened the door of my house, placed the chair on the table, according to my usual custom",
+                "boundary": "Verbatim public-domain excerpt. Deleting ‘usual’ preserves the logic, tense, emphasis, voice, and the meaning already carried by ‘custom’; the excerpt ends before the source sentence’s separately ambiguous pronoun.",
             },
             {
-                "title": "Ambiguity Eval Example",
-                "text": "Maya told Leila that she had misread the figures.",
-                "boundary": "Invented ambiguous passage for this eval, not a public-domain quotation.",
+                "title": "Positive Eval: Obscurity",
+                "polarity": "Positive: the target defect is present.",
+                "source": "Berean Literal Bible",
+                "work": "The Gospel According to John",
+                "location": "21:15",
+                "text": "15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”",
+                "boundary": "Verbatim modern public-domain excerpt with its verse number retained. The excerpt ends after the question; the unresolved comparison supplies the obscurity.",
+            },
+            {
+                "title": "Positive Eval: Disharmony",
+                "polarity": "Positive: the target defect is present.",
+                "source": "Jonathan Swift",
+                "work": "Gulliver’s Travels",
+                "location": "part 2, chapter 4",
+                "text": "if I had had proper instruments",
+                "boundary": "Verbatim public-domain excerpt. The grammatically valid adjacent repeated words supply the disharmony without removable meaning.",
+            },
+            {
+                "title": "Positive Eval: Banality",
+                "polarity": "Positive: the target defect is present.",
+                "source": "Edward Bulwer-Lytton",
+                "work": "Paul Clifford",
+                "location": "chapter 1, opening sentence",
+                "text": "It was a dark and stormy night",
+                "boundary": "Verbatim public-domain excerpt from the opening sentence. Its stock scene-setting supplies the banality.",
+            },
+            {
+                "title": "Positive Eval: Weakness",
+                "polarity": "Positive: the target defect is present.",
+                "source": "Jonathan Swift",
+                "work": "Gulliver’s Travels",
+                "location": "part 1, chapter 3",
+                "text": "my hat was dragged",
+                "boundary": "Verbatim public-domain excerpt. The concise agentless passive motion supplies the weakness without separate removable wording.",
+            },
+            {
+                "title": "Negative Eval: No Defect",
+                "polarity": "Negative: none of the six target defects is present.",
+                "source": "United States Constitution",
+                "work": "Preamble",
+                "location": "National Archives transcription",
+                "text": "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.",
+                "boundary": "Exact public-domain civic quotation. Its long purpose series, historical spelling and capitalization, repeated verb, and active infinitives give the audit substantial opportunities to overdiagnose.",
+            },
+            {
+                "title": "Parallel Comparison: World English Bible",
+                "polarity": "Comparison case: the interrupted construction is left syntactically continuous.",
+                "source": "World English Bible",
+                "work": "Ephesians",
+                "location": "3:1–7",
+                "text": "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,\n3:4 by which, when you read, you can perceive my understanding in the mystery of Christ,\n3:5 which in other generations was not made known to the children of men, as it has now been revealed to his holy apostles and prophets in the Spirit,\n3:6 that the Gentiles are fellow heirs and fellow members of the body, and fellow partakers of his promise in Christ Jesus through the Good News,\n3:7 of which I was made a servant according to the gift of that grace of God which was given me according to the working of his power.",
+                "boundary": "Exact modern public-domain quotation with verse numbers and divisions retained and translation footnotes omitted.",
+            },
+            {
+                "title": "Parallel Comparison: Berean Standard Bible",
+                "polarity": "Comparison case: the interruption is marked and the following relations are separated.",
+                "source": "Berean Standard Bible",
+                "work": "Ephesians",
+                "location": "3:1–7",
+                "text": "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n3:3 that is, the mystery made known to me by revelation, as I have already written briefly.\n3:4 In reading this, then, you will be able to understand my insight into the mystery of Christ,\n3:5 which was not made known to men in other generations as it has now been revealed by the Spirit to God’s holy apostles and prophets.\n3:6 This mystery is that through the gospel the Gentiles are fellow heirs, fellow members of the body, and fellow partakers of the promise in Christ Jesus.\n3:7 I became a servant of this gospel by the gift of God’s grace, given me through the working of His power.",
+                "boundary": "Exact modern public-domain quotation with verse numbers and divisions retained.",
             },
         ],
         "evals": [
             {
-                "id": "style-defects-positive-source-model",
-                "name": "style defects positive source model",
+                "id": "style-defects-positive-impurity",
+                "name": "style defects positive impurity",
                 "prompt": (
-                    "Review this public-domain source-model quotation for defects of style. "
-                    "Revise only if needed.\n\n"
-                    "<example>Call me Ishmael.</example>"
+                    "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>between you and I</example>"
                 ),
-                "expected_output": "The response audits all six essential defects, finds no supported defect, and preserves the source-model quotation.",
+                "expected_output": "The response isolates the nonstandard pronoun case as impurity and does not invent another defect.",
                 "assertions": [
-                    "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness.",
-                    "The output gives every defect a None, Minor, or Major grade and does not claim a defect without concrete evidence.",
-                    "The output grades all six defects None, preserves the supplied source-model quotation, and says no revision is needed.",
+                    "The output grades impurity above None with evidence from 'between you and I', while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
                 ],
             },
             {
-                "id": "style-defects-negative-weak-passage",
-                "name": "style defects negative weak passage",
+                "id": "style-defects-positive-prolixity",
+                "name": "style defects positive prolixity",
                 "prompt": (
-                    "Review this invented weak passage for defects of style.\n\n"
-                    "<example>The deployment was, in every possible respect, a very excellent and successful implementation of general improvements.</example>"
+                    "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>I fastened the door of my house, placed the chair on the table, according to my usual custom</example>"
                 ),
-                "expected_output": "The response identifies evidenced defects across the fixed six-defect audit without rewriting the passage.",
+                "expected_output": "The response isolates ‘usual’ in ‘usual custom’ as deletable prolixity.",
                 "assertions": [
-                    "The output explicitly audits impurity, prolixity, obscurity, disharmony, banality, and weakness.",
-                    "The output identifies prolixity and banality or weakness with concrete evidence from the passage.",
-                    "The output does not rewrite the passage because the prompt requests diagnosis only.",
+                    "The output grades prolixity above None with concrete evidence of wording that can be removed or compressed without losing the sentence’s event, while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
                 ],
             },
             {
-                "id": "style-defects-parallel-draft-comparison",
-                "name": "style defects parallel draft comparison",
+                "id": "style-defects-positive-obscurity",
+                "name": "style defects positive obscurity",
                 "prompt": (
-                    "Compare these invented parallel drafts for defects of style and recommend the stronger draft.\n\n"
-                    "<draft-a>The incident produced a situation in which an interruption of service was experienced by users for a period of approximately twenty minutes.</draft-a>\n\n"
-                    "<draft-b>Users lost service for twenty minutes.</draft-b>"
+                    "Audit this public-domain quotation from the Berean Literal Bible, John 21:15, for defects of style. Do not rewrite it.\n\n"
+                    "<example>15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”</example>"
                 ),
-                "expected_output": "The response applies one six-defect audit to both drafts and selects the concise, direct draft.",
+                "expected_output": "The response isolates the unresolved comparison in 'more than these' as obscurity without treating literal-translation notation as defective.",
                 "assertions": [
-                    "The output gives each supplied draft its own complete six-defect audit.",
-                    "The output gives Draft A an evidenced Major grade for Prolixity.",
-                    "The output gives Draft B no Major defect.",
-                    "The output recommends Draft B and explains the verdict through the relative severity of evidenced defects.",
+                    "The output grades obscurity above None because 'these' permits more than one plausible referent or comparison, while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
                 ],
             },
             {
-                "id": "style-defects-specific-follow-up",
-                "name": "style defects specific follow-up",
+                "id": "style-defects-positive-disharmony",
+                "name": "style defects positive disharmony",
                 "prompt": (
-                    "Diagnose the defects of style in this invented sentence and name any useful follow-up skill.\n\n"
-                    "<example>Maya told Leila that she had misread the figures.</example>"
+                    "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>if I had had proper instruments</example>"
                 ),
-                "expected_output": "The response classifies the ambiguous pronoun as obscurity and recommends the ambiguity skill for deeper repair.",
+                "expected_output": "The response isolates the audible collision between adjacent repeated words as disharmony.",
                 "assertions": [
-                    "The output grades obscurity above None and identifies that either Maya or Leila may have misread the figures.",
-                    "The output recommends oiticica-ambiguity as the narrow follow-up handle.",
-                    "The output grades every defect other than obscurity as None and explicitly says revision was not requested.",
+                    "The output grades disharmony above None with evidence from the audible 'had had' collision, while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-defects-positive-banality",
+                "name": "style defects positive banality",
+                "prompt": (
+                    "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>It was a dark and stormy night</example>"
+                ),
+                "expected_output": "The response isolates the stock scene-setting as banality.",
+                "assertions": [
+                    "The output grades banality above None with evidence from the stock phrase 'dark and stormy night', while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-defects-positive-weakness",
+                "name": "style defects positive weakness",
+                "prompt": (
+                    "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>my hat was dragged</example>"
+                ),
+                "expected_output": "The response isolates the concise agentless passive motion as weakness.",
+                "assertions": [
+                    "The output grades weakness above None because 'was dragged' makes the motion passive without naming its actor, while grading the other five defects None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-defects-negative-control",
+                "name": "style defects negative control",
+                "prompt": (
+                    "Audit this public-domain literary quotation for defects of style. Do not rewrite it.\n\n"
+                    "<example>We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.</example>"
+                ),
+                "expected_output": "The response finds no supported defect in a substantial, complex passage and resists shortening or modernizing it.",
+                "assertions": [
+                    "The output grades all six defects None; in particular, it does not turn the passage's purpose series, historical spelling or capitalization, repeated 'establish', or active infinitives into a non-None grade.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-defects-parallel-source-comparison",
+                "name": "style defects parallel source comparison",
+                "prompt": (
+                    "Compare these modern public-domain English renderings for defects of style and recommend the clearer rendering. Do not rewrite either.\n\n"
+                    "<draft-a>\n"
+                    "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n"
+                    "3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n"
+                    "3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,\n"
+                    "3:4 by which, when you read, you can perceive my understanding in the mystery of Christ,\n"
+                    "3:5 which in other generations was not made known to the children of men, as it has now been revealed to his holy apostles and prophets in the Spirit,\n"
+                    "3:6 that the Gentiles are fellow heirs and fellow members of the body, and fellow partakers of his promise in Christ Jesus through the Good News,\n"
+                    "3:7 of which I was made a servant according to the gift of that grace of God which was given me according to the working of his power.\n"
+                    "</draft-a>\n\n"
+                    "<draft-b>\n"
+                    "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n"
+                    "3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n"
+                    "3:3 that is, the mystery made known to me by revelation, as I have already written briefly.\n"
+                    "3:4 In reading this, then, you will be able to understand my insight into the mystery of Christ,\n"
+                    "3:5 which was not made known to men in other generations as it has now been revealed by the Spirit to God’s holy apostles and prophets.\n"
+                    "3:6 This mystery is that through the gospel the Gentiles are fellow heirs, fellow members of the body, and fellow partakers of the promise in Christ Jesus.\n"
+                    "3:7 I became a servant of this gospel by the gift of God’s grace, given me through the working of His power.\n"
+                    "</draft-b>"
+                ),
+                "expected_output": "The response applies the same audit to both modern sourced renderings and prefers the one that marks the interrupted thought and separates later relations.",
+                "assertions": [
+                    "The output gives each supplied rendering its own complete six-defect audit.",
+                    "The output identifies at least one concrete attachment or dependency problem in Draft A and explains which corresponding relation Draft B makes more explicit.",
+                    "The output recommends Draft B as clearer and supports the verdict with at least one evidenced difference between the renderings.",
+                    "The output does not present a revised version of either quotation and explicitly says revision was not requested.",
                 ],
             },
         ],
@@ -752,7 +881,7 @@ SOURCE_NOTES = {
     "narration": ("Robert Louis Stevenson", "Treasure Island", "chapter 1", "Positive model is an exact public-domain quotation."),
     "dissertation": ("James Madison", "Federalist No. 10", "", "Positive model is an exact public-domain quotation."),
     "style-qualities": ("Jane Austen", "Pride and Prejudice", "chapter 1", "Positive model is an exact public-domain quotation."),
-    "style-defects": ("Herman Melville", "Moby-Dick", "chapter 1", "Positive model is an exact public-domain quotation."),
+    "style-defects": ("William Shakespeare", "The Merchant of Venice", "act 3, scene 2", "Positive defect example is an exact public-domain quotation."),
     "correctness": ("George Eliot", "Middlemarch", "chapter 1", "Positive model is an exact public-domain quotation."),
     "solecism": ("Jane Austen", "Pride and Prejudice", "", "Positive model is an exact public-domain quotation."),
     "spelling": ("Charlotte Bronte", "Jane Eyre", "chapter 1", "Positive model is about preserving source spelling in quotation while modernizing commentary."),
@@ -804,8 +933,8 @@ POSITIVE_QUOTES = {
         "Jane Austen, Pride and Prejudice, chapter 1, opening sentence.",
     ),
     "style-defects": (
-        "Call me Ishmael.",
-        "Herman Melville, Moby-Dick, chapter 1, opening sentence.",
+        "between you and I",
+        "William Shakespeare, The Merchant of Venice, act 3, scene 2, Antonio’s letter, verbatim excerpt.",
     ),
     "correctness": (
         "Miss Brooke had that kind of beauty which seems to be thrown into relief by poor dress.",
@@ -1032,8 +1161,6 @@ When a task asks for a `Preserve` section, copy the supplied example text exactl
 
 
 def style_defects_skill_md(spec: dict[str, object]) -> str:
-    rules = "\n".join(f"- {rule}" for rule in spec["rules"])
-    rubric = "\n".join(f"- {item}" for item in spec["rubric"])
     return f"""---
 name: oiticica-style-defects
 description: Audit or compare English drafts using Oiticica's six essential style defects, with fixed severity grades, concrete evidence, and narrow follow-up handles.
@@ -1041,77 +1168,34 @@ description: Audit or compare English drafts using Oiticica's six essential styl
 
 # Oiticica Style Defects
 
-Use one fixed audit for a single passage or for parallel drafts. Diagnose defects; do not replace the adaptive routing performed by `oiticica-style`.
+Audit every supplied passage or parallel draft with the same six decisions.
 
 Source concept: {spec["concept"]}
 
-## Six Defects
+## Decisions
 
-- **Impurity** damages correctness through unintended faults in grammar, spelling, idiom, punctuation, or word form. Preserve deliberate dialect and historical quotation.
-- **Prolixity** damages concision through removable words, clauses, repetition, circumlocution, or avoidable subordination.
-- **Obscurity** damages clarity by hiding the actor, action, attachment, order, condition, or consequence, or by permitting unintended readings.
-- **Disharmony** damages readable sound or cadence through a demonstrable collision, distracting repetition, or monotonous rhythm.
-- **Banality** damages originality when stock phrasing, generic praise, or borrowed imagery carries the main effect.
-- **Weakness** damages vigor when passive construction, nominalization, abstraction, or inflation buries the main actor or force.
+Apply all six. A matching test requires at least `Minor`, even when the prose remains intelligible.
 
-## Audit Rules
+- **Impurity**: a form violates its grammatical role or governing usage. Exempt historically attested spelling, capitalization, and punctuation, deliberate dialect, and editorial notation.
+- **Prolixity**: words can be deleted, without substitution, while preserving logic, tense, necessary emphasis, and voice. A shorter rewording is not evidence.
+- **Obscurity**: two contextually coherent referents, attachments, or comparison terms survive the whole supplied passage and materially change the relation asserted, or a deictic's discourse role is unclear. Name the readings. Ordinary contextual deixis such as `this place`, `now`, or `before` is `None` when its role is clear even if the quotation does not name the real-world place or time. A choice between a discourse span and that span's named subject is also `None` when it leaves the asserted relation unchanged. A fleeting syntactic possibility that the passage resolves, a semantically implausible referent, or a bare dictionary sense is `None`.
+- **Disharmony**: immediately neighboring identical word tokens, or another accidental phonetic collision that distracts when read aloud, even if the construction is grammatical. A repeated word or phrase later in the passage is not adjacent. Repeated content words, parallel coordination, and a deliberate semantic echo are `None` unless they independently create a separate phonetic collision; describe that sound rather than calling the repetition adjacent.
+- **Banality**: stock phrasing, generic praise, or borrowed imagery supplies the main effect. A conventional transition, idiom, or functional connective is `None` when it merely carries the logic, even if it is familiar or dispensable; familiarity alone does not satisfy the main-effect test.
+- **Weakness**: passive construction, nominalization, abstraction, or inflation buries the main actor, movement, or force. Quote the grammatical construction and name what it buries. A finite `be` auxiliary plus a past participle can supply passive evidence when its subject receives an action, especially in an expression of movement; an absent actor strengthens but is not required for that diagnosis. A passive is `None` when attention properly belongs on its receiver and the actor is visible or immaterial. `Be` plus an `-ing` present participle is progressive, not passive. An active infinitive remains active when its agent is implicit or its recipient is explicit. A stative construction, gentle tone, an unnamed semantic instigator alone, or the mere possibility of a stronger recast is `None`. Do not double-count an absent actor as obscurity unless the missing identity is necessary to understand the relation or permits competing readings.
 
-{rules}
+Grade `None` for no evidence, `Minor` for a local defect, and `Major` for a repeated or controlling defect. Quote the evidence and explain why it matches the decision. Assign one textual cause to one primary defect. Do not use prolixity as a fallback: deleting an unclear essential relation is obscurity, repairing sound is disharmony, and making passive action active is weakness. Do not grade a conventional functional transition as banality unless it supplies the passage's main effect.
 
-Use these grades:
+Do not presume sourced, famous, literary, civic, sacred, quoted, grammatical, or intelligible prose is defect-free. Judge literal translations as English unless source-language structure is explicitly required. Preserve quotations; do not rewrite unless asked.
 
-- `None`: no concrete evidence of the defect.
-- `Minor`: a local defect that can be repaired without changing the passage's structure or meaning.
-- `Major`: a repeated or controlling defect that impedes meaning, force, or comparison.
+Source boundaries and quotation locations are recorded in `references/notes.md`.
 
-Do not infer a defect from personal preference, sentence length alone, or a feature deliberately required by the genre or voice.
+## Response
 
-## Output Shape
+Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
 
-For each passage or draft, use:
+Map the six defects respectively to `oiticica-correctness`, `oiticica-concision`, `oiticica-ambiguity` or `oiticica-clarity`, `oiticica-harmony`, `oiticica-originality`, and `oiticica-vigor`. Do not run them unless asked.
 
-```markdown
-<passage or draft label>:
-- Impurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Prolixity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Obscurity — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Disharmony — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Banality — <None|Minor|Major>: <evidence or "No concrete evidence.">
-- Weakness — <None|Minor|Major>: <evidence or "No concrete evidence.">
-
-Verdict:
-<strongest draft or overall diagnosis, justified by defect severity>
-
-Follow-up:
-- <zero to three narrower oiticica-* skills, each tied to an evidenced defect>
-
-Revision:
-<revision only when requested, otherwise "Not requested.">
-```
-
-When the prompt says `revise only if needed` and every grade is `None`, write `Revision: No revision needed.`
-
-## Objective Rubric
-
-{rubric}
-
-Pass only when every applicable check passes. Correctness and intelligibility defects outweigh decorative polish in the verdict.
-
-## Follow-up Boundary
-
-- Route impurity to `oiticica-correctness` or the precise grammar, spelling, word-form, or foreignism skill.
-- Route prolixity to `oiticica-concision` or `oiticica-accumulation`.
-- Route competing referents, attachments, or scopes to `oiticica-ambiguity`; route other obscurity to `oiticica-clarity`, `oiticica-anacoluthon`, `oiticica-brachylogy`, `oiticica-precision`, `oiticica-comma`, or `oiticica-semicolon`.
-- Route disharmony to `oiticica-harmony`, `oiticica-cacophony`, `oiticica-assonance`, `oiticica-alliteration`, `oiticica-hiatus`, `oiticica-meter`, or `oiticica-prose-rhythm`.
-- Route banality to `oiticica-originality`, `oiticica-description`, `oiticica-precision`, or `oiticica-image`.
-- Route weakness to `oiticica-vigor`, `oiticica-concision`, `oiticica-clarity`, `oiticica-inversion`, or `oiticica-antithesis`.
-
-Recommend only the smallest useful set. Do not run the narrower skills unless the user requests deeper diagnosis or repair.
-
-## Source Boundary
-
-Source notes live in `references/notes.md`.
-Do not invent source quotations. Preserve supplied source-model text exactly unless the user asks for a revision.
+If revision was not requested, write `Revision: Not requested.` If the prompt says `revise only if needed` and all grades are `None`, write `Revision: No revision needed.`
 """
 
 
@@ -1140,6 +1224,9 @@ def openai_yaml(spec: dict[str, object]) -> str:
 
 def notes_md(spec: dict[str, object]) -> str:
     name = str(spec["name"])
+    if spec.get("kind") == "defect-audit":
+        return style_defects_notes_md(spec)
+
     skill = f"oiticica-{name}"
     author, work, location, _note = SOURCE_NOTES[name]
     _quote, reference = POSITIVE_QUOTES[name]
@@ -1171,6 +1258,36 @@ The positive eval example is a source-model quotation. The negative eval example
 
 Boundary: invented weak passage, not a public-domain quotation.{additional_examples}
 """
+
+
+def style_defects_notes_md(spec: dict[str, object]) -> str:
+    sections = []
+    for example in spec["examples"]:
+        sections.append(
+            f'''## {example["title"]}
+
+- Polarity: {example["polarity"]}
+- Author or source: {example["source"]}
+- Work: {example["work"]}
+- Location: {example["location"]}
+- Boundary: {example["boundary"]}
+
+### Quotation
+
+{example["text"]}'''
+        )
+
+    return """# Notes for oiticica-style-defects
+
+## Eval Polarity
+
+`Positive` means the named target defect is present. `Negative` means none of the six defects is present. Comparison cases test consistent grading across sourced renderings.
+
+## Source Boundary
+
+Every supplied eval passage is a quotation or verbatim excerpt from a public-domain, widely read English work or civic text. No eval fixture is an invented passage or source-model paraphrase.
+
+""" + "\n\n".join(sections) + "\n"
 
 
 def yaml_scalar(value: str) -> str:

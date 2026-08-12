@@ -11,6 +11,16 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added `oiticica-style-defects`, a fixed six-defect audit for diagnosing and
   comparing drafts with concrete evidence and narrow follow-up handles.
 
+### Changed
+
+- Validate `oiticica-style-defects` with GPT-5.6 Luna while retaining the
+  default model configuration for every other skill.
+
+### Fixed
+
+- Require the general style router to repair causal order rather than merely
+  repunctuating an unchanged event sequence.
+
 ## [0.3.0] - 2026-06-26
 
 ### Added

@@ -53,13 +53,21 @@ behavior belongs in `SKILL.md`.
 [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) checks
 skill structure, frontmatter, Markdown, token size, and allowed files.
 `skilpel` runs the model-backed evals in `evals/evals.yaml` against both a
-with-skill run and a without-skill baseline, then enforces the pass-rate and
-baseline-delta gates configured in `scripts/skilpel.yaml`.
+with-skill run and a without-skill baseline, then enforces pass-rate and
+baseline-delta gates. Most skills use `scripts/skilpel.yaml`. The
+`oiticica-style-defects` audit uses `scripts/skilpel-style-defects.yaml` and
+GPT-5.6 Luna because its six-way specificity checks exceeded the gate with Luna
+but not with GPT-4o mini. The Luna configuration uses its required temperature
+of `1` and low reasoning effort; targeted comparison showed better adherence at
+`low` than at `none`. It does not set a seed: the current OpenAI Responses API
+does not support that field.
 
 The wrapper requests `skilpel`'s human-readable text summary on stdout and lets
 progress logs go to stderr. GitHub Actions sets `SKILPEL_LOG_FORMAT=pretty` so
 intermediate eval results stay visible during long provider calls. Set
-`SKILPEL_OUTPUT=json` for a machine-readable final summary.
+`SKILPEL_OUTPUT=json` for a machine-readable final summary. When a mixed or
+full run uses both model configurations, the wrapper emits one JSON object with
+the two summaries in its `runs` array.
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed
 `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
