@@ -583,7 +583,14 @@ SKILLS = [
             "The revision improves clarity without deleting significant facts.",
         ],
         "positive": "",
-        "negative": "A one-sentence room description that includes windows, history, furniture, weather, ancestry, and moral commentary.",
+        "negative": "It was a dark and stormy night; the rain fell in torrents, except at occasional intervals, when it was checked by a violent gust of wind which swept up the streets (for it is in London that our scene lies), rattling along the house-tops, and fiercely agitating the scanty flame of the lamps that struggled against the darkness.",
+        "negative_source": {
+            "author": "Edward Bulwer-Lytton",
+            "work": "Paul Clifford",
+            "location": "chapter 1, opening sentence",
+            "reference": "Project Gutenberg, Paul Clifford, volume 1, chapter 1.",
+            "boundary": "Exact public-domain quotation.",
+        },
     },
     {
         "name": "brachylogy",
@@ -1235,11 +1242,34 @@ def notes_md(spec: dict[str, object]) -> str:
         f'''\n\n## {example["title"]}\n\n{example["text"]}\n\nBoundary: {example["boundary"]}'''
         for example in spec.get("additional_examples", [])
     )
+    negative_source = spec.get("negative_source")
+    if isinstance(negative_source, dict):
+        negative_boundary = "The positive eval example is a source-model quotation. The negative eval example is a public-domain quotation used for contrast."
+        negative_notes = f'''## Negative Eval Source
+
+- Author or source: {negative_source["author"]}
+- Work: {negative_source["work"]}
+- Location: {negative_source["location"]}
+- Reference: {negative_source["reference"]}
+- Boundary: {negative_source["boundary"]}
+
+## Negative Eval Example
+
+{spec["negative"]}
+
+Boundary: {negative_source["boundary"]}'''
+    else:
+        negative_boundary = "The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise."
+        negative_notes = f'''## Negative Eval Example
+
+{spec["negative"]}
+
+Boundary: invented weak passage, not a public-domain quotation.'''
     return f"""# Notes for {skill}
 
 ## Modern English Example Boundary
 
-The positive eval example is a source-model quotation. The negative eval example is an invented weak passage used for contrast unless this file says otherwise.
+{negative_boundary}
 
 ## Positive Model Source
 
@@ -1252,11 +1282,7 @@ The positive eval example is a source-model quotation. The negative eval example
 
 {spec["positive"]}
 
-## Negative Eval Example
-
-{spec["negative"]}
-
-Boundary: invented weak passage, not a public-domain quotation.{additional_examples}
+{negative_notes}{additional_examples}
 """
 
 
@@ -1303,7 +1329,15 @@ def evals_yaml(spec: dict[str, object]) -> str:
     name = spec["name"]
     skill = f"oiticica-{name}"
     positive = str(spec["positive"])
-    negative = str(spec["negative"]).rstrip(".")
+    negative_source = spec.get("negative_source")
+    negative = str(spec["negative"])
+    if not isinstance(negative_source, dict):
+        negative = negative.rstrip(".")
+    negative_prompt = (
+        "Review this public-domain quotation as a weak passage."
+        if isinstance(negative_source, dict)
+        else "Review this invented weak passage."
+    )
     default_evals = [
         {
             "id": f"{name}-positive-classic-model",
@@ -1323,7 +1357,7 @@ def evals_yaml(spec: dict[str, object]) -> str:
             "id": f"{name}-negative-classic-contrast",
             "name": f"{name} negative classic contrast",
             "prompt": (
-                "Review this invented weak passage.\n\n"
+                f"{negative_prompt}\n\n"
                 f"<example>{negative}</example>"
             ),
             "expected_output": "The response gives a concrete Oiticica contrast and fixes the named fault.",

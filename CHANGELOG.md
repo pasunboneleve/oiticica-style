@@ -6,7 +6,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
-## [0.4.0] - 2026-08-12
+## [0.4.0] - 2026-08-13
 
 ### Added
 
@@ -28,6 +28,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
   reviewers, independent of which response section contains the evidence.
 - Accept concrete, skill-relevant fault evidence across every generated repair
   eval, and use an unambiguous Federalist No. 10 comma model.
+- Replace the accumulation eval’s hypothetical passage with the sourced full
+  opening sentence of *Paul Clifford* and preserve its quotation boundary.
 
 ## [0.3.0] - 2026-06-26
 
