@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where concision is the 
 
 Source concept: Concision expresses aspects, facts, or opinions with the fewest words compatible with the other qualities.
 
+## Aggregate Mode
+
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Remove superfluous aspects, episodes, opinions, adjectives, periphrases, redundant clauses, and avoidable subordination.

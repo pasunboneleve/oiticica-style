@@ -1,11 +1,11 @@
 ---
 name: oiticica-style-defects
-description: Audit or compare English drafts using Oiticica's six essential style defects, with fixed severity grades, concrete evidence, and narrow follow-up handles.
+description: Audit a single English passage or compare parallel drafts using Oiticica's six essential style defects, with fixed grades and evidence.
 ---
 
 # Oiticica Style Defects
 
-Audit every supplied passage or parallel draft with the same six decisions.
+Audit every supplied passage. When the user supplies parallel drafts, audit each independently before comparing them.
 
 Source concept: Style has six essential defects corresponding to its six qualities: impurity, prolixity, obscurity, disharmony, banality, and weakness.
 

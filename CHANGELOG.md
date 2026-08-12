@@ -6,6 +6,11 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Make single-passage audits explicit in both aggregate style skills, and make
+  `oiticica-style-qualities` invoke its six component skills by `$` handle.
+
 ## [0.4.0] - 2026-08-13
 
 ### Added

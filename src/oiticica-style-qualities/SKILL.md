@@ -1,79 +1,48 @@
 ---
 name: oiticica-style-qualities
-description: Apply Oiticica's style qualities concept in modern English with concise rules, objective rubrics, and concrete contrast.
+description: Audit a single English passage or compare parallel drafts using Oiticica's six essential style qualities and their component skills.
 ---
 
 # Oiticica Style Qualities
 
-Use this skill when reviewing or rewriting English prose where style qualities is the controlling issue.
+Audit every supplied passage. When the user supplies parallel drafts, audit each independently before comparing them.
 
 Source concept: Style has six essential qualities: correctness, concision, clarity, harmony, originality, and vigor.
 
-## Rules
+## Component Skills
 
-- Judge a passage by all six qualities; do not let one excuse failure in another.
-- Treat correctness as the floor, not the finish.
-- Treat concision as minimum effort for maximum expression, not mere shortness.
-- Treat originality as personal exactness, not novelty for its own sake.
+Load and apply all six component skills for every audit. These `$` handles are explicit skill invocations, not labels:
 
-## Review Shape
+- `$oiticica-correctness`
+- `$oiticica-concision`
+- `$oiticica-clarity`
+- `$oiticica-harmony`
+- `$oiticica-originality`
+- `$oiticica-vigor`
 
-Use the source-model shape for strong models:
+Use each component skill's rules and objective rubric. Do not substitute an unaided general definition of the quality. If the runtime cannot resolve nested skill invocations, use the decision boundaries below rather than omitting a quality.
 
-```markdown
-Principle:
-<oiticica-style-qualities: one sentence naming the concept>
+## Decisions
 
-Preserve:
-<supplied example text>
+Give every quality a final `Pass` or `Fail` decision with quoted or otherwise concrete evidence.
 
-Why:
-<why the model satisfies the concept>
+- **Correctness**: grammar, spelling, usage, idiom, and punctuation fit the intended English register.
+- **Concision**: no word, clause, or example can be removed, and no circumlocution can be replaced by a shorter direct noun or verb, without harming another quality.
+- **Clarity**: actor, action, object, attachment, order, and consequence permit one intended reading.
+- **Harmony**: sound and cadence support meaning without an accidental collision or stumble.
+- **Originality**: exact observation and relation, rather than stock phrasing or borrowed effect, carry the passage.
+- **Vigor**: concision and clarity pass, and the strongest actor, force, and main verb remain visible without inflation.
 
-Rubric:
-<at least two objective checks, each marked Pass or Fail>
-```
+Judge all six; do not let one excuse failure in another. Correctness is the floor, not the finish. Shortness alone does not establish concision, novelty does not establish originality, and an active voice alone does not establish vigor.
 
-Use the repair shape for weak passages:
+Keep the decisions specific. Preserve historically accepted punctuation and usage in a sourced historical quotation; do not fail correctness merely because current convention differs. A grammatical construction does not fail correctness merely because it is awkward; judge its sound under harmony. For concision, require deletion or a shorter direct substitution to preserve logic, tense, necessary emphasis, and voice. A light verb plus an action noun fails concision when the direct cognate verb preserves the relation: for example, `make preparations` becomes `prepare`. The same construction fails vigor when it moves the main action out of the verb. A modifier that only repeats meaning already entailed by its governing verb fails concision unless the passage supplies evidence of deliberate emphasis. Vigor must `Fail` whenever Concision or Clarity fails, even when the actors and verbs are otherwise strong.
 
-```markdown
-Principle:
-<oiticica-style-qualities: one sentence naming the concept>
+## Response
 
-Weak:
-<small passage or paraphrase>
+Keep each audit under 220 words. For each passage or draft, use exactly one line per quality in this form: `Name — Pass/Fail: evidence.` List Correctness, Concision, Clarity, Harmony, Originality, and Vigor in that order. State the final decision directly; do not narrate deliberation or retract a decision.
 
-Fault:
-<name the exact broken relation>
+For one passage, give a one-sentence quality-based `Verdict`. For parallel drafts, complete the same six-quality audit for each draft, then recommend the stronger draft with evidenced differences. Do not present a rewrite unless asked.
 
-Better:
-<corrected version>
+If revision was not requested, write `Revision: Not requested.` If the prompt says `revise only if needed` and all six qualities pass, write `Revision: No revision needed.`
 
-Why:
-<explain how the revision restores the relation>
-
-Rubric:
-<at least two objective checks, each marked Pass or Fail>
-```
-
-Start `Principle` with the exact skill name `oiticica-style-qualities`.
-If the prompt says source-model or source-model paraphrase, copy the supplied example in `Preserve` and do not use repair headings.
-
-## Objective Rubric
-
-- No grammar, spelling, or usage fault blocks comprehension.
-- No removable word, clause, or example remains.
-- The thought is easy to grasp on first reading.
-- Sound, order, specificity, and energy support the meaning.
-
-Pass only when every applicable check passes. If correctness fails, fix or name that failure before judging style.
-
-## English Rule
-
-Apply modern English grammar, punctuation, morphology, idiom, and prosody. Do not transfer Portuguese orthography or grammar into English.
-
-## Source Boundary
-
-Source notes live in `references/notes.md`.
-Do not invent source quotations. If an example is labeled as a paraphrase or invented passage, preserve that boundary in the review.
-When a task asks for a `Preserve` section, copy the supplied example text exactly; do not replace it with imagined source prose.
+Source boundaries and quotation locations are recorded in `references/notes.md`.

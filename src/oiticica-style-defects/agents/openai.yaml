@@ -1,4 +1,4 @@
 interface:
   display_name: "Oiticica Style Defects"
-  short_description: "Audit six essential defects across parallel drafts"
-  default_prompt: "Use $oiticica-style-defects to compare these drafts, cite each evidenced defect, and recommend the strongest."
+  short_description: "Audit one passage or compare drafts across six style defects"
+  default_prompt: "Use $oiticica-style-defects to audit each passage for six defects with evidence; compare only parallel drafts or when comparison is requested."

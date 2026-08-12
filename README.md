@@ -60,22 +60,24 @@ This creates symlinks under:
 The script links only skill directories. It does **not** install `AGENTS.md`,
 `CLAUDE.md`, or project-level instructions.
 
-After linking, start Codex, Claude Code, or Pi and invoke a skill by name, for example:
+After linking, start Codex, Claude Code, or Pi and invoke a skill by name.
+Codex supports a `$` prefix for explicit skill invocation:
 
 ```text
-Use oiticica-style to diagnose and revise this paragraph.
+Use $oiticica-style to diagnose and revise this paragraph.
 ```
 
-or invoke a narrower principle directly:
+Claude Code and Pi can use the plain skill name. To invoke a narrower principle
+directly in Codex:
 
 ```text
-Use oiticica-concision to tighten this paragraph without losing meaning.
+Use $oiticica-concision to tighten this paragraph without losing meaning.
 ```
 
 or:
 
 ```text
-Use oiticica-ambiguity to find sentences that allow more than one reading.
+Use $oiticica-ambiguity to find sentences that allow more than one reading.
 ```
 
 ## Skills
@@ -92,7 +94,7 @@ Use oiticica-ambiguity to find sentences that allow more than one reading.
 
 ### Major qualities
 
-- [`oiticica-style-qualities`](src/oiticica-style-qualities/SKILL.md): Style has six essential qualities: correctness, concision, clarity, harmony, originality, and vigor.
+- [`oiticica-style-qualities`](src/oiticica-style-qualities/SKILL.md): Audits one passage or compares parallel drafts by explicitly applying the correctness, concision, clarity, harmony, originality, and vigor skills.
 - [`oiticica-correctness`](src/oiticica-correctness/SKILL.md): Correctness observes the grammatical tradition of the language being used.
 - [`oiticica-concision`](src/oiticica-concision/SKILL.md): Concision expresses aspects, facts, or opinions with the fewest words compatible with the other qualities.
 - [`oiticica-clarity`](src/oiticica-clarity/SKILL.md): Clarity transmits thought in the form most easily understood.
@@ -102,9 +104,10 @@ Use oiticica-ambiguity to find sentences that allow more than one reading.
 
 ### Essential defects
 
-- [`oiticica-style-defects`](src/oiticica-style-defects/SKILL.md): Audits or
-  compares drafts for impurity, prolixity, obscurity, disharmony, banality,
-  and weakness, then names narrower follow-up skills where useful.
+- [`oiticica-style-defects`](src/oiticica-style-defects/SKILL.md): Audits one
+  passage or compares parallel drafts for impurity, prolixity, obscurity,
+  disharmony, banality, and weakness, then names narrower follow-up skills
+  where useful.
 
 ### Faults of correctness
 
