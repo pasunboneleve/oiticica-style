@@ -15,8 +15,8 @@ evals:
     prompt: |
       Audit this public-domain quotation for defects of style. Do not rewrite it.
 
-      <example>I fastened the door of my house, placed the chair on the table, according to my usual custom</example>
-    expected_output: "The response isolates \u2018usual\u2019 in \u2018usual custom\u2019 as deletable prolixity."
+      <example>The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.</example>
+    expected_output: "The response isolates \u2018again\u2019 after \u2018returned it to him\u2019 as deletable prolixity."
     assertions:
       - "The output grades prolixity above None with concrete evidence of wording that can be removed or compressed without losing the sentence\u2019s event, while grading the other five defects None."
       - "The output does not present a revised version of the quotation and explicitly says revision was not requested."

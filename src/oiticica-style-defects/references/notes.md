@@ -25,12 +25,12 @@ between you and I
 - Polarity: Positive: the target defect is present.
 - Author or source: Jonathan Swift
 - Work: Gulliver’s Travels
-- Location: part 1, chapter 7
-- Boundary: Verbatim public-domain excerpt. Deleting ‘usual’ preserves the logic, tense, emphasis, voice, and the meaning already carried by ‘custom’; the excerpt ends before the source sentence’s separately ambiguous pronoun.
+- Location: part 4, chapter 2
+- Boundary: Verbatim public-domain excerpt with an editorial ellipsis marking the omitted relative clause. ‘Again’ can be deleted after ‘returned it to him’ without changing the event; the retained first clause supplies the pronoun referent without a competing modifier attachment.
 
 ### Quotation
 
-I fastened the door of my house, placed the chair on the table, according to my usual custom
+The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.
 
 ## Positive Eval: Obscurity
 

@@ -121,9 +121,9 @@ SKILLS = [
                 "polarity": "Positive: the target defect is present.",
                 "source": "Jonathan Swift",
                 "work": "Gulliver’s Travels",
-                "location": "part 1, chapter 7",
-                "text": "I fastened the door of my house, placed the chair on the table, according to my usual custom",
-                "boundary": "Verbatim public-domain excerpt. Deleting ‘usual’ preserves the logic, tense, emphasis, voice, and the meaning already carried by ‘custom’; the excerpt ends before the source sentence’s separately ambiguous pronoun.",
+                "location": "part 4, chapter 2",
+                "text": "The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.",
+                "boundary": "Verbatim public-domain excerpt with an editorial ellipsis marking the omitted relative clause. ‘Again’ can be deleted after ‘returned it to him’ without changing the event; the retained first clause supplies the pronoun referent without a competing modifier attachment.",
             },
             {
                 "title": "Positive Eval: Obscurity",
@@ -208,9 +208,9 @@ SKILLS = [
                 "name": "style defects positive prolixity",
                 "prompt": (
                     "Audit this public-domain quotation for defects of style. Do not rewrite it.\n\n"
-                    "<example>I fastened the door of my house, placed the chair on the table, according to my usual custom</example>"
+                    "<example>The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.</example>"
                 ),
-                "expected_output": "The response isolates ‘usual’ in ‘usual custom’ as deletable prolixity.",
+                "expected_output": "The response isolates ‘again’ after ‘returned it to him’ as deletable prolixity.",
                 "assertions": [
                     "The output grades prolixity above None with concrete evidence of wording that can be removed or compressed without losing the sentence’s event, while grading the other five defects None.",
                     "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
