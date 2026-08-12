@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-12
+
 ### Added
 
 - Added `oiticica-style-defects`, a fixed six-defect audit for diagnosing and
