@@ -6,10 +6,10 @@ evals:
       Review and revise this public-domain quotation.
 
       <example>between you and I</example>
-    expected_output: "The router removes the evidenced defect before applying the six-quality audit to the revision."
+    expected_output: "The router runs the broad defect and specific clarity-fault audits before applying the six-quality audit to the revision."
     assertions:
       - "The output uses the general router shape with Genre, Selected skills, Diagnosis, Revision, and Checks."
-      - "The output selects oiticica-style-defects before oiticica-style-qualities and reports evidence from both aggregate stages."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities, and reports evidence from all three aggregate stages."
       - "The diagnosis identifies that the preposition 'between' requires objective 'me', not subjective 'I', and the revision uses 'between you and me' before reporting the final quality decisions."
   - id: "general-preservation-pipeline"
     name: "general preservation pipeline"
@@ -17,10 +17,10 @@ evals:
       Review this strong public-domain quotation and revise only if needed.
 
       <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
-    expected_output: "The router runs both aggregate stages and preserves prose that passes them."
+    expected_output: "The router runs all three aggregate stages and preserves prose that passes them."
     assertions:
-      - "The output selects oiticica-style-defects before oiticica-style-qualities and reports evidence from both aggregate stages."
-      - "The output grades all six source defects None and gives all six final qualities a Pass decision without inventing a fault."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities, and reports evidence from all three aggregate stages."
+      - "The output grades all six broad defects and all seven clarity faults None, then gives all six final qualities a Pass decision without inventing a fault."
       - "The output says no revision is needed or preserves the quotation without substantive rewriting."
   - id: "description-through-aggregates"
     name: "description through aggregates"
@@ -31,8 +31,8 @@ evals:
     expected_output: "The router recognizes descriptive prose while using the aggregate defect and quality stages for the general review."
     assertions:
       - "The output identifies oiticica-description as the controlling genre."
-      - "The output selects oiticica-style-defects before oiticica-style-qualities instead of listing the six individual quality skills as top-level selections."
-      - "The Checks give Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness explicit grades and Correctness, Concision, Clarity, Harmony, Originality, and Vigor explicit decisions."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities instead of listing either aggregate's component skills as top-level selections."
+      - "The Checks give all six broad defects and all seven clarity faults explicit grades, then give Correctness, Concision, Clarity, Harmony, Originality, and Vigor explicit decisions."
   - id: "causal-relation-repair"
     name: "causal relation repair"
     prompt: |
@@ -41,7 +41,7 @@ evals:
       <example>John did not go to town because his father was absent.</example>
     expected_output: "The router repairs the causal attachment and preserves the stated event."
     assertions:
-      - "The output selects oiticica-style-defects before oiticica-style-qualities and diagnoses the causal attachment or scope in the supplied sentence."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities and diagnoses the causal attachment or scope in the supplied sentence."
       - "The revision makes the father's absence the explicit cause of John not going to town, without leaving the negation's scope ambiguous."
       - "The revision preserves John, the father, the absence, the town, and the fact that John did not go."
   - id: "stock-description-repair"
@@ -52,7 +52,7 @@ evals:
       <example>It was a dark and stormy night; the rain fell in torrents</example>
     expected_output: "The router replaces the stock opening with the concrete weather already supplied by the description."
     assertions:
-      - "The output selects oiticica-style-defects before oiticica-style-qualities and identifies 'dark and stormy night' as stock scene-setting or banality."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities and identifies 'dark and stormy night' as stock scene-setting or banality."
       - "The revision removes the stock phrase while retaining the supplied concrete fact that rain fell in torrents at night."
       - "The revision does not substitute a new generic praise phrase or unrelated weather detail."
   - id: "ambiguity-repair"
@@ -63,7 +63,7 @@ evals:
       <example>15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”</example>
     expected_output: "The router uses the ambiguity follow-up to choose and expose one plausible comparison."
     assertions:
-      - "The output selects oiticica-style-defects before oiticica-style-qualities and identifies 'these' as an ambiguous referent or comparison."
+      - "The output selects oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities and identifies 'these' as an ambiguous referent or comparison."
       - "The output states the plausible reading chosen for the revision rather than silently changing the comparison."
       - "The revision chooses one plausible reading and uses an idiomatic concrete noun phrase such as 'the other disciples', 'these other disciples', or 'the fishing equipment'; bare 'these', generic 'these others', or generic 'things' does not pass."
       - "Apart from resolving 'these', the revision preserves the source's actors, meal, names, question, and historical-present 'Jesus says'."
@@ -75,5 +75,16 @@ evals:
       <example>I made my preparations with the most studious care.</example>
     expected_output: "The router honors the narrow request without running the general aggregate pipeline."
     assertions:
-      - "The output does not provide a general six-defect audit or a general six-quality audit."
+      - "The output does not provide a general six-defect audit, seven-clarity-fault audit, or six-quality audit."
       - "The output does not introduce an unrelated Oiticica principle."
+  - id: "clarity-only-revision"
+    name: "clarity only revision"
+    prompt: |
+      Review this public-domain quotation and revise only if needed.
+
+      <example>The French demurring to the conditions which the English commander offered, again commenced the action.</example>
+    expected_output: "The router treats the evidenced comma fault as sufficient reason to revise, even when no broad defect independently requires a change."
+    assertions:
+      - "The output runs oiticica-style-defects, then oiticica-clarity-faults, then oiticica-style-qualities and identifies the missing comma after 'The French' as a clarity fault."
+      - "The revision inserts a comma after 'The French' so that the participial phrase is enclosed by paired commas and 'The French' remains the subject of 'commenced'."
+      - "The output does not refuse revision merely because the broad defect grades are None."

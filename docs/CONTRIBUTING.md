@@ -32,9 +32,9 @@ Use public-domain English classics, civic texts, or Bible translations for
 eval examples. The preferred source pool includes Shakespeare; Jonathan
 Swift, especially *Gulliver’s Travels*; the Federalist Papers; Austen; Dickens;
 Milton; Lincoln; Robert Louis Stevenson; William Livingston Klein’s *Why We
-Punctuate*; the United States Constitution; Edward Bulwer-Lytton’s *Paul
-Clifford*; and the Berean Literal Bible, World English Bible, and Berean
-Standard Bible.
+Punctuate*; H. W. Fowler and F. G. Fowler’s *The King’s English*; the United
+States Constitution; Edward Bulwer-Lytton’s *Paul Clifford*; and the Berean
+Literal Bible, World English Bible, and Berean Standard Bible.
 
 Each `references/notes.md` entry must name the source behind the example and state
 whether the eval passage is a quotation, a source-model paraphrase, or an

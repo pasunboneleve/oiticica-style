@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where semicolon is the 
 
 Source concept: The semicolon separates related clauses where a comma is too weak and a period too final.
 
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Use semicolons for successive conditions before a conclusion, strong adversative turns, parallel clauses with omitted words, and list items that contain internal commas.

@@ -6,6 +6,17 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Add `oiticica-clarity-faults`, a fixed seven-row audit that invokes the
+  ambiguity, anacoluthon, accumulation, brachylogy, precision, semicolon, and
+  comma skills for single passages or parallel drafts.
+
+### Changed
+
+- Compose the general `oiticica-style` router from the broad defect audit, the
+  specific clarity-fault audit, and the final quality audit.
+
 ## [0.5.0] - 2026-08-13
 
 ### Changed

@@ -84,7 +84,7 @@ Use $oiticica-ambiguity to find sentences that allow more than one reading.
 
 ### General router
 
-- [`oiticica-style`](src/oiticica-style/SKILL.md): Orchestrates a general review by identifying genre, applying the six-defect rubric, repairing evidenced defects, and then applying the six-quality rubric.
+- [`oiticica-style`](src/oiticica-style/SKILL.md): Orchestrates a general review by identifying genre, applying the six-defect rubric, diagnosing the seven faults of clarity, repairing evidenced faults, and then applying the six-quality rubric.
 
 ### Forms of composition
 
@@ -123,6 +123,7 @@ Use $oiticica-ambiguity to find sentences that allow more than one reading.
 
 ### Faults of clarity
 
+- [`oiticica-clarity-faults`](src/oiticica-clarity-faults/SKILL.md): Audits one passage or compares parallel drafts by explicitly applying the ambiguity, anacoluthon, accumulation, brachylogy, precision, semicolon, and comma skills.
 - [`oiticica-ambiguity`](src/oiticica-ambiguity/SKILL.md): Ambiguity is a structure that allows more than one meaning when only one is intended.
 - [`oiticica-anacoluthon`](src/oiticica-anacoluthon/SKILL.md): Anacoluthon is a break in logical order, usually by changing the expected subject or construction.
 - [`oiticica-accumulation`](src/oiticica-accumulation/SKILL.md): Accumulation is excess and crossing of aspects, facts, or opinions in one period.
@@ -156,9 +157,9 @@ Each skill contains:
 
 Eval quotations use public-domain English texts, including Shakespeare, Swift’s
 *Gulliver’s Travels*, the Federalist Papers, Austen, Dickens, Robert Louis
-Stevenson, William Livingston Klein’s *Why We Punctuate*, the United States
-Constitution, Bulwer-Lytton’s *Paul Clifford*, and the BLB, WEB, and BSB Bible
-translations.
+Stevenson, William Livingston Klein’s *Why We Punctuate*, H. W. Fowler and
+F. G. Fowler’s *The King’s English*, the United States Constitution,
+Bulwer-Lytton’s *Paul Clifford*, and the BLB, WEB, and BSB Bible translations.
 Source notes classify each passage as a quotation, source-model paraphrase, or
 invented weak contrast.
 

@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where brachylogy is the
 
 Source concept: Brachylogy is the opposite vice of accumulation: too many short, disconnected phrases with forced pauses.
 
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Join short fragments when they belong to one movement or relation.

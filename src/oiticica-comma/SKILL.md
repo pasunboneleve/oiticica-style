@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where comma is the cont
 
 Source concept: The comma marks coordination, interpolation, parenthesis, apposition, enumeration, ellipsis, inversion, and similar local relations.
 
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Use commas to show sentence structure, not breathing alone.

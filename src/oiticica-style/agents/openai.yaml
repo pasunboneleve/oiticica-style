@@ -1,4 +1,4 @@
 interface:
   display_name: "Oiticica Style"
-  short_description: "Run defect-first and quality-complete Oiticica prose review"
-  default_prompt: "Use $oiticica-style to review this prose through the defect and quality stages, then revise it if needed."
+  short_description: "Run broad-defect, clarity-fault, and quality Oiticica review"
+  default_prompt: "Use $oiticica-style to review this prose through the broad-defect, clarity-fault, and quality stages, then revise it if needed."

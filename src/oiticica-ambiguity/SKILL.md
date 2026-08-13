@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where ambiguity is the 
 
 Source concept: Ambiguity is a structure that allows more than one meaning when only one is intended.
 
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Find the word, pronoun, modifier, punctuation mark, or clause relation that permits two readings.
