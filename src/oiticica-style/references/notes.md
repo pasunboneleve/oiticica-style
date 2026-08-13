@@ -6,7 +6,7 @@ Oiticica names six essential qualities and six corresponding defects in §5 of t
 
 ## Eval Polarity
 
-The positive pipeline cases contain an evidenced defect or failed quality for the router to repair or carry through both stages. The negative preservation case contains no target defect and requires the router to preserve a strong passage. The strong description case tests genre routing and complete aggregate coverage without requiring the model to invent a fault. The narrow case tests that an explicit skill request suppresses the general pipeline.
+The positive pipeline cases contain an evidenced defect or failed quality for the router to repair or carry through both stages. The negative preservation case contains no target defect and requires the router to preserve a strong passage. The strong description case tests genre routing and complete aggregate coverage without requiring the model to invent a fault. The narrow case tests that an explicit skill request suppresses the general pipeline. Skilpel supplies only the selected router body, so the narrow case does not assert the child skill’s exact rewrite; `oiticica-concision` owns that behavior, and a read-only Codex trace verifies the nested load.
 
 ## Source Boundary
 

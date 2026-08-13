@@ -75,6 +75,5 @@ evals:
       <example>I made my preparations with the most studious care.</example>
     expected_output: "The router honors the narrow request without running the general aggregate pipeline."
     assertions:
-      - "The revision replaces 'made my preparations' with the direct verb 'prepared' while preserving the speaker and care."
       - "The output does not provide a general six-defect audit or a general six-quality audit."
       - "The output does not introduce an unrelated Oiticica principle."

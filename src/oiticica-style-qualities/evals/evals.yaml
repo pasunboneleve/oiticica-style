@@ -52,5 +52,5 @@ evals:
     expected_output: "The response audits both sourced renderings across all six qualities and recommends the rendering that marks the interruption and separates later relations."
     assertions:
       - "The output gives Draft A and Draft B separate decisions for correctness, concision, clarity, harmony, originality, and vigor."
-      - "The output recommends Draft B and supports the comparison with at least one concrete difference in how it marks the interrupted opening or separates the following relations."
+      - "The output recommends Draft B and supports the comparison with at least one explicit paired difference: it names corresponding wording or relations in both drafts and explains the changed effect."
       - "The output does not present a revised version of either quotation and explicitly says revision was not requested."

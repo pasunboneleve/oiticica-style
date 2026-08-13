@@ -32,7 +32,7 @@ When the general `oiticica-style` router invokes this skill as a pipeline stage,
 
 ## Response
 
-Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
+Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. For parallel drafts, complete both six-defect audits, then recommend the lower-defect or clearer draft with at least one explicit paired difference: name corresponding wording or relations in both drafts and explain the changed effect. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
 
 Map the six defects respectively to `oiticica-correctness`, `oiticica-concision`, `oiticica-ambiguity` or `oiticica-clarity`, `oiticica-harmony`, `oiticica-originality`, and `oiticica-vigor`. Do not run them unless asked.
 
