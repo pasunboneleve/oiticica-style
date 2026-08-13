@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-13
+
 ### Changed
 
 - Make single-passage audits explicit in both aggregate style skills, make
