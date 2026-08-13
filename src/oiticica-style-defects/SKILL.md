@@ -26,6 +26,10 @@ Do not presume sourced, famous, literary, civic, sacred, quoted, grammatical, or
 
 Source boundaries and quotation locations are recorded in `references/notes.md`.
 
+## Router Mode
+
+When the general `oiticica-style` router invokes this skill as a pipeline stage, apply all six decisions but defer final response shape, total length, follow-up selection, and revision decisions to the router. Return the six evidenced grades to the router; do not emit this skill's standalone audit format.
+
 ## Response
 
 Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.

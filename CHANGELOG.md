@@ -8,8 +8,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Changed
 
-- Make single-passage audits explicit in both aggregate style skills, and make
-  `oiticica-style-qualities` invoke its six component skills by `$` handle.
+- Make single-passage audits explicit in both aggregate style skills, make
+  `oiticica-style-qualities` invoke its six component skills by `$` handle,
+  and compose the general router from defect-first and quality-complete
+  aggregate stages.
 
 ## [0.4.0] - 2026-08-13
 

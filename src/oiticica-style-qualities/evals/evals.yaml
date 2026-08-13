@@ -32,7 +32,7 @@ evals:
     assertions:
       - "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each."
       - "The output grades concision Fail and contrasts 'made my preparations' with the shorter direct verb 'prepared'."
-      - "The output grades vigor Fail because 'made my preparations' weakens the main action or verb, and it does not present a rewritten passage."
+      - "The output grades vigor Fail because 'made my preparations' weakens the main action or verb, and after the diagnostic local contrast it explicitly says revision was not requested."
   - id: "style-qualities-parallel-source-comparison"
     name: "style qualities parallel source comparison"
     prompt: |

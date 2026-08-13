@@ -84,7 +84,7 @@ Use $oiticica-ambiguity to find sentences that allow more than one reading.
 
 ### General router
 
-- [`oiticica-style`](src/oiticica-style/SKILL.md): Orchestrates the principle skills by identifying genre, eliminating defects, and applying qualities only where the passage needs them.
+- [`oiticica-style`](src/oiticica-style/SKILL.md): Orchestrates a general review by identifying genre, applying the six-defect rubric, repairing evidenced defects, and then applying the six-quality rubric.
 
 ### Forms of composition
 
@@ -155,8 +155,10 @@ Each skill contains:
 - `references/notes.md` — source notes identifying the public-domain English texts used for positive and negative examples.
 
 Eval quotations use public-domain English texts, including Shakespeare, Swift’s
-*Gulliver’s Travels*, the Federalist Papers, the United States Constitution,
-Bulwer-Lytton’s *Paul Clifford*, and the BLB, WEB, and BSB Bible translations.
+*Gulliver’s Travels*, the Federalist Papers, Austen, Dickens, Robert Louis
+Stevenson, William Livingston Klein’s *Why We Punctuate*, the United States
+Constitution, Bulwer-Lytton’s *Paul Clifford*, and the BLB, WEB, and BSB Bible
+translations.
 Source notes classify each passage as a quotation, source-model paraphrase, or
 invented weak contrast.
 
