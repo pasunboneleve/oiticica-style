@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where correctness is th
 
 Source concept: Correctness observes the grammatical tradition of the language being used.
 
+## Aggregate Mode
+
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Apply modern standard English grammar, spelling, idiom, and punctuation unless the task requires dialect or historical form.

@@ -1,24 +1,56 @@
 skill_name: "oiticica-style-qualities"
 evals:
-  - id: "style-qualities-positive-classic-model"
-    name: "style-qualities positive classic model"
+  - id: "style-qualities-positive-single-passage"
+    name: "style qualities positive single passage"
     prompt: |
-      Assess this strong public-domain source-model quotation.
+      Audit this strong public-domain quotation as one passage. Do not rewrite it.
 
       <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
-    expected_output: "The response names the skill concept, preserves a strong classic model, and judges it by objective rubric checks."
+    expected_output: "The response gives one evidenced passing decision for each of the six style qualities and preserves the quotation."
     assertions:
-      - "The output identifies the relevant Oiticica concept as oiticica-style-qualities."
-      - "The output uses Principle, Preserve, Why, and Rubric sections, and does not use Weak, Fault, or Better as repair headings."
-      - "The Rubric applies at least two objective checks from the skill, with pass or fail judgments."
-  - id: "style-qualities-negative-classic-contrast"
-    name: "style-qualities negative classic contrast"
+      - "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each."
+      - "The output grades all six qualities Pass and does not invent a fault in the supplied strong model."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "style-qualities-negative-single-passage"
+    name: "style qualities negative single passage"
     prompt: |
-      Review this invented weak passage.
+      Audit this public-domain quotation as one passage. Do not rewrite it.
 
-      <example>The meeting was, in every possible respect, a very excellent and successful occasion of general improvement</example>
-    expected_output: "The response gives a concrete Oiticica contrast and fixes the named fault."
+      <example>The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.</example>
+    expected_output: "The response finds the concision failure and its required vigor consequence, gives evidenced decisions for the other four qualities, and preserves the quotation."
     assertions:
-      - "The output identifies the relevant Oiticica concept as oiticica-style-qualities."
-      - "The output includes Weak, Fault, Better, Why, and Rubric sections, with the supplied example text in Weak and a Better section that repairs the fault."
-      - "The output names at least one concrete, skill-relevant fault and its textual evidence rather than saying only unclear, awkward, vague, or verbose."
+      - "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each."
+      - "The output grades concision Fail because 'again' is removable after 'returned it to him', grades vigor Fail because the same redundancy weakens force, and grades the other four qualities Pass."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "style-qualities-circumlocution-single-passage"
+    name: "style qualities circumlocution single passage"
+    prompt: |
+      Audit this public-domain quotation as one passage. Do not rewrite it.
+
+      <example>I made my preparations with the most studious care.</example>
+    expected_output: "The response applies the component skill's direct-verb rule rather than limiting concision to deletion-only evidence."
+    assertions:
+      - "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each."
+      - "The output grades concision Fail and contrasts 'made my preparations' with the shorter direct verb 'prepared'."
+      - "The output grades vigor Fail because 'made my preparations' weakens the main action or verb, and after the diagnostic local contrast it explicitly says revision was not requested."
+  - id: "style-qualities-parallel-source-comparison"
+    name: "style qualities parallel source comparison"
+    prompt: |
+      Compare these parallel modern public-domain English renderings across all six style qualities. Do not rewrite either.
+
+      <draft-a>
+      3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,
+      3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,
+      3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,
+      </draft-a>
+
+      <draft-b>
+      3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...
+      3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,
+      3:3 that is, the mystery made known to me by revelation, as I have already written briefly.
+      </draft-b>
+    expected_output: "The response audits both sourced renderings across all six qualities and recommends the rendering that marks the interruption and separates later relations."
+    assertions:
+      - "The output gives Draft A and Draft B separate decisions for correctness, concision, clarity, harmony, originality, and vigor."
+      - "The output recommends Draft B and supports the comparison with at least one explicit paired difference: it names corresponding wording or relations in both drafts and explains the changed effect."
+      - "The output does not present a revised version of either quotation and explicitly says revision was not requested."

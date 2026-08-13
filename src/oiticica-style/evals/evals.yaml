@@ -1,67 +1,79 @@
 skill_name: "oiticica-style"
 evals:
-  - id: "description-generic-routing"
-    name: "description generic routing"
+  - id: "general-defect-quality-pipeline"
+    name: "general defect quality pipeline"
     prompt: |
-      Review and revise this invented weak passage.
+      Review and revise this public-domain quotation.
 
-      <example>The office was very nice and impressive. It had a beautiful desk, a great window, and a pleasant atmosphere.</example>
-    expected_output: "The response selects the relevant Oiticica skills for descriptive prose and revises the generic description with concrete detail."
+      <example>between you and I</example>
+    expected_output: "The router removes the evidenced defect before applying the six-quality audit to the revision."
     assertions:
-      - "The output uses the orchestrator shape with Genre, Selected skills, Diagnosis, Revision, and Checks sections."
-      - "The output selects oiticica-description and at least one of oiticica-precision or oiticica-originality, with evidence from the passage."
-      - "The Revision replaces generic praise such as nice, impressive, beautiful, great, or pleasant with more concrete descriptive detail."
-  - id: "narration-sequence-routing"
-    name: "narration sequence routing"
+      - "The output uses the general router shape with Genre, Selected skills, Diagnosis, Revision, and Checks."
+      - "The output selects oiticica-style-defects before oiticica-style-qualities and reports evidence from both aggregate stages."
+      - "The diagnosis identifies that the preposition 'between' requires objective 'me', not subjective 'I', and the revision uses 'between you and me' before reporting the final quality decisions."
+  - id: "general-preservation-pipeline"
+    name: "general preservation pipeline"
     prompt: |
-      Review and revise this invented weak passage.
+      Review this strong public-domain quotation and revise only if needed.
 
-      <example>The alarm sounded after the team evacuated the room, yet the alarm caused the evacuation.</example>
-    expected_output: "The response routes event prose through narration and clarity, then restores event order."
+      <example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>
+    expected_output: "The router runs both aggregate stages and preserves prose that passes them."
     assertions:
-      - "The output uses the orchestrator shape with Genre, Selected skills, Diagnosis, Revision, and Checks sections."
-      - "The output identifies oiticica-narration as the genre and selects oiticica-clarity, with evidence from event order, cause, condition, or consequence."
-      - "The Revision puts the alarm before the evacuation and removes the contradiction between the stated order and the causal claim."
-  - id: "correctness-before-polish"
-    name: "correctness before polish"
+      - "The output selects oiticica-style-defects before oiticica-style-qualities and reports evidence from both aggregate stages."
+      - "The output grades all six source defects None and gives all six final qualities a Pass decision without inventing a fault."
+      - "The output says no revision is needed or preserves the quotation without substantive rewriting."
+  - id: "description-through-aggregates"
+    name: "description through aggregates"
     prompt: |
-      Review and revise this invented weak passage.
+      Review this strong public-domain quotation and revise only if needed.
 
-      <example>Between you and I, the report were more impactful because it utilized fewer words.</example>
-    expected_output: "The response fixes correctness before applying concision or vigor."
+      <example>Fog up the river, where it flows among green aits and meadows; fog down the river, where it rolls defiled among the tiers of shipping.</example>
+    expected_output: "The router recognizes descriptive prose while using the aggregate defect and quality stages for the general review."
     assertions:
-      - "The output selects at least one correctness defect skill such as oiticica-correctness, oiticica-solecism, or oiticica-confused-words before any quality skill."
-      - "The Diagnosis names grammar, syntax, agreement, case, or word-choice faults before style polish."
-      - "The Revision fixes 'between you and I' and 'report were' while preserving the sentence's intended claim."
-  - id: "ambiguity-specific-routing"
-    name: "ambiguity specific routing"
+      - "The output identifies oiticica-description as the controlling genre."
+      - "The output selects oiticica-style-defects before oiticica-style-qualities instead of listing the six individual quality skills as top-level selections."
+      - "The Checks give Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness explicit grades and Correctness, Concision, Clarity, Harmony, Originality, and Vigor explicit decisions."
+  - id: "causal-relation-repair"
+    name: "causal relation repair"
     prompt: |
-      Review and revise this invented weak sentence.
+      Review and revise this public-domain illustrative quotation from Why We Punctuate. Choose the reading in which the father's absence caused John not to go.
 
-      <example>Maya told Omar the article was wrong after reviewing the notes.</example>
-    expected_output: "The response selects the ambiguity skill rather than only generic clarity, and removes the double reading."
+      <example>John did not go to town because his father was absent.</example>
+    expected_output: "The router repairs the causal attachment and preserves the stated event."
     assertions:
-      - "The output selects oiticica-ambiguity with evidence from the phrase that allows more than one reading."
-      - "The output identifies the ambiguous attachment by saying it is unclear whether Maya or Omar reviewed the notes."
-  - id: "already-good-preserve"
-    name: "already good preserve"
+      - "The output selects oiticica-style-defects before oiticica-style-qualities and diagnoses the causal attachment or scope in the supplied sentence."
+      - "The revision makes the father's absence the explicit cause of John not going to town, without leaving the negation's scope ambiguous."
+      - "The revision preserves John, the father, the absence, the town, and the fact that John did not go."
+  - id: "stock-description-repair"
+    name: "stock description repair"
     prompt: |
-      Review this invented adequate sentence and revise only if needed.
+      Review and revise this public-domain description.
 
-      <example>The cache stores user sessions for ten minutes.</example>
-    expected_output: "The response preserves already clear prose and does not route to decorative sound or figure skills."
+      <example>It was a dark and stormy night; the rain fell in torrents</example>
+    expected_output: "The router replaces the stock opening with the concrete weather already supplied by the description."
     assertions:
-      - "The output says no revision is needed or preserves the sentence without substantive rewriting."
-      - "The output identifies passing relations using relevant skills such as oiticica-clarity, oiticica-precision, or oiticica-vigor."
-      - "The output does not select unrelated sound or figure skills such as oiticica-alliteration, oiticica-assonance, oiticica-meter, oiticica-image, oiticica-inversion, or oiticica-antithesis."
-  - id: "single-skill-deference"
-    name: "single skill deference"
+      - "The output selects oiticica-style-defects before oiticica-style-qualities and identifies 'dark and stormy night' as stock scene-setting or banality."
+      - "The revision removes the stock phrase while retaining the supplied concrete fact that rain fell in torrents at night."
+      - "The revision does not substitute a new generic praise phrase or unrelated weather detail."
+  - id: "ambiguity-repair"
+    name: "ambiguity repair"
     prompt: |
-      Use oiticica-concision on this invented weak sentence.
+      Review and revise this public-domain quotation from the Berean Literal Bible, John 21:15. Make only the smallest required local change and preserve all other source wording.
 
-      <example>The team made a decision to begin the implementation of the plan.</example>
-    expected_output: "The response defers to the named concision skill rather than running a broad audit."
+      <example>15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”</example>
+    expected_output: "The router uses the ambiguity follow-up to choose and expose one plausible comparison."
     assertions:
-      - "The output selects or uses oiticica-concision as the controlling skill."
-      - "The output does not run a broad multi-skill audit or select more than one additional skill unless it names a necessary correctness fault."
-      - "The Revision makes the sentence shorter while preserving the intended action."
+      - "The output selects oiticica-style-defects before oiticica-style-qualities and identifies 'these' as an ambiguous referent or comparison."
+      - "The output states the plausible reading chosen for the revision rather than silently changing the comparison."
+      - "The revision chooses one plausible reading and uses an idiomatic concrete noun phrase such as 'the other disciples', 'these other disciples', or 'the fishing equipment'; bare 'these', generic 'these others', or generic 'things' does not pass."
+      - "Apart from resolving 'these', the revision preserves the source's actors, meal, names, question, and historical-present 'Jesus says'."
+  - id: "narrow-skill-deference"
+    name: "narrow skill deference"
+    prompt: |
+      Use $oiticica-concision to revise this public-domain quotation.
+
+      <example>I made my preparations with the most studious care.</example>
+    expected_output: "The router honors the narrow request without running the general aggregate pipeline."
+    assertions:
+      - "The output does not provide a general six-defect audit or a general six-quality audit."
+      - "The output does not introduce an unrelated Oiticica principle."

@@ -6,6 +6,15 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Make single-passage audits explicit in both aggregate style skills, make
+  `oiticica-style-qualities` invoke its six component skills by `$` handle,
+  and compose the general router from defect-first and quality-complete
+  aggregate stages.
+- Derive model-backed CI scope from changed skill directories without treating
+  the skill generator as a reason to run every skill eval.
+
 ## [0.4.0] - 2026-08-13
 
 ### Added

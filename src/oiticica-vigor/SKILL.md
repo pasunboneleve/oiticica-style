@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where vigor is the cont
 
 Source concept: Vigor is energy of expression in aspects, episodes, or conceptions.
 
+## Aggregate Mode
+
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Prefer active construction for movement unless the passive makes the true focus stronger.

@@ -31,7 +31,8 @@ python3 scripts/generate_skills.py
 Use public-domain English classics, civic texts, or Bible translations for
 eval examples. The preferred source pool includes Shakespeare; Jonathan
 Swift, especially *Gulliver’s Travels*; the Federalist Papers; Austen; Dickens;
-Milton; Lincoln; the United States Constitution; Edward Bulwer-Lytton’s *Paul
+Milton; Lincoln; Robert Louis Stevenson; William Livingston Klein’s *Why We
+Punctuate*; the United States Constitution; Edward Bulwer-Lytton’s *Paul
 Clifford*; and the Berean Literal Bible, World English Bible, and Berean
 Standard Bible.
 
@@ -84,8 +85,10 @@ direnv exec . bash scripts/validate_skills.sh oiticica-concision
 ```
 
 Use additional skill names when several skills changed. Run the full suite only
-when shared generator, eval, or validation logic changes broadly enough to
-affect every skill.
+when the model-validation workflow, runner, validator, or model configuration
+changes broadly enough to affect every skill. Changes to authoring utilities
+such as `scripts/generate_skills.py` do not widen model-backed validation; CI
+derives its focused targets from the generated skill directories in the diff.
 
 The default model-backed gate requires at least 20 percentage points of
 pass-rate lift over the without-skill baseline and at least 90% with-skill pass

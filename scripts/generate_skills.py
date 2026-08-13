@@ -66,7 +66,13 @@ SKILLS = [
     },
     {
         "name": "style-qualities",
+        "kind": "quality-audit",
         "concept": "Style has six essential qualities: correctness, concision, clarity, harmony, originality, and vigor.",
+        "interface": {
+            "display_name": "Oiticica Style Qualities",
+            "short_description": "Audit one passage or compare drafts across six style qualities",
+            "default_prompt": "Use $oiticica-style-qualities to audit each passage across all six qualities with evidence; compare only parallel drafts or when comparison is requested.",
+        },
         "rules": [
             "Judge a passage by all six qualities; do not let one excuse failure in another.",
             "Treat correctness as the floor, not the finish.",
@@ -80,7 +86,98 @@ SKILLS = [
             "Sound, order, specificity, and energy support the meaning.",
         ],
         "positive": "",
-        "negative": "The meeting was, in every possible respect, a very excellent and successful occasion of general improvement.",
+        "negative": "The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.",
+        "negative_source": {
+            "author": "Jonathan Swift",
+            "work": "Gulliver’s Travels",
+            "location": "part 4, chapter 2",
+            "reference": "Jonathan Swift, Gulliver’s Travels, part 4, chapter 2.",
+            "boundary": "Verbatim public-domain excerpt with an editorial ellipsis marking the omitted relative clause.",
+        },
+        "evals": [
+            {
+                "id": "style-qualities-positive-single-passage",
+                "name": "style qualities positive single passage",
+                "prompt": (
+                    "Audit this strong public-domain quotation as one passage. Do not rewrite it.\n\n"
+                    "<example>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</example>"
+                ),
+                "expected_output": "The response gives one evidenced passing decision for each of the six style qualities and preserves the quotation.",
+                "assertions": [
+                    "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each.",
+                    "The output grades all six qualities Pass and does not invent a fault in the supplied strong model.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-qualities-negative-single-passage",
+                "name": "style qualities negative single passage",
+                "prompt": (
+                    "Audit this public-domain quotation as one passage. Do not rewrite it.\n\n"
+                    "<example>The sorrel nag offered me a root … I took it in my hand, and, having smelt it, returned it to him again as civilly as I could.</example>"
+                ),
+                "expected_output": "The response finds the concision failure and its required vigor consequence, gives evidenced decisions for the other four qualities, and preserves the quotation.",
+                "assertions": [
+                    "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each.",
+                    "The output grades concision Fail because 'again' is removable after 'returned it to him', grades vigor Fail because the same redundancy weakens force, and grades the other four qualities Pass.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-qualities-circumlocution-single-passage",
+                "name": "style qualities circumlocution single passage",
+                "prompt": (
+                    "Audit this public-domain quotation as one passage. Do not rewrite it.\n\n"
+                    "<example>I made my preparations with the most studious care.</example>"
+                ),
+                "expected_output": "The response applies the component skill's direct-verb rule rather than limiting concision to deletion-only evidence.",
+                "assertions": [
+                    "The output gives correctness, concision, clarity, harmony, originality, and vigor one explicit evidenced decision each.",
+                    "The output grades concision Fail and contrasts 'made my preparations' with the shorter direct verb 'prepared'.",
+                    "The output grades vigor Fail because 'made my preparations' weakens the main action or verb, and after the diagnostic local contrast it explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "style-qualities-parallel-source-comparison",
+                "name": "style qualities parallel source comparison",
+                "prompt": (
+                    "Compare these parallel modern public-domain English renderings across all six style qualities. Do not rewrite either.\n\n"
+                    "<draft-a>\n"
+                    "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n"
+                    "3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n"
+                    "3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,\n"
+                    "</draft-a>\n\n"
+                    "<draft-b>\n"
+                    "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n"
+                    "3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n"
+                    "3:3 that is, the mystery made known to me by revelation, as I have already written briefly.\n"
+                    "</draft-b>"
+                ),
+                "expected_output": "The response audits both sourced renderings across all six qualities and recommends the rendering that marks the interruption and separates later relations.",
+                "assertions": [
+                    "The output gives Draft A and Draft B separate decisions for correctness, concision, clarity, harmony, originality, and vigor.",
+                    "The output recommends Draft B and supports the comparison with at least one explicit paired difference: it names corresponding wording or relations in both drafts and explains the changed effect.",
+                    "The output does not present a revised version of either quotation and explicitly says revision was not requested.",
+                ],
+            },
+        ],
+        "additional_examples": [
+            {
+                "title": "Circumlocution: Robert Louis Stevenson, Strange Case of Dr Jekyll and Mr Hyde",
+                "text": "I made my preparations with the most studious care.",
+                "boundary": "Exact public-domain quotation from Henry Jekyll’s Full Statement of the Case.",
+            },
+            {
+                "title": "Parallel Comparison: World English Bible",
+                "text": "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,",
+                "boundary": "Exact modern public-domain quotation from Ephesians 3:1–3, with verse numbers and divisions retained and translation footnotes omitted.",
+            },
+            {
+                "title": "Parallel Comparison: Berean Standard Bible",
+                "text": "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n3:3 that is, the mystery made known to me by revelation, as I have already written briefly.",
+                "boundary": "Exact modern public-domain quotation from Ephesians 3:1–3, with verse numbers and divisions retained.",
+            },
+        ],
     },
     {
         "name": "style-defects",
@@ -88,8 +185,8 @@ SKILLS = [
         "concept": "Style has six essential defects corresponding to its six qualities: impurity, prolixity, obscurity, disharmony, banality, and weakness.",
         "interface": {
             "display_name": "Oiticica Style Defects",
-            "short_description": "Audit six essential defects across parallel drafts",
-            "default_prompt": "Use $oiticica-style-defects to compare these drafts, cite each evidenced defect, and recommend the strongest.",
+            "short_description": "Audit one passage or compare drafts across six style defects",
+            "default_prompt": "Use $oiticica-style-defects to audit each passage for six defects with evidence; compare only parallel drafts or when comparison is requested.",
         },
         "rules": [
             "Inspect all six defects for every passage or draft, using the same evidence threshold when comparing parallel work.",
@@ -317,6 +414,7 @@ SKILLS = [
     },
     {
         "name": "correctness",
+        "quality_component": True,
         "concept": "Correctness observes the grammatical tradition of the language being used.",
         "rules": [
             "Apply modern standard English grammar, spelling, idiom, and punctuation unless the task requires dialect or historical form.",
@@ -497,6 +595,7 @@ SKILLS = [
     },
     {
         "name": "concision",
+        "quality_component": True,
         "concept": "Concision expresses aspects, facts, or opinions with the fewest words compatible with the other qualities.",
         "rules": [
             "Remove superfluous aspects, episodes, opinions, adjectives, periphrases, redundant clauses, and avoidable subordination.",
@@ -515,6 +614,7 @@ SKILLS = [
     },
     {
         "name": "clarity",
+        "quality_component": True,
         "concept": "Clarity transmits thought in the form most easily understood.",
         "rules": [
             "Make subject, action, object, condition, and consequence visible.",
@@ -666,6 +766,7 @@ SKILLS = [
     },
     {
         "name": "harmony",
+        "quality_component": True,
         "concept": "Harmony is the euphonic adjustment of words in the phrase and phrases in the period.",
         "rules": [
             "Read prose aloud when sound or cadence matters.",
@@ -792,6 +893,7 @@ SKILLS = [
     },
     {
         "name": "originality",
+        "quality_component": True,
         "concept": "Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.",
         "rules": [
             "Reject stock phrases, borrowed images, and general aspects.",
@@ -828,6 +930,7 @@ SKILLS = [
     },
     {
         "name": "vigor",
+        "quality_component": True,
         "concept": "Vigor is energy of expression in aspects, episodes, or conceptions.",
         "rules": [
             "Prefer active construction for movement unless the passive makes the true focus stronger.",
@@ -1083,6 +1186,8 @@ def yaml_string(value: str) -> str:
 
 def skill_md(spec: dict[str, object]) -> str:
     name = spec["name"]
+    if spec.get("kind") == "quality-audit":
+        return style_qualities_skill_md(spec)
     if spec.get("kind") == "defect-audit":
         return style_defects_skill_md(spec)
 
@@ -1091,6 +1196,13 @@ def skill_md(spec: dict[str, object]) -> str:
     description = str(spec["concept"]).rstrip(".")
     rules = "\n".join(f"- {rule}" for rule in spec["rules"])
     rubric = "\n".join(f"- {item}" for item in spec["rubric"])
+    aggregate_mode = ""
+    if spec.get("quality_component"):
+        aggregate_mode = """
+
+## Aggregate Mode
+
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode."""
     return f"""---
 name: {skill_name}
 description: Apply Oiticica's {title_name.lower()} concept in modern English with concise rules, objective rubrics, and concrete contrast.
@@ -1100,7 +1212,7 @@ description: Apply Oiticica's {title_name.lower()} concept in modern English wit
 
 Use this skill when reviewing or rewriting English prose where {title_name.lower()} is the controlling issue.
 
-Source concept: {description}.
+Source concept: {description}.{aggregate_mode}
 
 ## Rules
 
@@ -1167,15 +1279,71 @@ When a task asks for a `Preserve` section, copy the supplied example text exactl
 """
 
 
+def style_qualities_skill_md(spec: dict[str, object]) -> str:
+    return f"""---
+name: oiticica-style-qualities
+description: Audit a single English passage or compare parallel drafts using Oiticica's six essential style qualities and their component skills.
+---
+
+# Oiticica Style Qualities
+
+Audit every supplied passage. When the user supplies parallel drafts, audit each independently before comparing them.
+
+Source concept: {spec["concept"]}
+
+## Component Skills
+
+Load and apply all six component skills for every audit. These `$` handles are explicit skill invocations, not labels:
+
+- `$oiticica-correctness`
+- `$oiticica-concision`
+- `$oiticica-clarity`
+- `$oiticica-harmony`
+- `$oiticica-originality`
+- `$oiticica-vigor`
+
+Use each component skill's rules and objective rubric. Do not substitute an unaided general definition of the quality. If the runtime cannot resolve nested skill invocations, use the decision boundaries below rather than omitting a quality.
+
+## Router Mode
+
+When the general `oiticica-style` router invokes this skill as a pipeline stage, apply all six component skills but defer final response shape, total length, and revision decisions to the router. Return the six evidenced decisions to the router; do not emit this skill's standalone audit format.
+
+## Decisions
+
+Give every quality a final `Pass` or `Fail` decision with quoted or otherwise concrete evidence.
+
+- **Correctness**: grammar, spelling, usage, idiom, and punctuation fit the intended English register.
+- **Concision**: no word, clause, or example can be removed, and no circumlocution can be replaced by a shorter direct noun or verb, without harming another quality.
+- **Clarity**: actor, action, object, attachment, order, and consequence permit one intended reading.
+- **Harmony**: sound and cadence support meaning without an accidental collision or stumble.
+- **Originality**: exact observation and relation, rather than stock phrasing or borrowed effect, carry the passage.
+- **Vigor**: concision and clarity pass, and the strongest actor, force, and main verb remain visible without inflation.
+
+Judge all six; do not let one excuse failure in another. Correctness is the floor, not the finish. Shortness alone does not establish concision, novelty does not establish originality, and an active voice alone does not establish vigor.
+
+Keep the decisions specific. Preserve historically accepted punctuation and usage in a sourced historical quotation; do not fail correctness merely because current convention differs. A grammatical construction does not fail correctness merely because it is awkward; judge its sound under harmony. For concision, require deletion or a shorter direct substitution to preserve logic, tense, necessary emphasis, and voice. When Concision fails, state the exact deletion or substitution and the resulting local phrase. A light verb plus an action noun fails concision when the direct cognate verb preserves the relation: for example, `make preparations` becomes `prepare`. The same construction fails vigor when it moves the main action out of the verb. A modifier that only repeats meaning already entailed by its governing verb fails concision unless the passage supplies evidence of deliberate emphasis. Vigor must `Fail` whenever Concision or Clarity fails, even when the actors and verbs are otherwise strong.
+
+## Response
+
+Keep each audit under 220 words. For each passage or draft, use exactly one line per quality in this form: `Name — Pass/Fail: evidence.` List Correctness, Concision, Clarity, Harmony, Originality, and Vigor in that order. State the final decision directly; do not narrate deliberation or retract a decision.
+
+For one passage, give a one-sentence quality-based `Verdict`. For parallel drafts, complete the same six-quality audit for each draft, then recommend the stronger draft with at least one explicit paired difference: name the corresponding construction or relation in both drafts and explain the changed effect. Do not present a rewrite unless asked.
+
+If revision was not requested, write `Revision: Not requested.` If the prompt says `revise only if needed` and all six qualities pass, write `Revision: No revision needed.`
+
+Source boundaries and quotation locations are recorded in `references/notes.md`.
+"""
+
+
 def style_defects_skill_md(spec: dict[str, object]) -> str:
     return f"""---
 name: oiticica-style-defects
-description: Audit or compare English drafts using Oiticica's six essential style defects, with fixed severity grades, concrete evidence, and narrow follow-up handles.
+description: Audit a single English passage or compare parallel drafts using Oiticica's six essential style defects, with fixed grades and evidence.
 ---
 
 # Oiticica Style Defects
 
-Audit every supplied passage or parallel draft with the same six decisions.
+Audit every supplied passage. When the user supplies parallel drafts, audit each independently before comparing them.
 
 Source concept: {spec["concept"]}
 
@@ -1196,9 +1364,13 @@ Do not presume sourced, famous, literary, civic, sacred, quoted, grammatical, or
 
 Source boundaries and quotation locations are recorded in `references/notes.md`.
 
+## Router Mode
+
+When the general `oiticica-style` router invokes this skill as a pipeline stage, apply all six decisions but defer final response shape, total length, follow-up selection, and revision decisions to the router. Return the six evidenced grades to the router; do not emit this skill's standalone audit format.
+
 ## Response
 
-Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
+Keep each audit under 220 words. For each passage or draft, use exactly one line per defect in this form: `Name — Grade: evidence.` List Impurity, Prolixity, Obscurity, Disharmony, Banality, and Weakness in that order. State the final grade directly; do not narrate deliberation or retract a grade. Then give a one-sentence defect-based `Verdict`, up to three brief evidenced `Follow-up` handles, and `Revision`. For parallel drafts, complete both six-defect audits, then recommend the lower-defect or clearer draft with at least one explicit paired difference: name corresponding wording or relations in both drafts and explain the changed effect. A minimal local contrast may prove a diagnosis; do not present a revised passage unless asked.
 
 Map the six defects respectively to `oiticica-correctness`, `oiticica-concision`, `oiticica-ambiguity` or `oiticica-clarity`, `oiticica-harmony`, `oiticica-originality`, and `oiticica-vigor`. Do not run them unless asked.
 

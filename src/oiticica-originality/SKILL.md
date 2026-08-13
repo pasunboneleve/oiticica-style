@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where originality is th
 
 Source concept: Originality presents aspects, facts, or opinions personally, without imitating another's processes or mannerisms.
 
+## Aggregate Mode
+
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Reject stock phrases, borrowed images, and general aspects.
