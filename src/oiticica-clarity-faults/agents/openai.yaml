@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oiticica Clarity Faults"
+  short_description: "Audit one passage or compare drafts across seven faults of clarity"
+  default_prompt: "Use $oiticica-clarity-faults to audit each passage across all seven clarity faults with evidence; compare only parallel drafts or when comparison is requested."

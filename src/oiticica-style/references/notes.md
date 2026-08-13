@@ -2,11 +2,11 @@
 
 ## Source Basis
 
-Oiticica names six essential qualities and six corresponding defects in §5 of the first part of *Manual de Estilo*. In §25, he says it is easier and more pedagogical to avoid defects before acquiring the qualities jointly. This supports a defect-first aggregate pipeline; it does not support six independent defect topics.
+Oiticica names six essential qualities and six corresponding defects in §5 of the first part of *Manual de Estilo*. In §25, he says it is easier and more pedagogical to avoid defects before acquiring the qualities jointly. Sections 31–40 then decompose clarity into ambiguity, anacoluthon, accumulation and its contrary brachylogy, precision, semicolon, and comma. This supports a broad defect screen, a specific clarity-fault aggregate, and a quality-complete final audit; it does not support six independent essential-defect topics.
 
 ## Eval Polarity
 
-The positive pipeline cases contain an evidenced defect or failed quality for the router to repair or carry through both stages. The negative preservation case contains no target defect and requires the router to preserve a strong passage. The strong description case tests genre routing and complete aggregate coverage without requiring the model to invent a fault. The narrow case tests that an explicit skill request suppresses the general pipeline. Skilpel supplies only the selected router body, so the narrow case does not assert the child skill’s exact rewrite; `oiticica-concision` owns that behavior, and a read-only Codex trace verifies the nested load.
+The positive pipeline cases contain an evidenced defect, clarity fault, or failed quality for the router to repair or carry through all three stages. The negative preservation case contains no target fault and requires the router to preserve a strong passage. The strong description case tests genre routing and complete aggregate coverage without requiring the model to invent a fault. The narrow case tests that an explicit skill request suppresses the general pipeline. Skilpel supplies only the selected router body, so the narrow case does not assert the child skill’s exact rewrite; `oiticica-concision` owns that behavior, and a read-only Codex trace verifies the nested load.
 
 ## Source Boundary
 
@@ -99,3 +99,14 @@ It was a dark and stormy night; the rain fell in torrents
 ### Quotation
 
 I made my preparations with the most studious care.
+
+## Clarity-Only Revision
+
+- Source: B., as quoted by H. W. Fowler and F. G. Fowler
+- Work: *The King’s English*
+- Location: Punctuation, ill-judged stopping
+- Boundary: Exact public-domain quotation. The Fowlers identify the missing comma after “The French” as the cause of the false absolute construction.
+
+### Quotation
+
+The French demurring to the conditions which the English commander offered, again commenced the action.

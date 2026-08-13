@@ -1,0 +1,111 @@
+skill_name: "oiticica-clarity-faults"
+evals:
+  - id: "clarity-faults-positive-ambiguity"
+    name: "clarity faults positive ambiguity"
+    prompt: |
+      Audit this public-domain illustrative quotation for faults of clarity. Do not rewrite it.
+
+      <example>I only assisted the boys to work the example.</example>
+    expected_output: "The response isolates the possible attachments of 'only' as ambiguity and does not invent another clarity fault."
+    assertions:
+      - "The output grades ambiguity above None because 'only' has at least two coherent attachments, while grading anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma None."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-anacoluthon"
+    name: "clarity faults positive anacoluthon"
+    prompt: |
+      Audit this public-domain quotation for faults of clarity. Do not rewrite it.
+
+      <example>Questions which we either do not put to ourselves, or are turned aside with traditional replies.</example>
+    expected_output: "The response isolates the unfinished announced construction as anacoluthon."
+    assertions:
+      - "The output grades anacoluthon above None because relative 'which' is the object of 'put' but the coordinated 'are turned aside' requires a subject, while grading the other six clarity faults None."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-accumulation"
+    name: "clarity faults positive accumulation"
+    prompt: |
+      Audit this public-domain quotation for faults of clarity. Do not rewrite it.
+
+      <example>It was a dark and stormy night; the rain fell in torrents, except at occasional intervals, when it was checked by a violent gust of wind which swept up the streets (for it is in London that our scene lies), rattling along the house-tops, and fiercely agitating the scanty flame of the lamps that struggled against the darkness.</example>
+    expected_output: "The response isolates the crossing of several aspects in one period as accumulation."
+    assertions:
+      - "Accumulation is the only row graded Minor or Major, with evidence that one period contains a parenthesis and several modifiers or actions shifting among different objects."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-brachylogy"
+    name: "clarity faults positive brachylogy"
+    prompt: |
+      Audit this public-domain dialogue quotation for faults of clarity. Do not rewrite it.
+
+      <example>Rum fellow—does the heavy business—no actor—strange man—all sorts of miseries—Dismal Jemmy, we call him on the circuit.</example>
+    expected_output: "The response isolates the dash-separated fragment chain with omitted grammatical and connective relations as brachylogy."
+    assertions:
+      - "Brachylogy is the only row graded above None, with evidence that the dash-separated chain contains repeated fragments with omitted subjects, verbs, or connective relations."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-imprecision"
+    name: "clarity faults positive imprecision"
+    prompt: |
+      Audit this public-domain quotation for faults of clarity. Do not rewrite it.
+
+      <example>By all means let us have bright, hearty, and very reverend services.</example>
+    expected_output: "The response isolates the adjective for a titled person rather than a respectful quality as imprecision."
+    assertions:
+      - "Imprecision is the only row graded above None, and its evidence distinguishes 'reverend', a title or quality of a person, from the intended 'reverent' quality of the services."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-semicolon"
+    name: "clarity faults positive semicolon"
+    prompt: |
+      Audit this public-domain quotation for faults of clarity. Do not rewrite it.
+
+      <example>Nay, do not the elements of all human virtues and all human vices; the passions at once of a Borgia and of a Luther, lie written, in stronger or fainter lines, in the consciousness of every individual bosom?</example>
+    expected_output: "The response isolates the semicolon used where the apposition requires the first of two paired commas."
+    assertions:
+      - "Semicolon is the only row graded Minor or Major, with evidence that the mark wrongly divides the extended subject from its appositional continuation or predicate."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-positive-comma"
+    name: "clarity faults positive comma"
+    prompt: |
+      Audit this public-domain quotation for faults of clarity. Do not rewrite it.
+
+      <example>The French demurring to the conditions which the English commander offered, again commenced the action.</example>
+    expected_output: "The response isolates the missing opening comma around the parenthetic participial phrase."
+    assertions:
+      - "Comma is the only row graded above None, and its evidence identifies either the false separation of 'The French' from 'commenced' or the missing corresponding comma after 'The French'."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-negative-control"
+    name: "clarity faults negative control"
+    prompt: |
+      Audit this public-domain civic quotation for faults of clarity. Do not rewrite it.
+
+      <example>We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.</example>
+    expected_output: "The response finds no supported clarity fault in a substantial coordinated period."
+    assertions:
+      - "The output grades ambiguity, anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma all None; in particular, it does not call the coordinated purpose series accumulation or modernize historical punctuation."
+      - "The output does not present a revised version of the quotation and explicitly says revision was not requested."
+  - id: "clarity-faults-parallel-source-comparison"
+    name: "clarity faults parallel source comparison"
+    prompt: |
+      Compare these parallel modern public-domain English renderings across all seven faults of clarity. Do not rewrite either.
+
+      <draft-a>
+      3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,
+      3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,
+      3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,
+      3:4 by which, when you read, you can perceive my understanding in the mystery of Christ,
+      3:5 which in other generations was not made known to the children of men, as it has now been revealed to his holy apostles and prophets in the Spirit,
+      3:6 that the Gentiles are fellow heirs and fellow members of the body, and fellow partakers of his promise in Christ Jesus through the Good News,
+      3:7 of which I was made a servant according to the gift of that grace of God which was given me according to the working of his power.
+      </draft-a>
+
+      <draft-b>
+      3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...
+      3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,
+      3:3 that is, the mystery made known to me by revelation, as I have already written briefly.
+      3:4 In reading this, then, you will be able to understand my insight into the mystery of Christ,
+      3:5 which was not made known to men in other generations as it has now been revealed by the Spirit to God’s holy apostles and prophets.
+      3:6 This mystery is that through the gospel the Gentiles are fellow heirs, fellow members of the body, and fellow partakers of the promise in Christ Jesus.
+      3:7 I became a servant of this gospel by the gift of God’s grace, given me through the working of His power.
+      </draft-b>
+    expected_output: "The response audits both sourced renderings across all seven clarity faults and compares how each carries or separates the relations."
+    assertions:
+      - "The output gives Draft A and Draft B separate grades for ambiguity, anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma."
+      - "The output recommends Draft B as clearer and supports the comparison with at least one explicit paired difference in how the two renderings carry or separate the sentence relations."
+      - "The output does not present a revised version of either quotation and explicitly says revision was not requested."

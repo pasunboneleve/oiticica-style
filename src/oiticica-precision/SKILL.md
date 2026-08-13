@@ -9,6 +9,10 @@ Use this skill when reviewing or rewriting English prose where precision is the 
 
 Source concept: Precision uses the exact word or construction for an idea or emotion.
 
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.
+
 ## Rules
 
 - Choose the word that names the exact object, action, degree, or relation.

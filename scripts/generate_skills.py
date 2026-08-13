@@ -413,6 +413,235 @@ SKILLS = [
         ],
     },
     {
+        "name": "clarity-faults",
+        "kind": "clarity-fault-audit",
+        "concept": "Clarity requires avoiding ambiguity, anacoluthon, accumulation, and brachylogy; choosing precise words; and using semicolons and commas to expose relations.",
+        "interface": {
+            "display_name": "Oiticica Clarity Faults",
+            "short_description": "Audit one passage or compare drafts across seven faults of clarity",
+            "default_prompt": "Use $oiticica-clarity-faults to audit each passage across all seven clarity faults with evidence; compare only parallel drafts or when comparison is requested.",
+        },
+        "rules": [
+            "Apply all seven component skills to every passage or draft.",
+            "Assign one textual cause to the most specific row instead of double-counting it.",
+            "Preserve sourced wording unless revision is requested.",
+            "Judge literal translations as English unless source-language structure is explicitly required.",
+        ],
+        "rubric": [
+            "All seven clarity faults receive an explicit grade.",
+            "Every non-None grade cites concrete textual evidence.",
+            "The comparison applies one standard to every draft and explains the verdict.",
+            "No rewrite appears unless the user requests one.",
+        ],
+        "positive": "15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”",
+        "negative": "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.",
+        "examples": [
+            {
+                "title": "Positive Eval: Ambiguity",
+                "polarity": "Positive: ambiguity is present; the other six target faults are absent.",
+                "source": "William Livingston Klein",
+                "work": "Why We Punctuate; or, Reason Versus Rule in the Use of Marks",
+                "location": "§49",
+                "text": "I only assisted the boys to work the example.",
+                "boundary": "Exact public-domain illustrative quotation. Klein gives three possible attachments for ‘only’; punctuation alone does not select among them.",
+            },
+            {
+                "title": "Positive Eval: Anacoluthon",
+                "polarity": "Positive: anacoluthon is present; the other six target faults are absent.",
+                "source": "Mark Rutherford, as quoted by H. W. Fowler and F. G. Fowler",
+                "work": "The King’s English",
+                "location": "Syntax, relative coordination",
+                "text": "Questions which we either do not put to ourselves, or are turned aside with traditional replies.",
+                "boundary": "Exact public-domain quotation as printed by the Fowlers. The relative ‘which’ begins as the object of ‘put’ but the coordinate construction then requires it to become the subject of ‘are turned aside’.",
+            },
+            {
+                "title": "Positive Eval: Accumulation",
+                "polarity": "Positive: accumulation is present; the other six target faults are absent.",
+                "source": "Edward Bulwer-Lytton",
+                "work": "Paul Clifford",
+                "location": "chapter 1, opening sentence",
+                "text": "It was a dark and stormy night; the rain fell in torrents, except at occasional intervals, when it was checked by a violent gust of wind which swept up the streets (for it is in London that our scene lies), rattling along the house-tops, and fiercely agitating the scanty flame of the lamps that struggled against the darkness.",
+                "boundary": "Exact public-domain quotation. In this seven-row clarity audit, the crowded crossing of weather, location, motion, and lamps supplies accumulation; its punctuation is structurally defensible.",
+            },
+            {
+                "title": "Positive Eval: Brachylogy",
+                "polarity": "Positive: brachylogy is present; the other six target faults are absent.",
+                "source": "Charles Dickens",
+                "work": "The Pickwick Papers",
+                "location": "chapter 3",
+                "text": "Rum fellow—does the heavy business—no actor—strange man—all sorts of miseries—Dismal Jemmy, we call him on the circuit.",
+                "boundary": "Exact public-domain dialogue quotation. The dash-separated chain repeatedly omits subjects, verbs, and connective relations; its dramatic voice does not remove the structural brachylogy tested here.",
+            },
+            {
+                "title": "Positive Eval: Imprecision",
+                "polarity": "Positive: imprecision is present; the other six target faults are absent.",
+                "source": "The Daily Telegraph, as quoted by H. W. Fowler and F. G. Fowler",
+                "work": "The King’s English",
+                "location": "Vocabulary, malaprops",
+                "text": "By all means let us have bright, hearty, and very reverend services.",
+                "boundary": "Exact public-domain quotation as printed by the Fowlers. ‘Reverend’ names a person entitled to religious respect; ‘reverent’ names the intended respectful quality of services.",
+            },
+            {
+                "title": "Positive Eval: Semicolon",
+                "polarity": "Positive: a semicolon fault is present; the other six target faults are absent.",
+                "source": "Thomas Carlyle, as quoted by H. W. Fowler and F. G. Fowler",
+                "work": "The King’s English",
+                "location": "Punctuation, the semicolon between subordinate members",
+                "text": "Nay, do not the elements of all human virtues and all human vices; the passions at once of a Borgia and of a Luther, lie written, in stronger or fainter lines, in the consciousness of every individual bosom?",
+                "boundary": "Exact public-domain quotation as printed by the Fowlers. They identify the semicolon as the wrong first delimiter around the apposition ‘the passions at once of a Borgia and of a Luther’; replacing it with a comma restores the paired delimiters.",
+            },
+            {
+                "title": "Positive Eval: Comma",
+                "polarity": "Positive: a comma fault is present; the other six target faults are absent.",
+                "source": "B., as quoted by H. W. Fowler and F. G. Fowler",
+                "work": "The King’s English",
+                "location": "Punctuation, ill-judged stopping",
+                "text": "The French demurring to the conditions which the English commander offered, again commenced the action.",
+                "boundary": "Exact public-domain quotation as printed by the Fowlers. A comma after ‘The French’ is required to pair with the comma after ‘offered’ and expose the parenthetic participial phrase.",
+            },
+            {
+                "title": "Negative Eval: No Clarity Fault",
+                "polarity": "Negative: none of the seven target faults is present.",
+                "source": "United States Constitution",
+                "work": "Preamble",
+                "location": "National Archives transcription",
+                "text": "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.",
+                "boundary": "Exact public-domain civic quotation. Its long coordinated purpose series and historical punctuation give the audit substantial opportunities to overdiagnose.",
+            },
+            {
+                "title": "Parallel Comparison: World English Bible",
+                "polarity": "Comparison case: one continuous sentence carries the main relation through seven verse divisions.",
+                "source": "World English Bible",
+                "work": "Ephesians",
+                "location": "3:1–7",
+                "text": "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,\n3:4 by which, when you read, you can perceive my understanding in the mystery of Christ,\n3:5 which in other generations was not made known to the children of men, as it has now been revealed to his holy apostles and prophets in the Spirit,\n3:6 that the Gentiles are fellow heirs and fellow members of the body, and fellow partakers of his promise in Christ Jesus through the Good News,\n3:7 of which I was made a servant according to the gift of that grace of God which was given me according to the working of his power.",
+                "boundary": "Exact modern public-domain quotation with verse numbers and divisions retained and translation footnotes omitted.",
+            },
+            {
+                "title": "Parallel Comparison: Berean Standard Bible",
+                "polarity": "Comparison case: the interrupted opening is marked and the later relations are divided into sentences.",
+                "source": "Berean Standard Bible",
+                "work": "Ephesians",
+                "location": "3:1–7",
+                "text": "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n3:3 that is, the mystery made known to me by revelation, as I have already written briefly.\n3:4 In reading this, then, you will be able to understand my insight into the mystery of Christ,\n3:5 which was not made known to men in other generations as it has now been revealed by the Spirit to God’s holy apostles and prophets.\n3:6 This mystery is that through the gospel the Gentiles are fellow heirs, fellow members of the body, and fellow partakers of the promise in Christ Jesus.\n3:7 I became a servant of this gospel by the gift of God’s grace, given me through the working of His power.",
+                "boundary": "Exact modern public-domain quotation with verse numbers and divisions retained.",
+            },
+        ],
+        "evals": [
+            {
+                "id": "clarity-faults-positive-ambiguity",
+                "name": "clarity faults positive ambiguity",
+                "prompt": "Audit this public-domain illustrative quotation for faults of clarity. Do not rewrite it.\n\n<example>I only assisted the boys to work the example.</example>",
+                "expected_output": "The response isolates the possible attachments of 'only' as ambiguity and does not invent another clarity fault.",
+                "assertions": [
+                    "The output grades ambiguity above None because 'only' has at least two coherent attachments, while grading anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-anacoluthon",
+                "name": "clarity faults positive anacoluthon",
+                "prompt": "Audit this public-domain quotation for faults of clarity. Do not rewrite it.\n\n<example>Questions which we either do not put to ourselves, or are turned aside with traditional replies.</example>",
+                "expected_output": "The response isolates the unfinished announced construction as anacoluthon.",
+                "assertions": [
+                    "The output grades anacoluthon above None because relative 'which' is the object of 'put' but the coordinated 'are turned aside' requires a subject, while grading the other six clarity faults None.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-accumulation",
+                "name": "clarity faults positive accumulation",
+                "prompt": "Audit this public-domain quotation for faults of clarity. Do not rewrite it.\n\n<example>It was a dark and stormy night; the rain fell in torrents, except at occasional intervals, when it was checked by a violent gust of wind which swept up the streets (for it is in London that our scene lies), rattling along the house-tops, and fiercely agitating the scanty flame of the lamps that struggled against the darkness.</example>",
+                "expected_output": "The response isolates the crossing of several aspects in one period as accumulation.",
+                "assertions": [
+                    "Accumulation is the only row graded Minor or Major, with evidence that one period contains a parenthesis and several modifiers or actions shifting among different objects.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-brachylogy",
+                "name": "clarity faults positive brachylogy",
+                "prompt": "Audit this public-domain dialogue quotation for faults of clarity. Do not rewrite it.\n\n<example>Rum fellow—does the heavy business—no actor—strange man—all sorts of miseries—Dismal Jemmy, we call him on the circuit.</example>",
+                "expected_output": "The response isolates the dash-separated fragment chain with omitted grammatical and connective relations as brachylogy.",
+                "assertions": [
+                    "Brachylogy is the only row graded above None, with evidence that the dash-separated chain contains repeated fragments with omitted subjects, verbs, or connective relations.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-imprecision",
+                "name": "clarity faults positive imprecision",
+                "prompt": "Audit this public-domain quotation for faults of clarity. Do not rewrite it.\n\n<example>By all means let us have bright, hearty, and very reverend services.</example>",
+                "expected_output": "The response isolates the adjective for a titled person rather than a respectful quality as imprecision.",
+                "assertions": [
+                    "Imprecision is the only row graded above None, and its evidence distinguishes 'reverend', a title or quality of a person, from the intended 'reverent' quality of the services.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-semicolon",
+                "name": "clarity faults positive semicolon",
+                "prompt": "Audit this public-domain quotation for faults of clarity. Do not rewrite it.\n\n<example>Nay, do not the elements of all human virtues and all human vices; the passions at once of a Borgia and of a Luther, lie written, in stronger or fainter lines, in the consciousness of every individual bosom?</example>",
+                "expected_output": "The response isolates the semicolon used where the apposition requires the first of two paired commas.",
+                "assertions": [
+                    "Semicolon is the only row graded Minor or Major, with evidence that the mark wrongly divides the extended subject from its appositional continuation or predicate.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-positive-comma",
+                "name": "clarity faults positive comma",
+                "prompt": "Audit this public-domain quotation for faults of clarity. Do not rewrite it.\n\n<example>The French demurring to the conditions which the English commander offered, again commenced the action.</example>",
+                "expected_output": "The response isolates the missing opening comma around the parenthetic participial phrase.",
+                "assertions": [
+                    "Comma is the only row graded above None, and its evidence identifies either the false separation of 'The French' from 'commenced' or the missing corresponding comma after 'The French'.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-negative-control",
+                "name": "clarity faults negative control",
+                "prompt": "Audit this public-domain civic quotation for faults of clarity. Do not rewrite it.\n\n<example>We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.</example>",
+                "expected_output": "The response finds no supported clarity fault in a substantial coordinated period.",
+                "assertions": [
+                    "The output grades ambiguity, anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma all None; in particular, it does not call the coordinated purpose series accumulation or modernize historical punctuation.",
+                    "The output does not present a revised version of the quotation and explicitly says revision was not requested.",
+                ],
+            },
+            {
+                "id": "clarity-faults-parallel-source-comparison",
+                "name": "clarity faults parallel source comparison",
+                "prompt": (
+                    "Compare these parallel modern public-domain English renderings across all seven faults of clarity. Do not rewrite either.\n\n"
+                    "<draft-a>\n"
+                    "3:1 For this cause I, Paul, am the prisoner of Christ Jesus on behalf of you Gentiles,\n"
+                    "3:2 if it is so that you have heard of the administration of that grace of God which was given me toward you,\n"
+                    "3:3 how that by revelation the mystery was made known to me, as I wrote before in few words,\n"
+                    "3:4 by which, when you read, you can perceive my understanding in the mystery of Christ,\n"
+                    "3:5 which in other generations was not made known to the children of men, as it has now been revealed to his holy apostles and prophets in the Spirit,\n"
+                    "3:6 that the Gentiles are fellow heirs and fellow members of the body, and fellow partakers of his promise in Christ Jesus through the Good News,\n"
+                    "3:7 of which I was made a servant according to the gift of that grace of God which was given me according to the working of his power.\n"
+                    "</draft-a>\n\n"
+                    "<draft-b>\n"
+                    "3:1 For this reason I, Paul, the prisoner of Christ Jesus for the sake of you Gentiles...\n"
+                    "3:2 Surely you have heard about the stewardship of God’s grace that was given to me for you,\n"
+                    "3:3 that is, the mystery made known to me by revelation, as I have already written briefly.\n"
+                    "3:4 In reading this, then, you will be able to understand my insight into the mystery of Christ,\n"
+                    "3:5 which was not made known to men in other generations as it has now been revealed by the Spirit to God’s holy apostles and prophets.\n"
+                    "3:6 This mystery is that through the gospel the Gentiles are fellow heirs, fellow members of the body, and fellow partakers of the promise in Christ Jesus.\n"
+                    "3:7 I became a servant of this gospel by the gift of God’s grace, given me through the working of His power.\n"
+                    "</draft-b>"
+                ),
+                "expected_output": "The response audits both sourced renderings across all seven clarity faults and compares how each carries or separates the relations.",
+                "assertions": [
+                    "The output gives Draft A and Draft B separate grades for ambiguity, anacoluthon, accumulation, brachylogy, imprecision, semicolon, and comma.",
+                    "The output recommends Draft B as clearer and supports the comparison with at least one explicit paired difference in how the two renderings carry or separate the sentence relations.",
+                    "The output does not present a revised version of either quotation and explicitly says revision was not requested.",
+                ],
+            },
+        ],
+    },
+    {
         "name": "correctness",
         "quality_component": True,
         "concept": "Correctness observes the grammatical tradition of the language being used.",
@@ -633,6 +862,7 @@ SKILLS = [
     },
     {
         "name": "ambiguity",
+        "clarity_fault_component": True,
         "concept": "Ambiguity is a structure that allows more than one meaning when only one is intended.",
         "rules": [
             "Find the word, pronoun, modifier, punctuation mark, or clause relation that permits two readings.",
@@ -651,6 +881,7 @@ SKILLS = [
     },
     {
         "name": "anacoluthon",
+        "clarity_fault_component": True,
         "concept": "Anacoluthon is a break in logical order, usually by changing the expected subject or construction.",
         "rules": [
             "Track the sentence's announced subject or construction to its grammatical completion.",
@@ -669,6 +900,7 @@ SKILLS = [
     },
     {
         "name": "accumulation",
+        "clarity_fault_component": True,
         "concept": "Accumulation is excess and crossing of aspects, facts, or opinions in one period.",
         "rules": [
             "Split a period when several independent aspects compete for attention.",
@@ -694,6 +926,7 @@ SKILLS = [
     },
     {
         "name": "brachylogy",
+        "clarity_fault_component": True,
         "concept": "Brachylogy is the opposite vice of accumulation: too many short, disconnected phrases with forced pauses.",
         "rules": [
             "Join short fragments when they belong to one movement or relation.",
@@ -712,6 +945,7 @@ SKILLS = [
     },
     {
         "name": "precision",
+        "clarity_fault_component": True,
         "concept": "Precision uses the exact word or construction for an idea or emotion.",
         "rules": [
             "Choose the word that names the exact object, action, degree, or relation.",
@@ -730,6 +964,7 @@ SKILLS = [
     },
     {
         "name": "semicolon",
+        "clarity_fault_component": True,
         "concept": "The semicolon separates related clauses where a comma is too weak and a period too final.",
         "rules": [
             "Use semicolons for successive conditions before a conclusion, strong adversative turns, parallel clauses with omitted words, and list items that contain internal commas.",
@@ -748,6 +983,7 @@ SKILLS = [
     },
     {
         "name": "comma",
+        "clarity_fault_component": True,
         "concept": "The comma marks coordination, interpolation, parenthesis, apposition, enumeration, ellipsis, inversion, and similar local relations.",
         "rules": [
             "Use commas to show sentence structure, not breathing alone.",
@@ -992,6 +1228,7 @@ SOURCE_NOTES = {
     "dissertation": ("James Madison", "Federalist No. 10", "", "Positive model is an exact public-domain quotation."),
     "style-qualities": ("Jane Austen", "Pride and Prejudice", "chapter 1", "Positive model is an exact public-domain quotation."),
     "style-defects": ("William Shakespeare", "The Merchant of Venice", "act 3, scene 2", "Positive defect example is an exact public-domain quotation."),
+    "clarity-faults": ("Berean Literal Bible", "The Gospel According to John", "21:15", "Positive fault example is an exact modern public-domain quotation."),
     "correctness": ("George Eliot", "Middlemarch", "chapter 1", "Positive model is an exact public-domain quotation."),
     "solecism": ("Jane Austen", "Pride and Prejudice", "", "Positive model is an exact public-domain quotation."),
     "spelling": ("Charlotte Bronte", "Jane Eyre", "chapter 1", "Positive model is about preserving source spelling in quotation while modernizing commentary."),
@@ -1045,6 +1282,10 @@ POSITIVE_QUOTES = {
     "style-defects": (
         "between you and I",
         "William Shakespeare, The Merchant of Venice, act 3, scene 2, Antonio’s letter, verbatim excerpt.",
+    ),
+    "clarity-faults": (
+        "15 Therefore when they had dined, Jesus says to Simon Peter, “Simon son of John, do you love Me more than these?”",
+        "Berean Literal Bible, John 21:15, verse number retained.",
     ),
     "correctness": (
         "Miss Brooke had that kind of beauty which seems to be thrown into relief by poor dress.",
@@ -1190,6 +1431,8 @@ def skill_md(spec: dict[str, object]) -> str:
         return style_qualities_skill_md(spec)
     if spec.get("kind") == "defect-audit":
         return style_defects_skill_md(spec)
+    if spec.get("kind") == "clarity-fault-audit":
+        return clarity_faults_skill_md(spec)
 
     skill_name = f"oiticica-{name}"
     title_name = title(str(name))
@@ -1197,12 +1440,20 @@ def skill_md(spec: dict[str, object]) -> str:
     rules = "\n".join(f"- {rule}" for rule in spec["rules"])
     rubric = "\n".join(f"- {item}" for item in spec["rubric"])
     aggregate_mode = ""
+    aggregate_paragraphs = []
     if spec.get("quality_component"):
-        aggregate_mode = """
+        aggregate_paragraphs.append("""
 
 ## Aggregate Mode
 
-When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode."""
+When `$oiticica-style-qualities` invokes this skill as one component of a six-quality audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.""")
+    if spec.get("clarity_fault_component"):
+        aggregate_paragraphs.append("""
+
+## Clarity-Fault Aggregate Mode
+
+When `$oiticica-clarity-faults` invokes this skill as one component of a seven-fault audit, apply this skill's Rules and Objective Rubric but defer response shape, length, comparison, and revision decisions to the aggregate skill. Do not emit this skill's standalone `Principle`, `Preserve`, `Weak`, `Fault`, `Better`, `Why`, or `Rubric` sections in aggregate mode.""")
+    aggregate_mode = "".join(aggregate_paragraphs)
     return f"""---
 name: {skill_name}
 description: Apply Oiticica's {title_name.lower()} concept in modern English with concise rules, objective rubrics, and concrete contrast.
@@ -1378,6 +1629,81 @@ If revision was not requested, write `Revision: Not requested.` If the prompt sa
 """
 
 
+def clarity_faults_skill_md(spec: dict[str, object]) -> str:
+    return f"""---
+name: oiticica-clarity-faults
+description: Audit a single English passage or compare parallel drafts using the seven component skills in Oiticica's faults-of-clarity section.
+---
+
+# Oiticica Clarity Faults
+
+Audit every supplied passage. When the user supplies parallel drafts, audit each independently before comparing them.
+
+Source concept: {spec["concept"]}
+
+## Component Skills
+
+Load and apply all seven component skills for every audit. These `$` handles are explicit skill invocations, not labels:
+
+- `$oiticica-ambiguity`
+- `$oiticica-anacoluthon`
+- `$oiticica-accumulation`
+- `$oiticica-brachylogy`
+- `$oiticica-precision`
+- `$oiticica-semicolon`
+- `$oiticica-comma`
+
+Use each component skill's rules and objective rubric. Do not substitute an unaided general definition of the fault. If the runtime cannot resolve nested skill invocations, use the decision boundaries below rather than omitting a row.
+
+## Decisions
+
+Apply all seven. A matching test requires at least `Minor`, even when the prose remains intelligible.
+The tests below are controlling: once quoted evidence satisfies a test, assign at least `Minor`. Do not reverse a matched result merely because the passage is famous, readable, coherent as a whole, rhetorically parallel, or effective in another respect.
+
+- **Ambiguity**: a word, pronoun, modifier, attachment, or clause relation permits two contextually coherent readings. Name both.
+- **Anacoluthon**: the sentence announces one subject or construction and accidentally completes another.
+- **Accumulation**: excess or crossing of aspects, facts, or opinions forces one period to hold competing main relations.
+- **Brachylogy**: short, disconnected sentences or fragments conceal relations that should be joined. Deliberate dramatic interruption or emphasis is `None` only when each punctuated unit is grammatically independent or the interruption does not borrow a required construction from another sentence.
+- **Imprecision**: a word or construction fails to name the exact object, action, degree, or relation, or an image's literal terms conflict.
+- **Semicolon**: a semicolon falsely groups unrelated units, splits a grammatical dependency, or is too weak or strong for the relation.
+- **Comma**: a missing, misplaced, or needless comma hides structure, creates a false grouping, or breaks a direct grammatical bond.
+
+Grade `None` for no evidence, `Minor` for a local fault, and `Major` for a repeated or controlling fault. Quote the evidence and explain the broken relation. Assign one textual cause to its most specific row and grade derivative symptoms `None` unless separate textual evidence independently satisfies another row.
+
+- A modifier, word, or phrase with several coherent attachments is Ambiguity, not Imprecision. Mere dictionary polysemy is not ambiguity when the surrounding predicates select one conventional sense; a merely conceivable but semantically implausible reading is `None`. If a proposed second reading exists only by treating a contextually wrong derivative as a loose synonym, grade the malaprop under Imprecision and Ambiguity `None`.
+- An anaphoric pronoun is not ambiguous when grammatical agreement and the predicate's ordinary event meaning select one stated antecedent; do not invent an implied noun as a rival referent when the predicate would not coherently apply to it.
+- Parallel names used as contrasting exemplars do not create Ambiguity merely because a preposition could abstractly express joint possession; require a second reading that remains coherent with the surrounding contrast.
+- One announced construction that never reaches its grammatical completion is Anacoluthon, not Brachylogy. This includes coordination that asks one relative to serve incompatible grammatical roles. Do not also grade Brachylogy when the evidence is wholly inside one punctuated sentence. Brachylogy requires two or more punctuated units whose sentence boundaries break a shared relation; a fragment that omits its subject or predicate by borrowing another sentence's construction remains Brachylogy even when readable or emphatic.
+- A coordinated opening of the form `A or B` loses sentence unity when the next sentence separately develops A and a third separately develops B. This test is sufficient for Brachylogy even if all three sentences are grammatical and rhetorically parallel.
+- Four or more consecutive short sentences in one development, including three repeated subject-predicate starts about one subject, are sufficient for Brachylogy; parallel grammar does not by itself justify the repeated full stops.
+- A dash-separated chain of four or more fragments that repeatedly omits subjects, verbs, or connective relations is sufficient for Brachylogy. Dialogue or dramatic voice does not exempt it when the reader must reconstruct those relations.
+- In such a fragment chain, grade the omitted grammatical and connective relations only as Brachylogy: several fragments serving one character sketch are not Accumulation, and context-appropriate broad dramatic terms are not Imprecision or Ambiguity without separate evidence outside the omissions.
+- When a later demonstrative such as `this` clearly summarizes the combined thought of two preceding sentences, its backward reference is not Ambiguity; if the full stops conceal that combined relation, grade Brachylogy.
+- Accumulation requires several factual or logical aspects, facts, or opinions to cross within one period. Grade at least `Minor` when a reader must retain an unfinished main dependency across a parenthesis and successive modifiers that shift among four or more objects or actions; this test is sufficient even when all details describe one scene. A parallel enumeration whose members all perform the same grammatical function is not accumulation. Several words, examples, or figurative images serving one relation are not accumulation; incompatible terms within one image belong to Imprecision.
+- As a mechanical backstop, a period longer than 50 words that contains a parenthesis and three or more subordinate or participial modifiers with different grammatical heads is at least `Minor` Accumulation. Scenic unity or grammatical correctness does not override that threshold.
+- Imprecision requires a wrong or incompatible word, collocation, or image. Test near-homophones and derivatives by substituting their plain glosses; do not accept a related form that names a different property. Distinguish an adjective naming a titled or respected person, such as `reverend`, from the adjective naming the respectful quality of an act or service, `reverent`. Redundancy belongs to concision, and an idiomatic figurative verb is not imprecise merely because it is nonliteral.
+- A wrong or missing semicolon belongs to Semicolon. A semicolon must not replace one of a paired set of commas around an apposition or parenthesis, or split a clause that functions as an adverbial explanation or degree complement of the first clause. If replacing or removing the semicolon restores the announced construction, grade the derivative syntactic break under Semicolon and grade Anacoluthon `None`.
+- A wrong or missing comma belongs to Comma. A parenthetic participial phrase inside a subject-predicate frame requires paired commas. If an initial noun is followed by a participle and then by a finite verb with no new subject, the noun is the finite verb's subject: place the first comma after the noun, not only after the participial phrase. An optional rhetorical comma is `None` unless it creates a false grouping or hides a grammatical bond; in particular, a comma between a finite verb and an unmistakably adverbial phrase is `None` when removing it changes no attachment. When a mark is the specific cause of a false grouping, grade Ambiguity `None` unless another construction independently permits two readings.
+- Do not double-count punctuation adjacent to an Anacoluthon. If removing a comma leaves the incompatible subject or construction unchanged, grade the syntactic cause under Anacoluthon and Comma `None`.
+
+Preserve historically accepted punctuation and usage in sourced quotations; current convention alone is not a fault. Do not presume sourced, famous, literary, civic, sacred, quoted, grammatical, or intelligible prose is fault-free. Judge literal translations as English unless source-language structure is explicitly required. Preserve quotations; do not rewrite unless asked.
+
+## Router Mode
+
+When the general `oiticica-style` router invokes this skill as a pipeline stage, apply all seven component skills but defer final response shape, total length, follow-up selection, and revision decisions to the router. Return the seven evidenced grades to the router; do not emit this skill's standalone audit format.
+
+## Response
+
+Keep each audit under 260 words. For each passage or draft, use exactly one line per fault in this form: `Name — Grade: evidence.` List Ambiguity, Anacoluthon, Accumulation, Brachylogy, Imprecision, Semicolon, and Comma in that order. State the final grade directly; do not narrate deliberation or retract a grade.
+
+For one passage, give a one-sentence clarity-based `Verdict`. For parallel drafts, complete the same seven-fault audit for each draft, then recommend the clearer draft with at least one explicit paired difference: name the corresponding construction or relation in both drafts and explain the changed effect. Do not present a rewrite unless asked.
+
+If revision was not requested, write `Revision: Not requested.` If the prompt says `revise only if needed` and all seven grades are `None`, write `Revision: No revision needed.`
+
+Source boundaries and quotation locations are recorded in `references/notes.md`.
+"""
+
+
 def openai_yaml(spec: dict[str, object]) -> str:
     name = str(spec["name"])
     skill = f"oiticica-{name}"
@@ -1405,6 +1731,8 @@ def notes_md(spec: dict[str, object]) -> str:
     name = str(spec["name"])
     if spec.get("kind") == "defect-audit":
         return style_defects_notes_md(spec)
+    if spec.get("kind") == "clarity-fault-audit":
+        return clarity_faults_notes_md(spec)
 
     skill = f"oiticica-{name}"
     author, work, location, _note = SOURCE_NOTES[name]
@@ -1484,6 +1812,40 @@ def style_defects_notes_md(spec: dict[str, object]) -> str:
 ## Source Boundary
 
 Every supplied eval passage is a quotation or verbatim excerpt from a public-domain, widely read English work or civic text. No eval fixture is an invented passage or source-model paraphrase.
+
+""" + "\n\n".join(sections) + "\n"
+
+
+def clarity_faults_notes_md(spec: dict[str, object]) -> str:
+    sections = []
+    for example in spec["examples"]:
+        sections.append(
+            f'''## {example["title"]}
+
+- Polarity: {example["polarity"]}
+- Author or source: {example["source"]}
+- Work: {example["work"]}
+- Location: {example["location"]}
+- Boundary: {example["boundary"]}
+
+### Quotation
+
+{example["text"]}'''
+        )
+
+    return """# Notes for oiticica-clarity-faults
+
+## Manual Source Basis
+
+Sections 31–40 of the first part of José Oiticica's *Manual de Estilo* define clarity, list ambiguity, anacoluthon, accumulation, precision, and punctuation as its governing concerns, identify brachylogy as accumulation's contrary fault, and treat semicolon and comma separately. This supports a seven-component aggregate without inventing new standalone topics.
+
+## Eval Polarity
+
+`Positive` means the named target fault is present. `Negative` means none of the seven clarity faults is present. Each positive case is designed to test specificity by isolating one primary row.
+
+## Source Boundary
+
+Every supplied eval passage is a quotation or verbatim excerpt from a public-domain English work, civic text, or public-domain Bible translation. No eval fixture is an invented passage or source-model paraphrase.
 
 """ + "\n\n".join(sections) + "\n"
 
