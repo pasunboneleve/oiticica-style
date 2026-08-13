@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-13
+
 ### Added
 
 - Add `oiticica-clarity-faults`, a fixed seven-row audit that invokes the
