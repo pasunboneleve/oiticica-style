@@ -22,6 +22,7 @@ This repository contains modern English Codex skills derived from the first part
 - Modern English classic examples must come from public-domain, widely read English works or civic texts.
 - Preferred source pools include Shakespeare; Jonathan Swift, especially
   *Gulliver’s Travels*; the Federalist Papers; Austen; Dickens; Milton; Lincoln;
+  Robert Louis Stevenson; William Livingston Klein’s *Why We Punctuate*;
   the United States Constitution; Edward Bulwer-Lytton’s *Paul Clifford*; and
   public-domain Bible translations such as the Berean Literal Bible, World
   English Bible, and Berean Standard Bible.
@@ -44,6 +45,6 @@ bash -n scripts/link_skills.sh
 direnv exec . bash scripts/validate_skills.sh <skill-relpath>
 ```
 
-Use `scripts/validate_skills.sh` for model-backed validation. Pass changed skill relpaths such as `oiticica-description` so unrelated skill evals do not run. The CI workflow uses `scripts/skill_ci_scope.sh` to choose focused validation when only skill directories changed, and full validation when workflow or script logic changes.
+Use `scripts/validate_skills.sh` for model-backed validation. Pass changed skill relpaths such as `oiticica-description` so unrelated skill evals do not run. The CI workflow uses `scripts/skill_ci_scope.sh` to choose focused validation from changed skill directories. Changes to authoring utilities such as `scripts/generate_skills.py` do not widen that scope; changes to the skill-validation workflow, scope classifier, runner, validator, or model configuration require full validation.
 
 The default model-backed gate requires at least 20 percentage points of pass-rate lift over the without-skill baseline and at least 90% with-skill pass rate.
